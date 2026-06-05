@@ -1,1042 +1,1758 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>تقدیم به نیایش قشنگم ❤️ | Mobin & Niyayesh</title>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"
+  />
+  <title>تقدیم به نیایش قشنگم ❤️ | Mobin & Niyayesh</title>
+  <meta
+    name="description"
+    content="یک صفحه‌ی عاشقانه و بهینه‌شده، تقدیم از طرف مبین برای نیایش"
+  />
+  <meta name="theme-color" content="#060102" />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cinzel:wght@400..900&family=Alex+Brush&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Cinzel:wght@400;500;600;700;800&family=Alex+Brush&display=swap"
+    rel="stylesheet"
+  />
 
-    <style>
-        :root {
-            --bg: #060102;
-            --wine: #5c0f1b;
-            --gold: #d4af37;
-            --parchment: #fdf9f0;
-            --rose: #e11d48;
-            --deep: #0d0001;
-        }
+  <style>
+    :root {
+      --bg: #060102;
+      --bg-2: #120306;
+      --bg-3: #22070c;
+      --wine: #5c0f1b;
+      --wine-2: #7d1730;
+      --gold: #d4af37;
+      --gold-2: #f1d57f;
+      --rose: #e11d48;
+      --pink: #f472b6;
+      --paper: #fdf9f0;
+      --paper-2: #f6eed9;
+      --deep: #0d0001;
+      --text: #f5f5f4;
+      --muted: #c9c1b7;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.25);
+      --shadow-strong: 0 18px 48px rgba(0, 0, 0, 0.45);
+      --dur-fast: 220ms;
+      --dur-mid: 420ms;
+      --dur-slow: 850ms;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
 
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        html {
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: #d4af37 #060102;
-        }
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: #d4af37 #060102;
+    }
 
-        body {
-            margin: 0;
-            font-family: "Vazirmatn", system-ui, sans-serif;
-            background: var(--bg);
-            color: #f5f5f4;
-            overflow-x: hidden;
-            min-height: 100vh;
-            cursor: default;
-        }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(212, 175, 55, 0.07), transparent 20%),
+        linear-gradient(180deg, #140205 0%, #060102 30%, #060102 100%);
+      color: var(--text);
+      font-family: "Vazirmatn", system-ui, sans-serif;
+      overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      touch-action: manipulation;
+      overscroll-behavior-y: none;
+    }
 
-        /* Loading Screen */
-        #loader {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(ellipse at center, #1a0408 0%, #060102 100%);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
-        }
-        #loader.hidden-loader {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        .heart-loader {
-            width: 55px;
-            height: 55px;
-            background: #f472b6;
-            position: relative;
-            transform: rotate(45deg);
-            animation: heartBeatLoader 1.1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
-            filter: drop-shadow(0 0 20px rgba(244, 114, 182, 0.7));
-        }
-        .heart-loader::before,
-        .heart-loader::after {
-            content: "";
-            width: 55px;
-            height: 55px;
-            background: #f472b6;
-            border-radius: 50%;
-            position: absolute;
-        }
-        .heart-loader::before {
-            top: -27px;
-            left: 0;
-        }
-        .heart-loader::after {
-            top: 0;
-            left: -27px;
-        }
-        @keyframes heartBeatLoader {
-            0%,
-            100% {
-                transform: rotate(45deg) scale(0.85);
-            }
-            15% {
-                transform: rotate(45deg) scale(1.08);
-            }
-            30% {
-                transform: rotate(45deg) scale(0.85);
-            }
-            50% {
-                transform: rotate(45deg) scale(1.15);
-            }
-            70% {
-                transform: rotate(45deg) scale(0.85);
-            }
-        }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-        /* Typography */
-        .royal-title {
-            font-family: "Cinzel", "Playfair Display", serif;
-            letter-spacing: 0.15em;
-        }
-        .cursive-title {
-            font-family: "Alex Brush", cursive;
-            direction: ltr;
-        }
-        .latin-serif {
-            font-family: "Playfair Display", serif;
-        }
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
 
-        /* Parchment */
-        .parchment {
-            background-color: var(--parchment);
-            background-image:
-                radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.18), transparent 30%),
-                radial-gradient(circle at 85% 80%, rgba(139, 94, 60, 0.15), transparent 35%),
-                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.06), transparent 60%);
-            box-shadow: inset 0 0 50px rgba(139, 94, 60, 0.3), 0 20px 50px rgba(0, 0, 0, 0.5);
-            border: 1px solid #e1d3b0;
-        }
+    button {
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
 
-        .gold-text {
-            background: linear-gradient(135deg, #fff8c0, #d4af37, #b8860b, #f0c75e, #fff8c0);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: goldShimmer 4s ease-in-out infinite;
-        }
-        @keyframes goldShimmer {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-        }
+    .royal-title {
+      font-family: "Cinzel", "Playfair Display", serif;
+      letter-spacing: 0.16em;
+    }
 
-        .soft-glow {
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(244, 114, 182, 0.25);
-        }
+    .cursive-title {
+      font-family: "Alex Brush", cursive;
+      direction: ltr;
+    }
 
-        /* Fade-up Animation */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(28px);
-            will-change: transform, opacity;
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .latin-serif {
+      font-family: "Playfair Display", serif;
+    }
 
-        /* Floating */
-        @keyframes floaty {
-            0%,
-            100% {
-                transform: translateY(0) rotate(-2deg);
-            }
-            50% {
-                transform: translateY(-12px) rotate(2deg);
-            }
-        }
-        .floating {
-            animation: floaty 4.5s ease-in-out infinite;
-            will-change: transform;
-        }
+    .gold-text {
+      background: linear-gradient(
+        135deg,
+        #fff4bb 0%,
+        #f3d67a 20%,
+        #d4af37 40%,
+        #b8860b 60%,
+        #f6de8f 80%,
+        #fff4bb 100%
+      );
+      background-size: 220% 220%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: goldShimmer 6s ease-in-out infinite;
+    }
 
-        /* Glass */
-        .glass {
-            background: rgba(18, 4, 6, 0.65);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
+    @keyframes goldShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
 
-        /* ─── ENVELOPE SYSTEM ─── */
-        .envelope-container {
-            position: relative;
-            width: 300px;
-            height: 220px;
-            perspective: 1600px;
-            transform-style: preserve-3d;
-            cursor: pointer;
-            user-select: none;
-            z-index: 20;
-        }
-        @media (min-width: 768px) {
-            .envelope-container {
-                width: 440px;
-                height: 310px;
-            }
-        }
+    .soft-glow {
+      text-shadow:
+        0 0 14px rgba(212, 175, 55, 0.35),
+        0 0 24px rgba(244, 114, 182, 0.15);
+    }
 
-        .envelope-body {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, #5e101e 0%, #3d0812 100%);
-            border-radius: 16px;
-            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(180, 100, 40, 0.25);
-            z-index: 1;
-            overflow: visible;
-        }
+    .glass {
+      background: rgba(18, 4, 6, 0.62);
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+    }
 
-        /* Side flaps */
-        .env-side-left,
-        .env-side-right {
-            position: absolute;
-            bottom: 0;
-            width: 50%;
-            height: 100%;
-            z-index: 15;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
-        }
-        .env-side-left {
-            left: 0;
-            background: linear-gradient(180deg, #7a1626, #4d0a16);
-            clip-path: polygon(0 0, 95% 48%, 0 100%);
-            border-radius: 0 0 0 14px;
-        }
-        .env-side-right {
-            right: 0;
-            background: linear-gradient(180deg, #7e1828, #500b18);
-            clip-path: polygon(100% 0, 5% 48%, 100% 100%);
-            border-radius: 0 0 14px 0;
-        }
+    .paper-card {
+      background-color: var(--paper);
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.14), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(139, 94, 60, 0.12), transparent 35%),
+        radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05), transparent 60%);
+      border: 1px solid #e6d6b0;
+      box-shadow:
+        inset 0 0 45px rgba(139, 94, 60, 0.18),
+        0 18px 42px rgba(0, 0, 0, 0.28);
+    }
 
-        /* Bottom flap */
-        .env-bottom {
-            position: absolute;
-            bottom: 0;
-            inset-inline: 0;
-            height: 65%;
-            background: linear-gradient(0deg, #3d0812, #5a101d);
-            clip-path: polygon(0% 100%, 50% 38%, 100% 100%);
-            border-radius: 0 0 14px 14px;
-            z-index: 18;
-            pointer-events: none;
-        }
+    .section-shell {
+      position: relative;
+      isolation: isolate;
+    }
 
-        /* Top flap */
-        .env-flap {
-            position: absolute;
-            top: 0;
-            inset-inline: 0;
-            height: 50%;
-            background: linear-gradient(180deg, #9a1f35, #6d1424);
-            border-radius: 14px 14px 0 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            z-index: 25;
-            transform-origin: top center;
-            transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: transform;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 6px;
-        }
-        .env-flap-label {
-            font-family: "Cinzel", serif;
-            font-size: 9px;
-            color: rgba(255, 215, 140, 0.45);
-            letter-spacing: 0.2em;
-            transition: opacity 0.4s ease;
-        }
+    .fade-up {
+      opacity: 0;
+      transform: translate3d(0, 22px, 0);
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s var(--ease);
+      will-change: opacity, transform;
+    }
 
-        /* Letter card */
-        .letter-card {
-            position: absolute;
-            inset: 8px 10px;
-            z-index: 3;
-            border-radius: 10px;
-            padding: 18px 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s ease, z-index 0s;
-            will-change: transform;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
 
-        /* Wax seal */
-        .wax-seal {
-            position: absolute;
-            top: 42%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            z-index: 40;
-            cursor: pointer;
-            transition: transform 0.5s ease, opacity 0.45s ease, box-shadow 0.5s ease;
-            will-change: transform, opacity;
-            background: radial-gradient(circle at 35% 30%, #f5c842, #c4820e 60%, #6b3a04);
-            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5), 0 0 18px rgba(212, 175, 55, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(139, 80, 20, 0.6);
-        }
-        .wax-seal:hover {
-            transform: translate(-50%, -50%) scale(1.12);
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 200, 60, 0.7);
-        }
-        .wax-seal-inner {
-            font-family: "Cinzel", "Playfair Display", serif;
-            font-size: 28px;
-            font-weight: 900;
-            color: #5c2d06;
-            text-shadow: 0 1px 2px rgba(255, 220, 140, 0.5);
-            pointer-events: none;
-        }
-        @media (min-width: 768px) {
-            .wax-seal {
-                width: 72px;
-                height: 72px;
-                top: 40%;
-            }
-            .wax-seal-inner {
-                font-size: 34px;
-            }
-        }
+    .floaty {
+      animation: floaty 4.8s ease-in-out infinite;
+      will-change: transform;
+    }
 
-        /* ─── OPEN STATE ─── */
-        .envelope-container.open .env-flap {
-            transform: rotateX(180deg);
-            z-index: 2;
-        }
-        .envelope-container.open .letter-card {
-            transform: translateY(-155px) scale(1.04);
-            z-index: 35;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.3);
-        }
-        .envelope-container.open .wax-seal {
-            transform: translate(-50%, -50%) translateY(30px) scale(0.08);
-            opacity: 0;
-            pointer-events: none;
-        }
-        .envelope-container.open .env-flap-label {
-            opacity: 0;
-        }
-        .envelope-container.open .env-side-left,
-        .envelope-container.open .env-side-right {
-            opacity: 0.5;
-        }
+    @keyframes floaty {
+      0%, 100% { transform: translate3d(0, 0, 0) rotate(-2deg); }
+      50% { transform: translate3d(0, -10px, 0) rotate(2deg); }
+    }
 
-        @media (min-width: 768px) {
-            .envelope-container.open .letter-card {
-                transform: translateY(-210px) scale(1.05);
-            }
-        }
+    .btn-primary {
+      background: linear-gradient(135deg, #f2d06f, #d4af37 55%, #bf8f13);
+      color: #1b1200;
+      box-shadow:
+        0 12px 26px rgba(212, 175, 55, 0.25),
+        0 0 18px rgba(212, 175, 55, 0.18);
+      transition:
+        transform var(--dur-fast) ease,
+        box-shadow var(--dur-fast) ease,
+        opacity var(--dur-mid) ease;
+    }
 
-        /* ─── HEART BURST ON OPEN ─── */
-        @keyframes heartBurst {
-            0% {
-                transform: translate(-50%, -50%) scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--bx), var(--by)) scale(1.4);
-                opacity: 0;
-            }
-        }
-        .burst-heart {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            font-size: 20px;
-            pointer-events: none;
-            z-index: 50;
-            animation: heartBurst 1.2s ease-out forwards;
-        }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 16px 34px rgba(212, 175, 55, 0.34),
+        0 0 24px rgba(212, 175, 55, 0.24);
+    }
 
-        /* ─── MODAL ─── */
-        .modal-overlay {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease;
-        }
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .modal-box {
-            transform: scale(0.9) translateY(20px);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .modal-overlay.active .modal-box {
-            transform: scale(1) translateY(0);
-        }
+    .btn-primary:active {
+      transform: translateY(0) scale(0.985);
+    }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #060102;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d4af37;
-            border-radius: 8px;
-        }
-    </style>
+    .ring-soft {
+      box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.15), 0 12px 30px rgba(0,0,0,.2);
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at center, rgba(122, 24, 40, 0.45), transparent 35%),
+        radial-gradient(circle at center, #1a0408 0%, #060102 72%);
+      transition: opacity 0.65s ease, visibility 0.65s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .heart-loader {
+      width: 52px;
+      height: 52px;
+      position: relative;
+      transform: rotate(45deg);
+      background: #f472b6;
+      border-radius: 10px;
+      filter: drop-shadow(0 0 16px rgba(244, 114, 182, 0.5));
+      animation: heartBeat 1.15s infinite var(--ease);
+    }
+
+    .heart-loader::before,
+    .heart-loader::after {
+      content: "";
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      background: inherit;
+      border-radius: 50%;
+    }
+
+    .heart-loader::before { top: -26px; left: 0; }
+    .heart-loader::after { top: 0; left: -26px; }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: rotate(45deg) scale(.88); }
+      18% { transform: rotate(45deg) scale(1.06); }
+      40% { transform: rotate(45deg) scale(.9); }
+      56% { transform: rotate(45deg) scale(1.12); }
+      72% { transform: rotate(45deg) scale(.9); }
+    }
+
+    /* Ambient canvas */
+    #ambientCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: 6;
+      pointer-events: none;
+    }
+
+    /* Music panel */
+    .top-controls {
+      position: fixed;
+      top: calc(14px + var(--safe-top));
+      left: 14px;
+      z-index: 80;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .music-btn,
+    .mini-chip {
+      min-height: 46px;
+      border-radius: 999px;
+    }
+
+    .music-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 16px;
+      color: #f8fafc;
+      transition: transform var(--dur-fast) ease, background var(--dur-fast) ease;
+    }
+
+    .music-btn:hover { transform: translateY(-1px); }
+
+    .music-btn-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .mini-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 14px;
+      color: #f3e8c3;
+    }
+
+    .volume-slider {
+      width: 88px;
+      accent-color: #f4c84d;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: calc(76px + var(--safe-top)) 16px calc(40px + var(--safe-bottom));
+      overflow: clip;
+      background:
+        radial-gradient(circle at 50% 36%, rgba(225, 29, 72, 0.14), transparent 22%),
+        radial-gradient(circle at 15% 18%, rgba(212, 175, 55, 0.12), transparent 18%),
+        radial-gradient(circle at 85% 85%, rgba(244, 114, 182, 0.09), transparent 18%),
+        linear-gradient(180deg, #3a0812 0%, #170306 45%, #060102 100%);
+    }
+
+    .hero-glow > div,
+    .section-glow > div {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(110px);
+      pointer-events: none;
+    }
+
+    .hero-glow .g1 {
+      width: 280px;
+      height: 280px;
+      top: 4%;
+      right: 2%;
+      background: rgba(212, 175, 55, 0.13);
+    }
+
+    .hero-glow .g2 {
+      width: 260px;
+      height: 260px;
+      left: 4%;
+      bottom: 8%;
+      background: rgba(244, 114, 182, 0.12);
+    }
+
+    .hero-glow .g3 {
+      width: 360px;
+      height: 360px;
+      left: 50%;
+      top: 36%;
+      transform: translateX(-50%);
+      background: rgba(225, 29, 72, 0.08);
+    }
+
+    /* Envelope */
+    .envelope-wrap {
+      position: relative;
+      width: min(92vw, 320px);
+      aspect-ratio: 1.34 / 1;
+      perspective: 1600px;
+      transform-style: preserve-3d;
+      user-select: none;
+      isolation: isolate;
+      contain: layout paint style;
+    }
+
+    @media (min-width: 768px) {
+      .envelope-wrap { width: min(78vw, 460px); }
+    }
+
+    .envelope {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      overflow: visible;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.34));
+    }
+
+    .env-body {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, #661221 0%, #3f0912 100%);
+      border: 1px solid rgba(203, 145, 76, 0.18);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 12px 26px rgba(0,0,0,0.18);
+      z-index: 1;
+    }
+
+    .env-side-left,
+    .env-side-right,
+    .env-bottom,
+    .env-flap,
+    .letter-card,
+    .wax-seal {
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+
+    .env-side-left,
+    .env-side-right {
+      position: absolute;
+      bottom: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 14;
+      pointer-events: none;
+      transition: opacity .45s ease;
+    }
+
+    .env-side-left {
+      left: 0;
+      background: linear-gradient(180deg, #7e1829, #4b0a16);
+      clip-path: polygon(0 0, 96% 48%, 0 100%);
+      border-radius: 0 0 0 16px;
+    }
+
+    .env-side-right {
+      right: 0;
+      background: linear-gradient(180deg, #84192b, #510b18);
+      clip-path: polygon(100% 0, 4% 48%, 100% 100%);
+      border-radius: 0 0 16px 0;
+    }
+
+    .env-bottom {
+      position: absolute;
+      inset-inline: 0;
+      bottom: 0;
+      height: 64%;
+      z-index: 18;
+      pointer-events: none;
+      background: linear-gradient(0deg, #3b0711, #5a101d);
+      clip-path: polygon(0% 100%, 50% 39%, 100% 100%);
+      border-radius: 0 0 16px 16px;
+    }
+
+    .env-flap {
+      position: absolute;
+      top: 0;
+      inset-inline: 0;
+      height: 51%;
+      z-index: 25;
+      transform-origin: top center;
+      transition: transform .82s var(--ease);
+      background:
+        linear-gradient(180deg, #9b2036 0%, #6d1425 100%);
+      border-radius: 16px 16px 0 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.26);
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 8px;
+    }
+
+    .env-flap-label {
+      font-family: "Cinzel", serif;
+      font-size: 10px;
+      color: rgba(255, 220, 150, 0.42);
+      letter-spacing: 0.2em;
+      transition: opacity .35s ease;
+    }
+
+    .letter-card {
+      position: absolute;
+      inset: 9px 10px;
+      z-index: 4;
+      border-radius: 12px;
+      padding: 16px 14px;
+      overflow: hidden;
+      transition:
+        transform .85s var(--ease),
+        box-shadow .45s ease,
+        z-index 0s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 14px rgba(0,0,0,.18);
+    }
+
+    .letter-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.18), transparent 20%),
+        radial-gradient(circle at 50% 0%, rgba(212,175,55,.07), transparent 35%);
+      opacity: .85;
+    }
+
+    .wax-seal {
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      width: 64px;
+      height: 64px;
+      z-index: 40;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition:
+        transform .45s var(--ease),
+        box-shadow .45s ease,
+        opacity .38s ease;
+      background:
+        radial-gradient(circle at 34% 30%, #ffe28a, #d6a11e 58%, #6a3904 100%);
+      border: 2px solid rgba(136, 78, 17, 0.64);
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.34),
+        0 0 18px rgba(212,175,55,.34);
+    }
+
+    .wax-seal:hover {
+      transform: translate3d(-50%, -50%, 0) scale(1.08);
+      box-shadow:
+        0 10px 28px rgba(0,0,0,.38),
+        0 0 24px rgba(255,210,80,.46);
+    }
+
+    .wax-seal-inner {
+      font-family: "Cinzel", serif;
+      font-weight: 900;
+      font-size: 31px;
+      color: #5b2e06;
+      text-shadow: 0 1px 2px rgba(255, 220, 150, 0.46);
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    @media (min-width: 768px) {
+      .wax-seal {
+        width: 74px;
+        height: 74px;
+        top: 40%;
+      }
+      .wax-seal-inner { font-size: 36px; }
+      .letter-card { inset: 10px 12px; padding: 20px 18px; }
+    }
+
+    .envelope-wrap.open .env-flap {
+      transform: rotateX(180deg);
+      z-index: 2;
+    }
+
+    .envelope-wrap.open .letter-card {
+      transform: translate3d(0, -150px, 0) scale(1.035);
+      z-index: 35;
+      box-shadow:
+        0 22px 44px rgba(0,0,0,.32),
+        0 0 24px rgba(212,175,55,.14);
+    }
+
+    .envelope-wrap.open .wax-seal {
+      transform: translate3d(-50%, calc(-50% + 34px), 0) scale(.08);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .envelope-wrap.open .env-flap-label { opacity: 0; }
+    .envelope-wrap.open .env-side-left,
+    .envelope-wrap.open .env-side-right { opacity: .55; }
+
+    @media (min-width: 768px) {
+      .envelope-wrap.open .letter-card {
+        transform: translate3d(0, -206px, 0) scale(1.045);
+      }
+    }
+
+    @keyframes burst {
+      0% {
+        transform: translate3d(-50%, -50%, 0) scale(.15);
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(var(--tx), var(--ty), 0) scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    .burst-item {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 50;
+      pointer-events: none;
+      animation: burst 1.25s ease-out forwards;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,.22));
+    }
+
+    /* Timeline */
+    .timeline-line {
+      position: absolute;
+      top: 18px;
+      bottom: 18px;
+      right: 11px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(212,175,55,.4), rgba(212,175,55,.05));
+    }
+
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff0b0, #d4af37 60%, #8e6a15);
+      box-shadow: 0 0 0 4px rgba(212,175,55,.08);
+      flex: 0 0 auto;
+      margin-top: 6px;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: rgba(0, 0, 0, 0.82);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      width: min(100%, 520px);
+      border-radius: 22px;
+      position: relative;
+      transform: scale(.96) translateY(14px);
+      transition: transform .38s var(--ease);
+      max-height: min(80svh, 700px);
+      overflow: auto;
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Heart section */
+    .heart-wrap {
+      width: min(92vw, 580px);
+      aspect-ratio: 1 / 1;
+      position: relative;
+      contain: layout paint style;
+    }
+
+    /* Final note */
+    .final-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -40% -20%;
+      height: 80px;
+      background: radial-gradient(circle at center, rgba(212,175,55,.14), transparent 70%);
+      filter: blur(30px);
+      pointer-events: none;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #060102; }
+    ::-webkit-scrollbar-thumb {
+      background: #d4af37;
+      border-radius: 10px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+      #ambientCanvas { display: none; }
+    }
+
+    /* Small devices */
+    @media (max-width: 420px) {
+      .music-btn { padding: 0 14px; }
+      .letter-card { padding: 14px 12px; }
+    }
+  </style>
 </head>
-
-<body class="selection:bg-amber-500 selection:text-stone-950">
-
-    <!-- ═══════════ LOADING SCREEN ═══════════ -->
-    <div id="loader">
-        <div class="heart-loader"></div>
-        <p class="text-amber-300/90 mt-8 royal-title animate-pulse text-sm md:text-base tracking-widest">
-            در حال آماده‌سازی دنیای نیایش...
-        </p>
-        <p class="text-stone-500 text-xs mt-3 latin-serif italic">Mobin's Gift</p>
+<body class="selection:bg-amber-400 selection:text-stone-950">
+  <!-- LOADER -->
+  <div id="loader" aria-hidden="true">
+    <div class="text-center px-6">
+      <div class="heart-loader mx-auto"></div>
+      <p class="text-amber-300/90 mt-8 royal-title text-[11px] sm:text-xs md:text-sm tracking-[0.22em] animate-pulse">
+        در حال آماده‌سازی دنیای نیایش...
+      </p>
+      <p class="text-stone-500 text-xs mt-3 latin-serif italic">Mobin's Gift</p>
     </div>
+  </div>
 
-    <!-- ═══════════ BACKGROUND MUSIC ═══════════ -->
-    <audio id="bgMusic" preload="auto" loop playsinline>
-        <source src="https://dl6.tarikhema.org/music/a/ahang-jadid/Ahang-JadidOmadi-Fahmidam-Man-320.mp3" type="audio/mpeg" />
-    </audio>
+  <!-- AUDIO -->
+  <audio id="bgMusic" preload="none" loop playsinline>
+    <source src="https://dl6.tarikhema.org/music/a/ahang-jadid/Ahang-JadidOmadi-Fahmidam-Man-320.mp3" type="audio/mpeg" />
+  </audio>
 
-    <!-- ═══════════ AMBIENT CANVAS ═══════════ -->
-    <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-10" style="will-change:transform;"></canvas>
+  <!-- AMBIENT -->
+  <canvas id="ambientCanvas" aria-hidden="true"></canvas>
 
-    <!-- ═══════════ TOP CONTROLS ═══════════ -->
-    <div class="fixed top-4 left-4 md:top-6 md:left-6 z-[80] flex items-center gap-2 flex-wrap">
-        <button id="musicToggle"
-        class="glass hover:bg-rose-900/50 text-stone-100 px-4 py-3 rounded-full transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
-        <span id="musicIcon" class="text-xl">🎵</span>
-        <span id="musicText" class="text-xs font-bold select-none hidden sm:inline">پخش آهنگ</span>
+  <!-- TOP CONTROLS -->
+  <div class="top-controls">
+    <button
+      id="musicToggle"
+      class="music-btn glass"
+      type="button"
+      aria-label="پخش یا توقف آهنگ"
+      aria-pressed="false"
+    >
+      <span id="musicIcon" class="music-btn-icon">🎵</span>
+      <span id="musicText" class="text-xs font-bold select-none hidden sm:inline">پخش آهنگ</span>
     </button>
-    <div class="hidden sm:flex glass rounded-full px-3 py-2 items-center gap-2">
-        <span class="text-xs text-amber-200/80">صدا</span>
-        <input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.45"
-        class="w-20 accent-amber-400 h-1.5 rounded-full" />
-    </div>
-</div>
 
-<!-- ═══════════ MAIN HERO SECTION ═══════════ -->
-<main class="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#3a0812] via-[#140205] to-[#060102] px-4 py-16 overflow-hidden">
-    <!-- Ambient glow -->
-    <div class="absolute inset-0 pointer-events-none opacity-35">
-        <div class="absolute top-10 right-10 w-72 h-72 rounded-full bg-amber-400/15 blur-[120px]"></div>
-        <div class="absolute bottom-10 left-10 w-72 h-72 rounded-full bg-pink-500/15 blur-[120px]"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-rose-600/8 blur-[150px]"></div>
+    <div class="mini-chip glass hidden sm:inline-flex">
+      <span class="text-xs text-amber-100/80">صدا</span>
+      <input
+        id="volumeSlider"
+        class="volume-slider"
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.42"
+        aria-label="تنظیم صدا"
+      />
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <main class="hero section-shell">
+    <div class="hero-glow absolute inset-0 pointer-events-none opacity-90" aria-hidden="true">
+      <div class="g1"></div>
+      <div class="g2"></div>
+      <div class="g3"></div>
     </div>
 
-    <!-- Header -->
-    <header class="text-center mb-8 z-20 fade-up">
-        <p class="royal-title text-amber-300/80 text-[10px] md:text-xs uppercase mb-2 tracking-[0.2em] soft-glow">
-            ✦ تقدیم به شاهزاده‌ی قلبم ✦
-        </p>
-        <h1 class="cursive-title text-5xl md:text-7xl lg:text-8xl gold-text drop-shadow-lg leading-tight">
-            Niyayesh
-        </h1>
-        <div class="w-36 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mt-4"></div>
-        <p class="mt-4 text-stone-300/90 text-xs md:text-sm max-w-sm mx-auto leading-6">
-            هدیه‌ای از طرف <span class="text-amber-300 font-semibold">مبین</span>، برای کسی که بودنش
-            <br class="hidden md:block" />از هر جادویی قشنگ‌تره.
-        </p>
+    <header class="relative z-20 text-center mb-8 fade-up max-w-2xl">
+      <p class="royal-title text-amber-300/80 text-[10px] md:text-xs uppercase mb-2 tracking-[0.25em] soft-glow">
+        ✦ تقدیم به شاهزاده‌ی قلبم ✦
+      </p>
+      <h1 class="cursive-title text-[3.2rem] sm:text-6xl md:text-7xl lg:text-8xl gold-text leading-none drop-shadow-lg">
+        Niyayesh
+      </h1>
+      <div class="w-40 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mt-4"></div>
+      <p class="mt-4 text-stone-300/90 text-xs sm:text-sm max-w-md mx-auto leading-7 px-2">
+        هدیه‌ای از طرف <span class="text-amber-300 font-semibold">مبین</span>،
+        برای کسی که بودنش از هر جادویی قشنگ‌تره.
+      </p>
     </header>
 
-    <!-- Envelope Section -->
     <section class="relative z-20 flex flex-col items-center fade-up">
-        <p id="openHint" class="text-stone-300/80 text-sm mb-6 animate-pulse text-center">
-            💛 روی مُهر طلایی کلیک کن تا نامه باز بشه...
-        </p>
+      <p
+        id="openHint"
+        class="text-stone-300/85 text-sm mb-6 text-center animate-pulse"
+      >
+        💛 روی مُهر طلایی کلیک کن تا نامه باز بشه...
+      </p>
 
-        <!-- ENVELOPE -->
-        <div id="envelopeContainer" class="envelope-container">
-            <!-- Body -->
-            <div class="envelope-body"></div>
+      <div
+        id="envelopeWrap"
+        class="envelope-wrap"
+        role="button"
+        tabindex="0"
+        aria-label="باز کردن نامه عاشقانه"
+        aria-expanded="false"
+      >
+        <div class="envelope">
+          <div class="env-body"></div>
+          <div class="env-side-left"></div>
+          <div class="env-side-right"></div>
+          <div class="env-bottom"></div>
 
-            <!-- Side flaps -->
-            <div class="env-side-left"></div>
-            <div class="env-side-right"></div>
-
-            <!-- Bottom flap -->
-            <div class="env-bottom"></div>
-
-            <!-- Letter Card -->
-            <div class="letter-card parchment" id="letterCard">
-                <div>
-                    <span class="cursive-title text-2xl md:text-3xl text-amber-900 block mb-2 text-center">My Dearest Niyayesh</span>
-                    <p class="text-stone-800 text-[11px] md:text-[13px] leading-6 md:leading-7 text-justify font-medium">
-                        نیایش قشنگم، از همون لحظه‌ای که وارد زندگی من شدی، همه‌چیز برام رنگ‌های تازه‌ای گرفت.
-                        تو زیباترین اتفاقی هستی که قلب من تجربه کرده. این صفحه رو ساختم تا بهت بگم
-                        جای تو همیشه وسط قلب منه؛ روشن، امن و تکرارنشدنی. هر روزی که می‌گذره،
-                        <span class="text-rose-800 font-bold">مبین</span> بیشتر از قبل عاشق
-                        <span class="text-rose-800 font-bold">نیایش</span> میشه...
-                    </p>
-                </div>
-                <div class="text-left mt-2 pt-2 border-t border-amber-300/30">
-                    <span class="cursive-title text-xl md:text-2xl text-amber-800">Forever Yours, Mobin ❤️</span>
-                </div>
+          <article class="letter-card paper-card text-stone-900" id="letterCard">
+            <div class="relative z-10">
+              <span class="cursive-title text-2xl md:text-3xl text-amber-900 block mb-2 text-center">
+                My Dearest Niyayesh
+              </span>
+              <p class="text-[11px] md:text-[13px] leading-6 md:leading-7 text-justify font-medium">
+                نیایش قشنگم، از همون لحظه‌ای که وارد زندگی من شدی، همه‌چیز برام رنگ‌های تازه‌ای گرفت.
+                تو زیباترین اتفاقی هستی که قلب من تجربه کرده. این صفحه رو ساختم تا بهت بگم
+                جای تو همیشه وسط قلب منه؛ روشن، امن و تکرارنشدنی.
+                هر روزی که می‌گذره،
+                <span class="text-rose-800 font-bold">مبین</span>
+                بیشتر از قبل عاشق
+                <span class="text-rose-800 font-bold">نیایش</span>
+                میشه...
+              </p>
             </div>
-
-            <!-- Top Flap -->
-            <div class="env-flap" id="envFlap">
-                <span class="env-flap-label">ROYAL LOVE LETTER</span>
+            <div class="relative z-10 text-left mt-3 pt-3 border-t border-amber-300/40">
+              <span class="cursive-title text-xl md:text-2xl text-amber-800">
+                Forever Yours, Mobin ❤️
+              </span>
             </div>
+          </article>
 
-            <!-- Wax Seal -->
-            <div class="wax-seal" id="waxSeal">
-                <span class="wax-seal-inner">N</span>
-            </div>
+          <div class="env-flap" id="envFlap">
+            <span class="env-flap-label">ROYAL LOVE LETTER</span>
+          </div>
+
+          <button class="wax-seal" id="waxSeal" type="button" aria-label="باز کردن نامه">
+            <span class="wax-seal-inner">N</span>
+          </button>
         </div>
+      </div>
 
-        <!-- Next Section Button -->
-        <button id="nextSectionBtn"
-        class="mt-16 opacity-0 pointer-events-none bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-stone-950 font-bold px-8 py-3 rounded-full shadow-[0_0_25px_rgba(212,175,55,0.5)] transition-all duration-500 transform translate-y-6 text-sm md:text-base">
+      <button
+        id="nextSectionBtn"
+        type="button"
+        class="btn-primary mt-16 opacity-0 pointer-events-none px-8 py-3 rounded-full font-bold text-sm md:text-base translate-y-5"
+      >
         ✨ ورود به تالار عشق ✨
-    </button>
-</section>
-</main>
+      </button>
 
-<!-- ═══════════ GALLERY SECTION ═══════════ -->
-<section id="gallerySection" class="relative min-h-screen bg-gradient-to-b from-[#060102] via-[#180508] to-[#060102] py-20 px-4 flex flex-col items-center overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none opacity-25">
-        <div class="absolute top-20 right-20 w-80 h-80 rounded-full bg-amber-400/10 blur-[130px]"></div>
-        <div class="absolute bottom-20 left-20 w-80 h-80 rounded-full bg-pink-500/10 blur-[130px]"></div>
+      <div class="mt-5 text-[11px] text-stone-500 text-center max-w-xs leading-6">
+        نکته: برای تجربه‌ی بهتر، روی آهنگ هم بزن ✨
+      </div>
+    </section>
+  </main>
+
+  <!-- GALLERY -->
+  <section
+    id="gallerySection"
+    class="section-shell relative min-h-screen py-20 px-4 overflow-hidden bg-gradient-to-b from-[#060102] via-[#180508] to-[#070102]"
+  >
+    <div class="section-glow absolute inset-0 pointer-events-none opacity-70" aria-hidden="true">
+      <div class="w-[320px] h-[320px] top-20 right-12 bg-amber-400/10 absolute rounded-full blur-[130px]"></div>
+      <div class="w-[280px] h-[280px] bottom-16 left-8 bg-pink-500/10 absolute rounded-full blur-[120px]"></div>
     </div>
 
-    <div class="max-w-5xl w-full z-20 text-center fade-up">
-        <h2 class="cursive-title text-4xl md:text-6xl text-amber-300 soft-glow">The Museum of Us</h2>
-        <p class="royal-title text-stone-400 text-[10px] md:text-xs uppercase mt-2 mb-10">✦ موزه‌ی خاطرات و لبخندهای تو ✦</p>
+    <div class="max-w-5xl w-full mx-auto relative z-20 text-center fade-up">
+      <h2 class="cursive-title text-4xl md:text-6xl text-amber-300 soft-glow">The Museum of Us</h2>
+      <p class="royal-title text-stone-400 text-[10px] md:text-xs uppercase mt-2 mb-10">
+        ✦ موزه‌ی خاطرات و لبخندهای تو ✦
+      </p>
 
-        <!-- Featured Image -->
-        <div class="relative max-w-sm md:max-w-md mx-auto mb-14 px-4">
-            <div class="absolute -top-6 -left-2 w-16 opacity-75 pointer-events-none floating z-10">
-                <svg viewBox="0 0 120 120" fill="none">
-                    <path d="M50 42 C34 18 17 18 9 28 C20 37 32 47 48 52 Z" fill="#d4af37" opacity="0.75"/>
-                    <path d="M70 42 C86 18 103 18 111 28 C100 37 88 47 72 52 Z" fill="#d4af37" opacity="0.75"/>
-                    <circle cx="60" cy="56" r="7" fill="#fff" opacity="0.85"/>
-                </svg>
-            </div>
-            <div class="relative p-2.5 rounded-xl bg-gradient-to-br from-amber-200 via-amber-500 to-amber-800 shadow-[0_18px_50px_rgba(0,0,0,0.7)]">
-                <div class="absolute inset-1.5 border border-amber-200/40 rounded-lg z-10 pointer-events-none"></div>
-                <img src="https://i.ibb.co/pvCnsB6G/C69-EA923-0-A43-4-EE7-AEED-BEDB7-C15-ABAC.png"
-                alt="Niyayesh" class="relative w-full h-auto object-cover rounded-lg sepia-[8%] brightness-105"
-                loading="lazy" />
-            </div>
-            <p class="text-xs text-amber-400/70 mt-4 italic latin-serif">⚜️ The most precious frame in my universe ⚜️</p>
+      <div class="relative max-w-sm md:max-w-md mx-auto mb-14 px-4 fade-up">
+        <div class="absolute -top-6 -left-2 w-16 opacity-75 pointer-events-none floaty z-10">
+          <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+            <path d="M50 42 C34 18 17 18 9 28 C20 37 32 47 48 52 Z" fill="#d4af37" opacity="0.75"/>
+            <path d="M70 42 C86 18 103 18 111 28 C100 37 88 47 72 52 Z" fill="#d4af37" opacity="0.75"/>
+            <circle cx="60" cy="56" r="7" fill="#fff" opacity="0.85"/>
+          </svg>
         </div>
 
-        <!-- Memory Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mt-8 fade-up">
-            <button data-memory="1"
-            class="text-right border border-amber-600/25 bg-[#1a0508]/80 hover:bg-[#2a0a10] p-6 rounded-2xl shadow-lg hover:border-amber-400 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] transition-all duration-300 group">
-            <div class="text-amber-400 text-3xl mb-3 group-hover:scale-110 transition-transform">❦</div>
-            <h3 class="royal-title text-sm text-amber-200 mb-2">پیام اول: نگاهت</h3>
-            <p class="text-xs text-stone-400 leading-6 opacity-75">توی چشم‌های تو آرامشی هست که هیچ‌جای دنیا پیدا نمیشه...</p>
+        <div class="relative p-2.5 rounded-2xl bg-gradient-to-br from-amber-200 via-amber-500 to-amber-800 ring-soft shadow-[0_18px_50px_rgba(0,0,0,0.42)]">
+          <div class="absolute inset-1.5 border border-amber-200/40 rounded-xl z-10 pointer-events-none"></div>
+          <img
+            src="https://i.ibb.co/pvCnsB6G/C69-EA923-0-A43-4-EE7-AEED-BEDB7-C15-ABAC.png"
+            alt="Niyayesh"
+            class="relative w-full h-auto object-cover rounded-xl sepia-[8%] brightness-105"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <p class="text-xs text-amber-400/70 mt-4 italic latin-serif">
+          ⚜️ The most precious frame in my universe ⚜️
+        </p>
+      </div>
+
+      <!-- Memory Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mt-8 fade-up">
+        <button
+          data-memory="1"
+          class="text-right border border-amber-600/20 bg-[#1a0508]/80 hover:bg-[#25080d] p-6 rounded-2xl shadow-lg hover:border-amber-400/70 transition-all duration-300 group"
+        >
+          <div class="text-amber-400 text-3xl mb-3 transition-transform duration-300 group-hover:scale-110">❦</div>
+          <h3 class="royal-title text-sm text-amber-200 mb-2">پیام اول: نگاهت</h3>
+          <p class="text-xs text-stone-400 leading-6 opacity-80">
+            توی چشم‌های تو آرامشی هست که هیچ‌جای دنیا پیدا نمیشه...
+          </p>
         </button>
-        <button data-memory="2"
-        class="text-right border border-amber-600/25 bg-[#1a0508]/80 hover:bg-[#2a0a10] p-6 rounded-2xl shadow-lg hover:border-amber-400 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] transition-all duration-300 group">
-        <div class="text-amber-400 text-3xl mb-3 group-hover:scale-110 transition-transform">⚜️</div>
-        <h3 class="royal-title text-sm text-amber-200 mb-2">پیام دوم: صدات</h3>
-        <p class="text-xs text-stone-400 leading-6 opacity-75">صدای تو قشنگ‌ترین ملودی‌ایه که قلب من بی‌وقفه تکرارش می‌کنه...</p>
-    </button>
-    <button data-memory="3"
-    class="text-right border border-amber-600/25 bg-[#1a0508]/80 hover:bg-[#2a0a10] p-6 rounded-2xl shadow-lg hover:border-amber-400 hover:shadow-[0_0_25px_rgba(212,175,55,0.2)] transition-all duration-300 group">
-    <div class="text-amber-400 text-3xl mb-3 group-hover:scale-110 transition-transform">❦</div>
-    <h3 class="royal-title text-sm text-amber-200 mb-2">پیام سوم: آرزو</h3>
-    <p class="text-xs text-stone-400 leading-6 opacity-75">بزرگ‌ترین آرزوی مبین، خندیدن همیشگی لب‌های نیایشه...</p>
-</button>
-</div>
-</div>
 
-<!-- Modal -->
-<div id="memoryModal" class="modal-overlay fixed inset-0 bg-black/85 z-[90] flex items-center justify-center p-4">
-    <div class="modal-box parchment max-w-sm md:max-w-md w-full rounded-2xl p-6 md:p-8 relative border-2 border-amber-500/60 shadow-2xl">
-        <button id="closeModalBtn"
-        class="absolute top-3 left-4 text-amber-900 text-2xl font-bold hover:text-red-700 transition-colors">✕</button>
-        <div id="modalContent" class="text-stone-900 text-right mt-4"></div>
-    </div>
-</div>
-</section>
+        <button
+          data-memory="2"
+          class="text-right border border-amber-600/20 bg-[#1a0508]/80 hover:bg-[#25080d] p-6 rounded-2xl shadow-lg hover:border-amber-400/70 transition-all duration-300 group"
+        >
+          <div class="text-amber-400 text-3xl mb-3 transition-transform duration-300 group-hover:scale-110">⚜️</div>
+          <h3 class="royal-title text-sm text-amber-200 mb-2">پیام دوم: صدات</h3>
+          <p class="text-xs text-stone-400 leading-6 opacity-80">
+            صدای تو قشنگ‌ترین ملودی‌ایه که قلب من بی‌وقفه تکرارش می‌کنه...
+          </p>
+        </button>
 
-<!-- ═══════════ 3D HEART SECTION ═══════════ -->
-<section id="heartSection" class="relative min-h-screen bg-gradient-to-b from-[#040001] via-[#0a0103] to-[#030001] flex flex-col items-center justify-center py-20 px-4 overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
-        <div class="w-[85vw] h-[85vw] max-w-2xl max-h-2xl bg-pink-600/8 rounded-full blur-[140px]"></div>
+        <button
+          data-memory="3"
+          class="text-right border border-amber-600/20 bg-[#1a0508]/80 hover:bg-[#25080d] p-6 rounded-2xl shadow-lg hover:border-amber-400/70 transition-all duration-300 group"
+        >
+          <div class="text-amber-400 text-3xl mb-3 transition-transform duration-300 group-hover:scale-110">❦</div>
+          <h3 class="royal-title text-sm text-amber-200 mb-2">پیام سوم: آرزو</h3>
+          <p class="text-xs text-stone-400 leading-6 opacity-80">
+            بزرگ‌ترین آرزوی مبین، خندیدن همیشگی لب‌های نیایشه...
+          </p>
+        </button>
+      </div>
+
+      <!-- Timeline -->
+      <div class="mt-16 max-w-2xl mx-auto text-right fade-up">
+        <div class="glass rounded-[26px] p-5 sm:p-7 relative overflow-hidden">
+          <div class="mb-5 text-center">
+            <h3 class="cursive-title text-3xl md:text-4xl text-pink-300">Moments I Keep</h3>
+            <p class="royal-title text-[10px] md:text-xs text-stone-400 mt-2">✦ چیزهایی که از تو توی دلم نگه می‌دارم ✦</p>
+          </div>
+
+          <div class="relative pr-8">
+            <div class="timeline-line"></div>
+
+            <div class="relative flex gap-4 mb-6">
+              <div class="timeline-dot"></div>
+              <div>
+                <h4 class="text-amber-200 font-bold text-sm mb-1">اولین حس</h4>
+                <p class="text-stone-300/85 text-xs leading-6">
+                  اینکه یه نفر می‌تونه فقط با بودنش، دنیا رو آروم‌تر و قشنگ‌تر کنه.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative flex gap-4 mb-6">
+              <div class="timeline-dot"></div>
+              <div>
+                <h4 class="text-amber-200 font-bold text-sm mb-1">قشنگ‌ترین صدا</h4>
+                <p class="text-stone-300/85 text-xs leading-6">
+                  صدای تو، چیزی بین آرامش، عشق و خانه‌ست.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative flex gap-4">
+              <div class="timeline-dot"></div>
+              <div>
+                <h4 class="text-amber-200 font-bold text-sm mb-1">قول مبین</h4>
+                <p class="text-stone-300/85 text-xs leading-6">
+                  هر روز با عشق بیشتر، مراقب دل تو بودن و برای خنده‌هات جنگیدن.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quotes Slider -->
+      <div class="mt-14 max-w-3xl mx-auto fade-up">
+        <div class="glass rounded-[26px] p-5 sm:p-7">
+          <div class="flex items-center justify-between gap-3 mb-4">
+            <button id="quotePrev" class="glass rounded-full w-11 h-11 text-lg text-amber-200 hover:text-white" type="button" aria-label="نوشته قبلی">‹</button>
+            <div class="text-center flex-1">
+              <h3 class="cursive-title text-3xl md:text-4xl text-amber-300">Words For You</h3>
+              <p class="text-[10px] md:text-xs text-stone-400 royal-title mt-2">✦ چند خط فقط برای نیایش ✦</p>
+            </div>
+            <button id="quoteNext" class="glass rounded-full w-11 h-11 text-lg text-amber-200 hover:text-white" type="button" aria-label="نوشته بعدی">›</button>
+          </div>
+
+          <div class="relative min-h-[112px] sm:min-h-[96px]">
+            <div id="quoteText" class="text-stone-200 text-sm leading-7 text-center px-2 transition-opacity duration-300"></div>
+          </div>
+
+          <div class="flex justify-center gap-2 mt-4" id="quoteDots" aria-hidden="true"></div>
+        </div>
+      </div>
     </div>
-    <div class="absolute inset-0 pointer-events-none opacity-30">
-        <div class="absolute top-1/4 left-1/4 w-60 h-60 bg-rose-500/10 rounded-full blur-[100px]"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-60 h-60 bg-amber-400/8 rounded-full blur-[100px]"></div>
+
+    <!-- Modal -->
+    <div id="memoryModal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-box paper-card p-6 md:p-8 text-stone-900 border-2 border-amber-500/50 shadow-2xl">
+        <button
+          id="closeModalBtn"
+          type="button"
+          class="absolute top-3 left-4 text-amber-900 text-2xl font-bold hover:text-red-700 transition-colors"
+          aria-label="بستن"
+        >✕</button>
+        <div id="modalContent" class="text-right mt-4"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEART -->
+  <section
+    id="heartSection"
+    class="section-shell relative min-h-screen bg-gradient-to-b from-[#040001] via-[#0a0103] to-[#030001] flex flex-col items-center justify-center py-20 px-4 overflow-hidden"
+  >
+    <div class="absolute inset-0 pointer-events-none flex items-center justify-center" aria-hidden="true">
+      <div class="w-[85vw] h-[85vw] max-w-2xl max-h-2xl bg-pink-600/8 rounded-full blur-[140px]"></div>
+    </div>
+    <div class="absolute inset-0 pointer-events-none opacity-30" aria-hidden="true">
+      <div class="absolute top-1/4 left-1/4 w-60 h-60 bg-rose-500/10 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-60 h-60 bg-amber-400/8 rounded-full blur-[100px]"></div>
     </div>
 
     <div class="text-center mb-6 z-20 fade-up">
-        <h2 class="cursive-title text-4xl md:text-6xl text-pink-300 drop-shadow-[0_0_20px_rgba(244,114,182,0.45)]">
-            Infinity Love
-        </h2>
-        <p class="royal-title text-stone-400 text-[10px] md:text-xs uppercase mt-2">✦ تا ابد به نام نیایش ✦</p>
+      <h2 class="cursive-title text-4xl md:text-6xl text-pink-300 drop-shadow-[0_0_20px_rgba(244,114,182,0.35)]">
+        Infinity Love
+      </h2>
+      <p class="royal-title text-stone-400 text-[10px] md:text-xs uppercase mt-2">✦ تا ابد به نام نیایش ✦</p>
     </div>
 
-    <!-- 3D Heart Canvas -->
-    <div class="relative w-full max-w-[580px] aspect-square z-20 flex items-center justify-center fade-up">
-        <canvas id="loveHeartCanvas" class="w-full h-full" style="will-change:transform;"></canvas>
-        <div class="absolute text-center pointer-events-none select-none z-30">
-            <p class="cursive-title text-3xl md:text-5xl text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.85)] animate-pulse">
-                Niyayesh
-            </p>
-            <p class="text-[10px] md:text-xs text-amber-300/60 royal-title mt-1">Mobin's Heart</p>
-        </div>
+    <div class="heart-wrap z-20 flex items-center justify-center fade-up">
+      <canvas id="loveHeartCanvas" class="w-full h-full" aria-hidden="true"></canvas>
+      <div class="absolute text-center pointer-events-none select-none z-30">
+        <p class="cursive-title text-3xl md:text-5xl text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.75)] animate-pulse">
+          Niyayesh
+        </p>
+        <p class="text-[10px] md:text-xs text-amber-300/60 royal-title mt-1">Mobin's Heart</p>
+      </div>
     </div>
 
     <div class="max-w-md text-center z-20 px-4 mt-6 glass rounded-2xl p-5 fade-up">
-        <p class="text-stone-300 text-sm leading-7">
-            این قلب از صدها کلمه‌ی عاشقانه ساخته شده...
-            <br /><span class="text-amber-300 font-semibold">نیایش</span> جان، تو دلیل قشنگ‌تر شدن هر روزمی.
-            <br /><span class="text-xs text-stone-500">— مبین —</span>
-        </p>
+      <p class="text-stone-300 text-sm leading-7">
+        این قلب از صدها کلمه‌ی عاشقانه ساخته شده...
+        <br />
+        <span class="text-amber-300 font-semibold">نیایش</span> جان، تو دلیل قشنگ‌تر شدن هر روزمی.
+        <br />
+        <span class="text-xs text-stone-500">— مبین —</span>
+      </p>
     </div>
-</section>
+  </section>
 
-<!-- ═══════════ FOOTER ═══════════ -->
-<footer class="bg-[#020001] py-8 text-center text-xs text-stone-600 border-t border-stone-900/60">
+  <!-- FINAL NOTE -->
+  <section class="section-shell relative px-4 py-20 bg-gradient-to-b from-[#030001] to-[#020001] overflow-hidden">
+    <div class="max-w-3xl mx-auto fade-up">
+      <div class="final-card glass rounded-[28px] p-6 sm:p-8 md:p-10 text-center border border-amber-500/15">
+        <p class="royal-title text-[10px] sm:text-xs text-amber-300/70 mb-3 tracking-[0.22em]">
+          ✦ آخرین حرف دل ✦
+        </p>
+        <h3 class="cursive-title text-4xl sm:text-5xl text-amber-300 mb-4">For The Girl I Adore</h3>
+        <p class="text-stone-200 text-sm sm:text-base leading-8 max-w-2xl mx-auto">
+          نیایش عزیزم، شاید این فقط یک صفحه‌ی ساده به نظر بیاد،
+          ولی پشت هر رنگ و هر حرکتش، یه حس واقعی خوابیده؛
+          حسِ دوست داشتن تو.
+          امیدوارم هر وقت این صفحه رو می‌بینی، یادت بیاد که
+          <span class="text-amber-300 font-semibold">مبین</span>
+          با تمام قلبش هواتو داره. همیشه. تا ابد. ❤️
+        </p>
+
+        <div class="mt-8 flex items-center justify-center gap-3 flex-wrap">
+          <button id="replayBtn" type="button" class="btn-primary px-6 py-3 rounded-full text-sm font-bold">
+            💌 باز کردن دوباره نامه
+          </button>
+          <button id="scrollTopBtn" type="button" class="glass text-stone-100 px-6 py-3 rounded-full text-sm font-bold">
+            ⬆️ برگشت به بالا
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#020001] py-8 text-center text-xs text-stone-600 border-t border-stone-900/60">
     <p class="latin-serif text-sm text-amber-500/70">💛 Created with Love by Mobin — For Niyayesh 💛</p>
     <p class="mt-1 text-[10px]">۲۰۲۶ · تا ابد</p>
-</footer>
+  </footer>
 
-<!-- ═══════════ SCRIPTS ═══════════ -->
-<script>
+  <script>
     "use strict";
 
-    const $ = (s) => document.querySelector(s);
-    const $$ = (s) => document.querySelectorAll(s);
-    const isMobile = window.innerWidth < 768;
+    const $ = (s, root = document) => root.querySelector(s);
+    const $$ = (s, root = document) => [...root.querySelectorAll(s)];
 
-    // ── 1. LOADING SCREEN ──
-    const loader = $('#loader');
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            loader.classList.add('hidden-loader');
-            document.body.style.overflow = '';
-        }, 600);
-    });
-    // Fallback: hide loader after 4 seconds max
-    setTimeout(() => {
-        if (!loader.classList.contains('hidden-loader')) {
-            loader.classList.add('hidden-loader');
-            document.body.style.overflow = '';
-        }
-    }, 4000);
-
-    // ── 2. AUDIO CONTROLLER ──
-    const bgMusic = $('#bgMusic');
-    let musicStarted = false;
-    bgMusic.volume = 0.45;
-
-    async function toggleMusic() {
-        if (bgMusic.paused) {
-            try {
-                await bgMusic.play();
-                musicStarted = true;
-                $('#musicIcon').textContent = '🔊';
-                $('#musicText').textContent = 'قطع آهنگ';
-            } catch (e) {
-                console.log('Audio autoplay blocked:', e.message);
-            }
-        } else {
-            bgMusic.pause();
-            $('#musicIcon').textContent = '🔇';
-            $('#musicText').textContent = 'پخش آهنگ';
-        }
-    }
-
-    $('#musicToggle').addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMusic();
-    });
-    $('#volumeSlider').addEventListener('input', (e) => {
-        bgMusic.volume = parseFloat(e.target.value);
-    });
-
-    // Start music on first user interaction (browser policy)
-    document.body.addEventListener('click', function startMusicOnce() {
-        if (!musicStarted) {
-            toggleMusic();
-        }
-    }, { once: true });
-
-    // ── 3. ENVELOPE LOGIC ──
-    const envContainer = $('#envelopeContainer');
-    const nextBtn = $('#nextSectionBtn');
-    const openHint = $('#openHint');
-    let isOpen = false;
-
-    function spawnBurstHearts() {
-        const emojis = ['❤️', '💕', '✨', '💖', '💛', '🩷', '🌟', '💝'];
-        const container = envContainer;
-        const rect = container.getBoundingClientRect();
-        const cx = rect.width / 2;
-        const cy = rect.height / 2;
-
-        for (let i = 0; i < 14; i++) {
-            const heart = document.createElement('span');
-            heart.className = 'burst-heart';
-            heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-            heart.style.setProperty('--bx', (Math.random() - 0.5) * 280 + 'px');
-            heart.style.setProperty('--by', (Math.random() * -200 - 60) + 'px');
-            heart.style.left = cx + 'px';
-            heart.style.top = cy + 'px';
-            heart.style.animationDuration = (1 + Math.random() * 1.4) + 's';
-            heart.style.fontSize = (16 + Math.random() * 22) + 'px';
-            container.appendChild(heart);
-            setTimeout(() => heart.remove(), 1600);
-        }
-    }
-
-    function openEnvelope() {
-        if (isOpen) return;
-        isOpen = true;
-        envContainer.classList.add('open');
-        openHint.textContent = 'نامه باز شد... حالا وارد تالار عشق شو ❤️';
-        openHint.classList.remove('animate-pulse');
-        openHint.style.animation = 'none';
-
-        spawnBurstHearts();
-
-        if (!musicStarted) toggleMusic();
-
-        setTimeout(() => {
-            nextBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-6');
-            nextBtn.classList.add('opacity-100', 'translate-y-0');
-            nextBtn.style.pointerEvents = 'auto';
-        }, 850);
-    }
-
-    envContainer.addEventListener('click', openEnvelope);
-    nextBtn.addEventListener('click', () => {
-        $('#gallerySection').scrollIntoView({ behavior: 'smooth' });
-    });
-
-    // ── 4. MEMORY MODAL ──
-    const memories = {
-        1: {
-            title: '✨ درخشش چشم‌هایت ✨',
-            text: 'نیایش من، چشم‌های تو برای من مثل امن‌ترین جای دنیاست. هر بار که به نگاهت فکر می‌کنم، همه‌ی شلوغی‌های دنیا آروم می‌شن و فقط یک چیز باقی می‌مونه: دوست داشتنت. <br><br><span class="text-amber-700 text-xs">— مبین —</span>'
-        },
-        2: {
-            title: '🎵 آهنگ صدایت 🎵',
-            text: 'وقتی صدام می‌کنی، قلبم یه جور خاصی می‌لرزه. خنده‌هات، حرف زدنت و حتی سکوتت برام قشنگ‌ترین موسیقی دنیاست. هیچ آهنگی به اندازه‌ی صدای تو نمی‌تونه حالم رو خوب کنه. <br><br><span class="text-amber-700 text-xs">— مبین —</span>'
-        },
-        3: {
-            title: '💍 عهد همیشگی ما 💍',
-            text: 'این صفحه فقط یه هدیه‌ی دیجیتال نیست؛ یه قول قلبیه از طرف <b>مبین</b> به <b>نیایش</b>. قول اینکه همیشه برای خندیدنت تلاش کنم، همیشه کنارت باشم و هر روز بیشتر از دیروز دوستت داشته باشم. تا ابد. <br><br><span class="text-amber-700 text-xs">— مبین —</span>'
-        }
+    const state = {
+      isMobile: window.matchMedia("(max-width: 767px)").matches,
+      reduceMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      lowPowerAmbient: false,
+      lowPowerHeart: false,
+      envelopeOpen: false,
+      musicStarted: false,
+      pageVisible: true,
+      modalOpen: false
     };
 
-    const modal = $('#memoryModal');
-    const modalContent = $('#modalContent');
+    // Elements
+    const loader = $("#loader");
+    const bgMusic = $("#bgMusic");
+    const musicToggle = $("#musicToggle");
+    const musicIcon = $("#musicIcon");
+    const musicText = $("#musicText");
+    const volumeSlider = $("#volumeSlider");
 
-    $$('[data-memory]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const data = memories[btn.dataset.memory];
-            modalContent.innerHTML = `
-                        <h3 class="text-amber-900 text-lg md:text-xl font-bold mb-3 border-b border-amber-800/20 pb-2">${data.title}</h3>
-                        <p class="text-stone-800 text-sm leading-7 font-medium">${data.text}</p>
-                    `;
-            modal.classList.add('active');
-        });
+    const envelopeWrap = $("#envelopeWrap");
+    const waxSeal = $("#waxSeal");
+    const nextSectionBtn = $("#nextSectionBtn");
+    const openHint = $("#openHint");
+    const gallerySection = $("#gallerySection");
+
+    const memoryModal = $("#memoryModal");
+    const modalContent = $("#modalContent");
+    const closeModalBtn = $("#closeModalBtn");
+
+    const quoteText = $("#quoteText");
+    const quoteDots = $("#quoteDots");
+    const quotePrev = $("#quotePrev");
+    const quoteNext = $("#quoteNext");
+
+    const replayBtn = $("#replayBtn");
+    const scrollTopBtn = $("#scrollTopBtn");
+
+    // Loader
+    function hideLoader() {
+      loader.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("load", () => {
+      requestAnimationFrame(() => {
+        setTimeout(hideLoader, 550);
+      });
+    }, { once: true });
+    setTimeout(hideLoader, 3500);
+
+    // Audio
+    bgMusic.volume = parseFloat(volumeSlider?.value || "0.42");
+
+    async function playMusic() {
+      try {
+        bgMusic.preload = "auto";
+        await bgMusic.play();
+        state.musicStarted = true;
+        musicIcon.textContent = "🔊";
+        if (musicText) musicText.textContent = "قطع آهنگ";
+        musicToggle.setAttribute("aria-pressed", "true");
+      } catch (err) {
+        console.log("Audio blocked:", err?.message || err);
+      }
+    }
+
+    function pauseMusic() {
+      bgMusic.pause();
+      musicIcon.textContent = "🔇";
+      if (musicText) musicText.textContent = "پخش آهنگ";
+      musicToggle.setAttribute("aria-pressed", "false");
+    }
+
+    async function toggleMusic() {
+      if (bgMusic.paused) {
+        await playMusic();
+      } else {
+        pauseMusic();
+      }
+    }
+
+    musicToggle?.addEventListener("click", async (e) => {
+      e.stopPropagation();
+      await toggleMusic();
     });
 
-    $('#closeModalBtn').addEventListener('click', () => modal.classList.remove('active'));
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.classList.remove('active');
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') modal.classList.remove('active');
+    volumeSlider?.addEventListener("input", (e) => {
+      bgMusic.volume = parseFloat(e.target.value);
     });
 
-    // ── 5. INTERSECTION OBSERVER FOR FADE-UPS ──
-    const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                fadeObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    document.addEventListener("pointerdown", async function startMusicOnce() {
+      if (!state.musicStarted) {
+        await playMusic();
+      }
+    }, { once: true, passive: true });
 
-    $$('.fade-up').forEach(el => fadeObserver.observe(el));
+    // Fade-up observer
+    const fadeObserver = new IntersectionObserver((entries, observer) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      }
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px"
+    });
 
-    // ── 6. AMBIENT PARTICLES (Pre-rendered) ──
-    const ambCanvas = $('#ambientCanvas');
-    const ambCtx = ambCanvas.getContext('2d', { alpha: true });
-    let ambW, ambH, particles = [];
+    $$(".fade-up").forEach(el => fadeObserver.observe(el));
 
-    // Pre-render rose petal
-    const petalCache = document.createElement('canvas');
-    petalCache.width = 44;
-    petalCache.height = 44;
-    const pCtx = petalCache.getContext('2d');
-    const petalGrad = pCtx.createRadialGradient(20, 22, 2, 22, 20, 22);
-    petalGrad.addColorStop(0, '#ff9ab8');
-    petalGrad.addColorStop(0.5, '#e11d48');
-    petalGrad.addColorStop(1, '#5c0f1b');
-    pCtx.fillStyle = petalGrad;
+    // Envelope
+    function spawnBurst() {
+      if (state.reduceMotion) return;
+
+      const emojis = state.isMobile
+        ? ["❤️", "💕", "✨", "💖", "💛"]
+        : ["❤️", "💕", "✨", "💖", "💛", "🩷", "🌟", "💝"];
+
+      const count = state.isMobile ? 9 : 14;
+
+      for (let i = 0; i < count; i++) {
+        const item = document.createElement("span");
+        item.className = "burst-item";
+        item.textContent = emojis[(Math.random() * emojis.length) | 0];
+        item.style.setProperty("--tx", `${(Math.random() - 0.5) * (state.isMobile ? 220 : 300)}px`);
+        item.style.setProperty("--ty", `${-(Math.random() * (state.isMobile ? 150 : 220) + 70)}px`);
+        item.style.fontSize = `${12 + Math.random() * (state.isMobile ? 16 : 20)}px`;
+        item.style.animationDuration = `${0.95 + Math.random() * 0.6}s`;
+        envelopeWrap.appendChild(item);
+        setTimeout(() => item.remove(), 1500);
+      }
+    }
+
+    async function openEnvelope() {
+      if (state.envelopeOpen) return;
+      state.envelopeOpen = true;
+
+      envelopeWrap.classList.add("open");
+      envelopeWrap.setAttribute("aria-expanded", "true");
+      openHint.textContent = "نامه باز شد... حالا وارد تالار عشق شو ❤️";
+      openHint.classList.remove("animate-pulse");
+
+      spawnBurst();
+
+      if (!state.musicStarted || bgMusic.paused) {
+        await playMusic();
+      }
+
+      setTimeout(() => {
+        nextSectionBtn.classList.remove("opacity-0", "pointer-events-none", "translate-y-5");
+        nextSectionBtn.classList.add("opacity-100", "translate-y-0");
+        nextSectionBtn.style.pointerEvents = "auto";
+      }, 760);
+    }
+
+    function resetEnvelopeAndGoTop() {
+      state.envelopeOpen = false;
+      envelopeWrap.classList.remove("open");
+      envelopeWrap.setAttribute("aria-expanded", "false");
+      openHint.textContent = "💛 روی مُهر طلایی کلیک کن تا نامه باز بشه...";
+      openHint.classList.add("animate-pulse");
+      nextSectionBtn.classList.add("opacity-0", "pointer-events-none", "translate-y-5");
+      nextSectionBtn.classList.remove("opacity-100", "translate-y-0");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    envelopeWrap.addEventListener("click", (e) => {
+      const isInteractive = e.target.closest("button");
+      if (isInteractive && e.target !== waxSeal) return;
+      openEnvelope();
+    });
+
+    waxSeal.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openEnvelope();
+    });
+
+    envelopeWrap.addEventListener("keydown", (e) => {
+      if ((e.key === "Enter" || e.key === " ") && !state.envelopeOpen) {
+        e.preventDefault();
+        openEnvelope();
+      }
+    });
+
+    nextSectionBtn.addEventListener("click", () => {
+      gallerySection.scrollIntoView({ behavior: state.reduceMotion ? "auto" : "smooth" });
+    });
+
+    replayBtn?.addEventListener("click", resetEnvelopeAndGoTop);
+    scrollTopBtn?.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: state.reduceMotion ? "auto" : "smooth" });
+    });
+
+    // Modal / Memory
+    const memories = {
+      1: {
+        title: "✨ درخشش چشم‌هایت ✨",
+        text: "نیایش من، چشم‌های تو برای من مثل امن‌ترین جای دنیاست. هر بار که به نگاهت فکر می‌کنم، همه‌ی شلوغی‌های دنیا آروم می‌شن و فقط یک چیز باقی می‌مونه: دوست داشتنت.<br><br><span class='text-amber-700 text-xs'>— مبین —</span>"
+      },
+      2: {
+        title: "🎵 آهنگ صدایت 🎵",
+        text: "وقتی صدام می‌کنی، قلبم یه جور خاصی می‌لرزه. خنده‌هات، حرف زدنت و حتی سکوتت برام قشنگ‌ترین موسیقی دنیاست. هیچ آهنگی به اندازه‌ی صدای تو نمی‌تونه حالم رو خوب کنه.<br><br><span class='text-amber-700 text-xs'>— مبین —</span>"
+      },
+      3: {
+        title: "💍 عهد همیشگی ما 💍",
+        text: "این صفحه فقط یه هدیه‌ی دیجیتال نیست؛ یه قول قلبیه از طرف <b>مبین</b> به <b>نیایش</b>. قول اینکه همیشه برای خندیدنت تلاش کنم، همیشه کنارت باشم و هر روز بیشتر از دیروز دوستت داشته باشم. تا ابد.<br><br><span class='text-amber-700 text-xs'>— مبین —</span>"
+      }
+    };
+
+    function openModal(html) {
+      modalContent.innerHTML = html;
+      memoryModal.classList.add("active");
+      memoryModal.setAttribute("aria-hidden", "false");
+      state.modalOpen = true;
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      memoryModal.classList.remove("active");
+      memoryModal.setAttribute("aria-hidden", "true");
+      state.modalOpen = false;
+      document.body.style.overflow = "";
+    }
+
+    $$("[data-memory]").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const data = memories[btn.dataset.memory];
+        if (!data) return;
+        openModal(`
+          <h3 class="text-amber-900 text-lg md:text-xl font-bold mb-3 border-b border-amber-800/20 pb-2">${data.title}</h3>
+          <p class="text-stone-800 text-sm leading-7 font-medium">${data.text}</p>
+        `);
+      });
+    });
+
+    closeModalBtn?.addEventListener("click", closeModal);
+    memoryModal?.addEventListener("click", (e) => {
+      if (e.target === memoryModal) closeModal();
+    });
+
+    // Quotes slider
+    const quotes = [
+      "اگر از من بپرسن قشنگ‌ترین اتفاق زندگیت چی بود، بدون مکث می‌گم: آشنایی با نیایش.",
+      "تو فقط یک نفر نیستی؛ تو حال خوبِ قلب منی.",
+      "هر جای دنیا که باشم، اسم تو برای من معنی آرامشه.",
+      "نیایش یعنی لبخند، یعنی نور، یعنی چیزی که دلم همیشه می‌خواد نگهش داره.",
+      "مبین شاید همیشه نتونه همه‌چیز رو کامل بگه، ولی همیشه کامل دوستت داره."
+    ];
+
+    let quoteIndex = 0;
+    let quoteTimer = null;
+
+    function renderQuoteDots() {
+      quoteDots.innerHTML = "";
+      quotes.forEach((_, i) => {
+        const dot = document.createElement("span");
+        dot.className = "w-2.5 h-2.5 rounded-full transition-all duration-300";
+        dot.style.background = i === quoteIndex ? "rgba(212,175,55,.95)" : "rgba(255,255,255,.18)";
+        dot.style.boxShadow = i === quoteIndex ? "0 0 0 4px rgba(212,175,55,.08)" : "none";
+        quoteDots.appendChild(dot);
+      });
+    }
+
+    function renderQuote(index, animate = true) {
+      quoteIndex = (index + quotes.length) % quotes.length;
+      if (animate) quoteText.style.opacity = "0";
+      setTimeout(() => {
+        quoteText.innerHTML = quotes[quoteIndex];
+        quoteText.style.opacity = "1";
+        renderQuoteDots();
+      }, animate ? 140 : 0);
+    }
+
+    function nextQuote() {
+      renderQuote(quoteIndex + 1, true);
+    }
+
+    function prevQuote() {
+      renderQuote(quoteIndex - 1, true);
+    }
+
+    function startQuoteAuto() {
+      stopQuoteAuto();
+      quoteTimer = setInterval(nextQuote, 5000);
+    }
+
+    function stopQuoteAuto() {
+      if (quoteTimer) clearInterval(quoteTimer);
+      quoteTimer = null;
+    }
+
+    renderQuote(0, false);
+    startQuoteAuto();
+
+    quoteNext?.addEventListener("click", () => {
+      nextQuote();
+      startQuoteAuto();
+    });
+
+    quotePrev?.addEventListener("click", () => {
+      prevQuote();
+      startQuoteAuto();
+    });
+
+    // Ambient particles (optimized)
+    const ambCanvas = $("#ambientCanvas");
+    const ambCtx = ambCanvas.getContext("2d", { alpha: true });
+    let ambW = 0, ambH = 0, dpr = 1;
+    let ambientParticles = [];
+    let ambientRAF = 0;
+    let ambientRunning = false;
+    let ambientLast = 0;
+
+    const petalCache = document.createElement("canvas");
+    petalCache.width = 36;
+    petalCache.height = 36;
+    const pCtx = petalCache.getContext("2d");
+    const g = pCtx.createRadialGradient(16, 18, 2, 18, 16, 18);
+    g.addColorStop(0, "#ffb5cc");
+    g.addColorStop(0.55, "#e11d48");
+    g.addColorStop(1, "#5c0f1b");
+    pCtx.fillStyle = g;
     pCtx.beginPath();
-    pCtx.moveTo(22, 22);
-    pCtx.bezierCurveTo(10, 14, 6, 34, 22, 38);
-    pCtx.bezierCurveTo(38, 34, 34, 14, 22, 22);
+    pCtx.moveTo(18, 18);
+    pCtx.bezierCurveTo(8, 11, 5, 28, 18, 31);
+    pCtx.bezierCurveTo(31, 28, 28, 11, 18, 18);
     pCtx.fill();
 
-    function resizeAmb() {
-        ambW = ambCanvas.width = window.innerWidth;
-        ambH = ambCanvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeAmb);
-    resizeAmb();
+    class AmbientParticle {
+      constructor() {
+        this.reset(true);
+      }
+      reset(first = false) {
+        this.x = Math.random() * ambW;
+        this.y = first ? Math.random() * ambH : -40;
+        this.size = Math.random() * (state.isMobile ? 8 : 10) + 7;
+        this.vy = Math.random() * 0.45 + 0.22;
+        this.vx = Math.random() * 0.26 - 0.13;
+        this.rot = Math.random() * Math.PI * 2;
+        this.vr = (Math.random() * 0.012 - 0.006);
+        this.alpha = Math.random() * 0.32 + 0.08;
+        this.gold = Math.random() > 0.5;
+      }
+      update(dt) {
+        const speed = dt * 0.06;
+        this.y += this.vy * speed * 10;
+        this.x += (this.vx + Math.sin(this.y * 0.01) * 0.02) * speed * 10;
+        this.rot += this.vr * speed * 10;
 
-    class Particle {
-        constructor() {
-            this.reset();
-            this.y = Math.random() * ambH;
+        if (this.y > ambH + 40) this.reset(false);
+        if (this.x < -40) this.x = ambW + 40;
+        if (this.x > ambW + 40) this.x = -40;
+      }
+      draw(ctx) {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rot);
+
+        if (this.gold) {
+          ctx.fillStyle = "#d4af37";
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size * 0.18, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.drawImage(petalCache, -this.size / 2, -this.size / 2, this.size, this.size);
         }
-        reset() {
-            this.x = Math.random() * ambW;
-            this.y = -40;
-            this.size = Math.random() * 12 + 8;
-            this.sy = Math.random() * 0.8 + 0.35;
-            this.sx = Math.random() * 0.5 - 0.25;
-            this.rot = Math.random() * 360;
-            this.rs = Math.random() * 1.6 - 0.8;
-            this.isGold = Math.random() > 0.45;
-            this.alpha = Math.random() * 0.45 + 0.1;
-        }
-        update() {
-            this.y += this.sy;
-            this.x += this.sx + Math.sin(this.y * 0.018) * 0.4;
-            this.rot += this.rs;
-            if (this.y > ambH + 40) this.reset();
-            if (this.x < -40) this.x = ambW + 40;
-            if (this.x > ambW + 40) this.x = -40;
-        }
-        draw() {
-            ambCtx.save();
-            ambCtx.translate(this.x, this.y);
-            ambCtx.rotate(this.rot * Math.PI / 180);
-            ambCtx.globalAlpha = this.alpha;
-            if (this.isGold) {
-                ambCtx.fillStyle = '#d4af37';
-                ambCtx.shadowColor = 'rgba(255,200,80,0.5)';
-                ambCtx.shadowBlur = 6;
-                ambCtx.beginPath();
-                ambCtx.arc(0, 0, this.size / 4.5, 0, Math.PI * 2);
-                ambCtx.fill();
-                ambCtx.shadowBlur = 0;
-            } else {
-                ambCtx.drawImage(petalCache, -this.size / 2, -this.size / 2, this.size, this.size);
-            }
-            ambCtx.restore();
-        }
+
+        ctx.restore();
+      }
     }
 
-    const pCount = isMobile ? 28 : 45;
-    for (let i = 0; i < pCount; i++) particles.push(new Particle());
-
-    function animAmb() {
-        ambCtx.clearRect(0, 0, ambW, ambH);
-        particles.forEach(p => { p.update();
-            p.draw(); });
-        requestAnimationFrame(animAmb);
+    function getAmbientCount() {
+      if (state.reduceMotion) return 0;
+      if (state.lowPowerAmbient) return state.isMobile ? 8 : 14;
+      return state.isMobile ? 18 : 28;
     }
-    animAmb();
 
-    // ── 7. 3D HEART (Fixed — no double-draw) ──
-    const hCanvas = $('#loveHeartCanvas');
-    const hCtx = hCanvas.getContext('2d', { alpha: true });
-    let hW = 0,
-        hH = 0,
-        heartWords = [];
-    let rotY = 0,
-        rotX = 0,
-        beat = 0;
-    let heartAnimId = null;
-    let heartVisible = false;
+    function resizeAmbient() {
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      ambW = window.innerWidth;
+      ambH = window.innerHeight;
+      ambCanvas.width = Math.floor(ambW * dpr);
+      ambCanvas.height = Math.floor(ambH * dpr);
+      ambCanvas.style.width = ambW + "px";
+      ambCanvas.style.height = ambH + "px";
+      ambCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const wordsList = [
-        'Niyayesh', 'Mobin❤️', 'عشقم', 'My Love', 'نفسم',
-        'Forever', 'زندگیم', 'M+N', 'همیشه', 'عشق من',
-        'قلبم', 'نیایش', 'Mobin', 'Love You', 'تا ابد'
+      const targetCount = getAmbientCount();
+      ambientParticles = Array.from({ length: targetCount }, () => new AmbientParticle());
+    }
+
+    function drawAmbient(now = 0) {
+      if (!ambientRunning) return;
+      ambientRAF = requestAnimationFrame(drawAmbient);
+
+      if (!state.pageVisible) return;
+
+      const dt = Math.min(32, now - ambientLast || 16);
+      ambientLast = now;
+
+      ambCtx.clearRect(0, 0, ambW, ambH);
+      for (let i = 0; i < ambientParticles.length; i++) {
+        ambientParticles[i].update(dt);
+        ambientParticles[i].draw(ambCtx);
+      }
+    }
+
+    function startAmbient() {
+      if (state.reduceMotion) return;
+      if (ambientRunning) return;
+      ambientRunning = true;
+      ambientLast = performance.now();
+      ambientRAF = requestAnimationFrame(drawAmbient);
+    }
+
+    function stopAmbient() {
+      ambientRunning = false;
+      if (ambientRAF) cancelAnimationFrame(ambientRAF);
+      ambientRAF = 0;
+    }
+
+    resizeAmbient();
+    startAmbient();
+
+    // Heart canvas (optimized)
+    const heartCanvas = $("#loveHeartCanvas");
+    const heartCtx = heartCanvas.getContext("2d", { alpha: true });
+    let heartW = 0, heartH = 0, heartDpr = 1;
+    let heartWords = [];
+    let heartRAF = 0;
+    let heartActive = false;
+    let heartLast = 0;
+    let heartRotY = 0;
+    let heartBeat = 0;
+
+    const heartSection = $("#heartSection");
+    const heartWordPool = [
+      "Niyayesh", "Mobin❤️", "عشقم", "My Love", "نفسم",
+      "Forever", "زندگیم", "M+N", "همیشه", "عشق من",
+      "قلبم", "نیایش", "Mobin", "Love You", "تا ابد"
     ];
 
     function getHeartPoint(t) {
-        return {
-            x: 16 * Math.pow(Math.sin(t), 3),
-            y: -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t))
-        };
+      return {
+        x: 16 * Math.pow(Math.sin(t), 3),
+        y: -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t))
+      };
     }
 
-    class HWord {
-        constructor(word, t, layer) {
-            const p = getHeartPoint(t);
-            const scale = 11.5;
-            this.word = word;
-            this.ox = p.x * scale * layer;
-            this.oy = p.y * scale * layer;
-            this.oz = (Math.sin(t * 3) * 55 + (Math.random() - 0.5) * 45) * layer;
-            this.baseSize = Math.random() * 5 + 9;
-            this.color = Math.random() > 0.45 ?
-                `hsl(${345 + Math.random()*20}, 85%, ${65 + Math.random()*20}%)` :
-                `hsl(${40 + Math.random()*15}, 70%, ${70 + Math.random()*20}%)`;
-        }
+    class HeartWord {
+      constructor(word, t, layer) {
+        const p = getHeartPoint(t);
+        const scale = 11.4;
+        this.word = word;
+        this.ox = p.x * scale * layer;
+        this.oy = p.y * scale * layer;
+        this.oz = (Math.sin(t * 2.8) * 48 + (Math.random() - 0.5) * 34) * layer;
+        this.base = Math.random() * 4 + 9;
+        this.color = Math.random() > 0.45
+          ? `hsl(${346 + Math.random() * 18}, 85%, ${64 + Math.random() * 16}%)`
+          : `hsl(${38 + Math.random() * 16}, 72%, ${70 + Math.random() * 15}%)`;
+      }
 
-        project(ay, ax) {
-            const cosY = Math.cos(ay),
-                sinY = Math.sin(ay);
-            const cosX = Math.cos(ax),
-                sinX = Math.sin(ax);
-            let rx = this.ox * cosY - this.oz * sinY;
-            let rz = this.oz * cosY + this.ox * sinY;
-            let ry = this.oy * cosX - rz * sinX;
-            rz = rz * cosX + this.oy * sinX;
-            const persp = 380;
-            const s = persp / (persp + rz);
-            return { rx, ry, rz, s, valid: s > 0.04 && rz > -persp + 20 };
-        }
+      project(ay, ax) {
+        const cy = Math.cos(ay), sy = Math.sin(ay);
+        const cx = Math.cos(ax), sx = Math.sin(ax);
 
-        draw(px, py, s, pulse) {
-            hCtx.globalAlpha = Math.max(0.08, Math.min(1, s * 0.75));
-            hCtx.fillStyle = this.color;
-            hCtx.font = `bold ${this.baseSize * s * pulse}px "Vazirmatn", sans-serif`;
-            hCtx.fillText(this.word, px, py);
-        }
+        let rx = this.ox * cy - this.oz * sy;
+        let rz = this.oz * cy + this.ox * sy;
+        let ry = this.oy * cx - rz * sx;
+        rz = rz * cx + this.oy * sx;
+
+        const persp = 370;
+        const s = persp / (persp + rz);
+        return { rx, ry, rz, s, ok: s > 0.05 && rz > -persp + 20 };
+      }
+
+      draw(x, y, s, pulse) {
+        heartCtx.globalAlpha = Math.max(0.08, Math.min(1, s * 0.8));
+        heartCtx.fillStyle = this.color;
+        heartCtx.font = `700 ${this.base * s * pulse}px "Vazirmatn", sans-serif`;
+        heartCtx.fillText(this.word, x, y);
+      }
     }
 
-    function initHeart() {
-        heartWords = [];
-        const step = isMobile ? 0.22 : 0.14;
-        const layers = isMobile ? [0.82, 1.0] : [0.7, 0.88, 1.08];
-        let idx = 0;
-        layers.forEach(l => {
-            for (let t = -Math.PI; t <= Math.PI; t += step) {
-                heartWords.push(new HWord(wordsList[idx % wordsList.length], t, l));
-                idx++;
-            }
-        });
+    function buildHeart() {
+      heartWords = [];
+      const layers = state.isMobile ? [0.82, 1.0] : [0.7, 0.9, 1.08];
+      const step = state.lowPowerHeart
+        ? (state.isMobile ? 0.32 : 0.24)
+        : (state.isMobile ? 0.24 : 0.16);
+
+      let idx = 0;
+      for (const layer of layers) {
+        for (let t = -Math.PI; t <= Math.PI; t += step) {
+          heartWords.push(new HeartWord(heartWordPool[idx % heartWordPool.length], t, layer));
+          idx++;
+        }
+      }
     }
 
     function resizeHeart() {
-        const rect = hCanvas.parentElement.getBoundingClientRect();
-        const size = Math.min(rect.width, rect.height);
-        if (size < 50) return; // Not visible yet
-        hW = hCanvas.width = size;
-        hH = hCanvas.height = size;
-        initHeart();
+      const rect = heartCanvas.parentElement.getBoundingClientRect();
+      const size = Math.max(0, Math.min(rect.width, rect.height));
+      if (size < 50) return;
+
+      heartDpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      heartW = size;
+      heartH = size;
+      heartCanvas.width = Math.floor(size * heartDpr);
+      heartCanvas.height = Math.floor(size * heartDpr);
+      heartCanvas.style.width = size + "px";
+      heartCanvas.style.height = size + "px";
+      heartCtx.setTransform(heartDpr, 0, 0, heartDpr, 0, 0);
+      buildHeart();
     }
 
-    function animHeart() {
-        if (!heartVisible) {
-            heartAnimId = requestAnimationFrame(animHeart);
-            return;
-        }
-        hCtx.clearRect(0, 0, hW, hH);
-        if (hW < 50 || heartWords.length === 0) {
-            heartAnimId = requestAnimationFrame(animHeart);
-            return;
-        }
+    function drawHeart(now = 0) {
+      if (!heartActive) return;
+      heartRAF = requestAnimationFrame(drawHeart);
 
-        rotY += 0.007;
-        rotX = Math.sin(rotY * 2.2) * 0.12;
-        beat += 0.07;
-        const pulse = 1 + Math.pow(Math.sin(beat), 4) * 0.18;
+      if (!state.pageVisible) return;
+      if (!heartWords.length || heartW < 50) return;
 
-        hCtx.textAlign = 'center';
-        hCtx.textBaseline = 'middle';
+      const dt = Math.min(32, now - heartLast || 16);
+      heartLast = now;
 
-        // Project all, then sort by Z, then draw ONCE
-        const projected = heartWords
-            .map(w => ({ w, ...w.project(rotY, rotX) }))
-            .filter(p => p.valid)
-            .sort((a, b) => b.rz - a.rz);
+      heartCtx.clearRect(0, 0, heartW, heartH);
+      heartCtx.textAlign = "center";
+      heartCtx.textBaseline = "middle";
 
-        projected.forEach(p => {
-            const px = hW / 2 + p.rx * p.s * pulse;
-            const py = hH / 2 + p.ry * p.s * pulse;
-            p.w.draw(px, py, p.s, pulse);
-        });
+      heartRotY += dt * 0.00045;
+      const rotX = Math.sin(heartRotY * 2.2) * 0.11;
+      heartBeat += dt * 0.004;
+      const pulse = 1 + Math.pow(Math.sin(heartBeat), 4) * 0.16;
 
-        heartAnimId = requestAnimationFrame(animHeart);
+      const projected = [];
+      for (let i = 0; i < heartWords.length; i++) {
+        const p = heartWords[i].project(heartRotY, rotX);
+        if (p.ok) projected.push({ w: heartWords[i], ...p });
+      }
+
+      projected.sort((a, b) => b.rz - a.rz);
+
+      for (let i = 0; i < projected.length; i++) {
+        const p = projected[i];
+        const x = heartW / 2 + p.rx * p.s * pulse;
+        const y = heartH / 2 + p.ry * p.s * pulse;
+        p.w.draw(x, y, p.s, pulse);
+      }
     }
 
-    // Observe heart section visibility
+    function startHeart() {
+      if (heartActive || state.reduceMotion) return;
+      heartActive = true;
+      heartLast = performance.now();
+      heartRAF = requestAnimationFrame(drawHeart);
+    }
+
+    function stopHeart() {
+      heartActive = false;
+      if (heartRAF) cancelAnimationFrame(heartRAF);
+      heartRAF = 0;
+    }
+
     const heartObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                heartVisible = true;
-                resizeHeart();
-                heartObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    heartObserver.observe($('#heartSection'));
-
-    // Initial resize + start animation
-    setTimeout(() => {
-        resizeHeart();
-        if (!heartAnimId) heartAnimId = requestAnimationFrame(animHeart);
-    }, 200);
-
-    window.addEventListener('resize', () => {
-        if (heartVisible) resizeHeart();
-    });
-
-    // ── 8. KEYBOARD SHORTCUT ──
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'o' && e.ctrlKey && !isOpen) {
-            e.preventDefault();
-            openEnvelope();
+      entries.forEach(entry => {
+        if (entry.target !== heartSection) return;
+        if (entry.isIntersecting) {
+          resizeHeart();
+          startHeart();
+        } else {
+          stopHeart();
         }
+      });
+    }, { threshold: 0.16 });
+
+    heartObserver.observe(heartSection);
+
+    // Visibility / performance controls
+    document.addEventListener("visibilitychange", () => {
+      state.pageVisible = !document.hidden;
+      if (document.hidden) {
+        stopAmbient();
+        stopHeart();
+        stopQuoteAuto();
+      } else {
+        startAmbient();
+        if (heartSection.getBoundingClientRect().top < window.innerHeight &&
+            heartSection.getBoundingClientRect().bottom > 0) {
+          startHeart();
+        }
+        startQuoteAuto();
+      }
     });
 
-    console.log('%c💛 ساخته شده با عشق توسط مبین برای نیایش 💛',
-        'font-size:16px;color:#d4af37;font-family:serif;');
-    console.log('%cاگر اینو می‌بینی، بدون که تک‌تک خط‌های این کد با فکر تو نوشته شدن...',
-        'font-size:12px;color:#f472b6;');
-</script>
+    // Resize throttle
+    let resizeTimer = 0;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        state.isMobile = window.matchMedia("(max-width: 767px)").matches;
+        resizeAmbient();
+        resizeHeart();
+      }, 120);
+    }, { passive: true });
+
+    // Heuristic FPS monitor for lowering load on weak phones
+    let perfFrames = 0;
+    let perfStart = performance.now();
+    function perfCheck(now) {
+      perfFrames++;
+      if (now - perfStart >= 2200) {
+        const fps = (perfFrames * 1000) / (now - perfStart);
+
+        if (fps < 42) {
+          state.lowPowerAmbient = true;
+          state.lowPowerHeart = true;
+          resizeAmbient();
+          resizeHeart();
+        }
+
+        perfFrames = 0;
+        perfStart = now;
+      }
+      requestAnimationFrame(perfCheck);
+    }
+    requestAnimationFrame(perfCheck);
+
+    // Keyboard shortcuts
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && state.modalOpen) closeModal();
+      if (e.ctrlKey && e.key.toLowerCase() === "o" && !state.envelopeOpen) {
+        e.preventDefault();
+        openEnvelope();
+      }
+      if (e.key.toLowerCase() === "m") {
+        toggleMusic();
+      }
+      if (e.key === "ArrowRight") {
+        nextQuote();
+        startQuoteAuto();
+      }
+      if (e.key === "ArrowLeft") {
+        prevQuote();
+        startQuoteAuto();
+      }
+    });
+
+    console.log(
+      "%c💛 ساخته شده با عشق توسط مبین برای نیایش 💛",
+      "font-size:16px;color:#d4af37;font-family:serif;"
+    );
+    console.log(
+      "%cاین نسخه برای روان بودن، مصرف کمتر و اجرای بهتر روی گوشی‌های ضعیف‌تر هم بهینه شده.",
+      "font-size:12px;color:#f472b6;"
+    );
+  </script>
 </body>
 </html>
