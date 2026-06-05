@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تقدیم به نیایش قشنگم ❤️</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cinzel:wght@400..900&family=Alex+Brush&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #080102;
+      --wine: #5c0f1b;
+      --wine-2: #7e1828;
+      --gold: #d4af37;
+      --pink: #f472b6;
+      --parchment: #fcf8f2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Vazirmatn", system-ui, sans-serif;
+      background: var(--bg);
+      color: #f5f5f4;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .royal-title {
+      font-family: "Cinzel", "Playfair Display", serif;
+      letter-spacing: 0.14em;
+    }
+
+    .cursive-title {
+      font-family: "Alex Brush", cursive;
+      direction: ltr;
+    }
+
+    .latin-serif {
+      font-family: "Playfair Display", serif;
+    }
+
+    .parchment {
+      background-color: var(--parchment);
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(212,175,55,0.17), transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(139,94,60,0.14), transparent 32%),
+        linear-gradient(rgba(244,235,208,0.32) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 22px 22px;
+      box-shadow:
+        inset 0 0 42px rgba(139,94,60,0.28),
+        0 18px 42px rgba(0,0,0,0.46);
+      border: 1px solid #e1d3b0;
+    }
+
+    .gold-text {
+      background: linear-gradient(90deg, #fff4b8, #d4af37, #8a6411, #ffeaa0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .soft-glow {
+      text-shadow: 0 0 18px rgba(212,175,55,0.55);
+    }
+
+    .fade-up {
+      animation: fadeUp 1s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(110%);
+      }
+      100% {
+        transform: translateX(-110%);
+      }
+    }
+
+    @keyframes floaty {
+      0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+      }
+      50% {
+        transform: translateY(-10px) rotate(3deg);
+      }
+    }
+
+    @keyframes haloPulse {
+      0%, 100% {
+        opacity: 0.5;
+        transform: scale(0.96);
+      }
+      50% {
+        opacity: 0.95;
+        transform: scale(1.04);
+      }
+    }
+
+    .floating {
+      animation: floaty 4s ease-in-out infinite;
+    }
+
+    .halo {
+      animation: haloPulse 3s ease-in-out infinite;
+    }
+
+    .glass {
+      background: rgba(24, 5, 8, 0.52);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.38);
+    }
+
+    .gilded-frame {
+      position: relative;
+      padding: 15px;
+      border-radius: 18px;
+      background:
+        linear-gradient(#190407, #190407) padding-box,
+        linear-gradient(135deg, #fff2a6, #d4af37, #7b560b, #f8dd7b, #d4af37) border-box;
+      border: 10px solid transparent;
+      box-shadow:
+        0 18px 45px rgba(0,0,0,0.65),
+        0 0 28px rgba(212,175,55,0.18);
+      overflow: hidden;
+    }
+
+    .gilded-frame::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(255,232,157,0.38);
+      border-radius: 12px;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .gilded-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 10%, rgba(255,255,255,0.18) 35%, transparent 60%);
+      animation: shimmer 5s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .memory-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .memory-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: radial-gradient(circle at top, rgba(212,175,55,0.18), transparent 48%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .memory-card:hover::before {
+      opacity: 1;
+    }
+
+    .modal-open {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+
+    .modal-open .modal-box {
+      transform: scale(1) translateY(0) !important;
+    }
+
+    .scroll-cue {
+      animation: bounceSoft 1.5s ease-in-out infinite;
+    }
+
+    @keyframes bounceSoft {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.65;
+      }
+      50% {
+        transform: translateY(8px);
+        opacity: 1;
+      }
+    }
+
+    .envelope {
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+
+    .envelope-flap {
+      transform-origin: top center;
+      transition: transform 900ms cubic-bezier(.2,.8,.2,1), z-index 0ms linear 450ms;
+      backface-visibility: hidden;
+    }
+
+    .envelope.open .envelope-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    .letter-card {
+      transition:
+        transform 1000ms cubic-bezier(.16,1,.3,1),
+        z-index 0ms linear 350ms,
+        box-shadow 500ms ease;
+    }
+
+    .envelope.open .letter-card {
+      transform: translateY(-132px) scale(1.025);
+      z-index: 35;
+      box-shadow:
+        inset 0 0 42px rgba(139,94,60,0.22),
+        0 24px 60px rgba(0,0,0,0.55);
+    }
+
+    .wax-seal {
+      transition:
+        transform 500ms cubic-bezier(.16,1,.3,1),
+        opacity 400ms ease,
+        filter 400ms ease;
+    }
+
+    .envelope.open .wax-seal {
+      transform: translateY(18px) scale(0.25) rotate(35deg);
+      opacity: 0;
+      filter: blur(4px);
+      pointer-events: none;
+    }
+
+    .line-clamp-custom {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 9px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #080102;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(#d4af37, #7e1828);
+      border-radius: 999px;
+    }
+
+    @media (max-width: 480px) {
+      .envelope.open .letter-card {
+        transform: translateY(-112px) scale(1.02);
+      }
+    }
+  </style>
+</head>
+
+<body class="selection:bg-amber-500 selection:text-stone-950">
+
+  <audio id="bgMusic" preload="auto" loop playsinline>
+    <source src="https://dl6.tarikhema.org/music/a/ahang-jadid/Ahang-JadidOmadi-Fahmidam-Man-320.mp3" type="audio/mpeg" />
+  </audio>
+
+  <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-10"></canvas>
+
+  <div class="fixed top-4 left-4 md:top-6 md:left-6 z-[80] flex items-center gap-2">
+    <button id="musicToggle"
+      class="glass hover:bg-amber-700/35 text-stone-100 px-4 py-3 rounded-full transition-all duration-300 flex items-center justify-center gap-2">
+      <span id="musicIcon" class="text-xl">🎵</span>
+      <span id="musicText" class="text-xs font-bold select-none hidden sm:inline">پخش آهنگ</span>
+    </button>
+
+    <div id="volumeWrap" class="hidden sm:flex glass rounded-full px-3 py-2 items-center gap-2">
+      <span class="text-xs text-amber-200">صدا</span>
+      <input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.55" class="w-24 accent-amber-500" />
+    </div>
+  </div>
+
+  <main class="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#360910] via-[#120204] to-[#080102] px-4 py-16 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none opacity-50">
+      <div class="absolute top-16 right-12 w-56 h-56 rounded-full bg-amber-500/10 blur-3xl halo"></div>
+      <div class="absolute bottom-16 left-10 w-72 h-72 rounded-full bg-pink-500/10 blur-3xl halo"></div>
+      <div class="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-amber-200/10 to-transparent"></div>
+    </div>
+
+    <header class="text-center mb-10 z-20 fade-up">
+      <p class="royal-title text-amber-300 text-xs md:text-sm uppercase mb-3 soft-glow">
+        تقدیم به شاهزاده‌ی قلبم
+      </p>
+      <h1 class="cursive-title text-6xl md:text-8xl gold-text drop-shadow-md">Niyayesh</h1>
+      <div class="w-44 h-px bg-gradient-to-r from-transparent via-amber-300 to-transparent mx-auto mt-4"></div>
+      <p class="mt-5 text-stone-300 text-sm md:text-base max-w-md mx-auto">
+        یه هدیه‌ی کوچیک، برای کسی که حضورش از هر جادویی قشنگ‌تره.
+      </p>
+    </header>
+
+    <section id="envelopeSection" class="relative z-20 flex flex-col items-center fade-up">
+      <p id="openHint" class="text-stone-300 text-sm md:text-base mb-7 text-center animate-pulse">
+        روی مهر طلایی کلیک کن تا نامه باز بشه...
+      </p>
+
+      <div id="envelopeContainer"
+        class="envelope relative w-[320px] h-[225px] md:w-[470px] md:h-[315px] cursor-pointer transition-transform duration-500 hover:scale-[1.025]">
+
+        <div class="absolute inset-0 bg-[#4c0b15] rounded-xl shadow-2xl border border-red-950 z-0"></div>
+
+        <div id="letterCard"
+          class="letter-card absolute left-4 right-4 top-3 bottom-3 parchment rounded-lg p-5 md:p-7 flex flex-col justify-between z-[2] overflow-hidden">
+          <div>
+            <span class="cursive-title text-3xl md:text-4xl text-amber-900 block mb-2 text-center">
+              My Dearest Niyayesh
+            </span>
+            <p class="text-stone-800 text-xs md:text-sm leading-7 md:leading-8 text-justify font-semibold">
+              نیایش قشنگم، از وقتی که وارد زندگیم شدی، تک‌تک لحظه‌هام رنگ دیگه‌ای گرفتن.
+              تو زیباترین اثر هنری موزه‌ی قلب منی. این صفحه‌ی رویایی رو ساختم تا بدونی
+              جای تو همیشه وسط قلب منه؛ روشن، امن، خاص و تکرارنشدنی.
+            </p>
+          </div>
+          <div class="text-left mt-3">
+            <span class="cursive-title text-2xl text-amber-800">Forever Yours ❤️</span>
+          </div>
+        </div>
+
+        <div id="envelopeFlap"
+          class="envelope-flap absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-[#8d1d2f] to-[#65101e] rounded-t-xl border-b border-amber-400/25 shadow-lg z-30 flex items-end justify-center pb-3">
+          <div class="royal-title text-amber-300/35 text-[10px] md:text-xs">ROYAL LOVE LETTER</div>
+        </div>
+
+        <div class="absolute bottom-0 left-0 w-1/2 h-full bg-[#6d1321] rounded-l-xl border-r border-[#3a0610] z-20"
+          style="clip-path: polygon(0 0, 100% 50%, 0 100%);"></div>
+
+        <div class="absolute bottom-0 right-0 w-1/2 h-full bg-[#721522] rounded-r-xl border-l border-[#3a0610] z-20"
+          style="clip-path: polygon(100% 0, 0 50%, 100% 100%);"></div>
+
+        <div class="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-[#4f0c16] to-[#631321] rounded-b-xl border-t border-[#3a0610] z-25"
+          style="clip-path: polygon(0 100%, 50% 35%, 100% 100%);"></div>
+
+        <div id="waxSeal"
+          class="wax-seal absolute top-[40%] left-1/2 -translate-x-1/2 w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center shadow-2xl border-2 border-amber-200 z-40 bg-gradient-to-br from-amber-200 via-amber-500 to-amber-800 hover:scale-110">
+          <div class="absolute inset-1 rounded-full bg-gradient-to-br from-amber-300 via-amber-500 to-amber-700 border border-amber-800/30 flex items-center justify-center">
+            <span class="royal-title text-2xl md:text-3xl font-black text-amber-950 select-none">N</span>
+          </div>
+          <div class="absolute -inset-2 rounded-full border border-amber-300/20"></div>
+        </div>
+      </div>
+
+      <button id="nextSectionBtn"
+        class="mt-10 opacity-0 pointer-events-none bg-gradient-to-r from-amber-300 via-amber-500 to-amber-300 hover:from-amber-400 hover:to-amber-500 text-stone-950 font-extrabold px-7 py-3 rounded-full shadow-lg shadow-amber-500/20 border border-amber-100 transition-all duration-500 scroll-cue">
+        ورود به تالار عشق نیایش ✨
+      </button>
+    </section>
+  </main>
+
+  <section id="gallerySection" class="relative min-h-screen bg-gradient-to-b from-[#080102] via-[#1a0508] to-[#070102] py-20 px-4 flex flex-col items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 opacity-20 pointer-events-none">
+      <div class="absolute top-0 right-8 md:right-24 h-full w-16 md:w-32 border-x border-stone-400/25 bg-stone-500/5"></div>
+      <div class="absolute top-0 left-8 md:left-24 h-full w-16 md:w-32 border-x border-stone-400/25 bg-stone-500/5"></div>
+      <div class="absolute top-24 left-1/2 -translate-x-1/2 w-[70vw] h-40 bg-amber-200/10 blur-3xl rounded-full"></div>
+    </div>
+
+    <div class="max-w-5xl w-full z-20 text-center">
+      <h2 class="cursive-title text-5xl md:text-7xl text-amber-300 soft-glow">The Museum of Us</h2>
+      <p class="royal-title text-stone-400 text-[10px] md:text-xs uppercase mt-2 mb-12">
+        موزه خاطرات و لبخندهای تو
+      </p>
+
+      <div class="relative max-w-xl mx-auto mb-16 px-2">
+        <div class="absolute -top-12 -left-4 md:-left-14 w-24 md:w-36 opacity-90 select-none pointer-events-none floating">
+          <svg viewBox="0 0 120 120" class="drop-shadow-[0_0_18px_rgba(212,175,55,0.35)]">
+            <path d="M58 20c-9-8-24-8-32 2-8 10-3 24 10 29-10 3-18 12-15 25 3 14 20 18 32 7 0 15 14 25 27 18 9-5 12-16 8-26 12 10 29 8 36-5 7-14-2-28-16-32 8-8 8-22-3-30-10-8-26-3-32 8-3-7-9-12-15-16z"
+              fill="rgba(212,175,55,0.18)"/>
+            <path d="M50 42 C34 18 17 18 9 28 C20 37 32 47 48 52 Z" fill="rgba(245,214,128,0.72)" />
+            <path d="M70 42 C86 18 103 18 111 28 C100 37 88 47 72 52 Z" fill="rgba(245,214,128,0.72)" />
+            <circle cx="60" cy="56" r="10" fill="rgba(255,238,180,0.78)" />
+            <path d="M49 72 C58 82 71 82 80 72" stroke="rgba(255,238,180,0.8)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="gilded-frame transition-all duration-700 hover:scale-[1.015]">
+          <img
+            src="https://i.ibb.co/pvCnsB6G/C69-EA923-0-A43-4-EE7-AEED-BEDB7-C15-ABAC.png"
+            alt="نیایش قشنگم"
+            class="relative z-[2] w-full h-auto object-cover rounded-xl filter sepia-[12%] contrast-[105%] saturate-[110%] transition-transform duration-700 hover:scale-[1.035]"
+            loading="lazy"
+          />
+        </div>
+        <p class="text-xs text-amber-400/80 mt-4 italic latin-serif">The most precious frame in my universe ⚜️</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mt-8 px-1">
+        <button data-memory="1"
+          class="memory-card text-right border border-amber-500/35 bg-[#22070b]/90 p-6 rounded-2xl shadow-lg hover:border-amber-300 hover:bg-[#381018] transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-amber-400 text-4xl mb-3">❦</div>
+          <h3 class="royal-title text-xs text-amber-200 mb-3">پیام اول: نگاهت</h3>
+          <p class="text-xs text-stone-400 leading-6 line-clamp-custom">توی چشم‌های تو یه آرامشی هست که هیچ جای دنیا پیدا نمی‌شه...</p>
+        </button>
+
+        <button data-memory="2"
+          class="memory-card text-right border border-amber-500/35 bg-[#22070b]/90 p-6 rounded-2xl shadow-lg hover:border-amber-300 hover:bg-[#381018] transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-amber-400 text-4xl mb-3">⚜️</div>
+          <h3 class="royal-title text-xs text-amber-200 mb-3">پیام دوم: صدات</h3>
+          <p class="text-xs text-stone-400 leading-6 line-clamp-custom">صدای تو قشنگ‌ترین ملودی‌ایه که قلب من تکرارش می‌کنه...</p>
+        </button>
+
+        <button data-memory="3"
+          class="memory-card text-right border border-amber-500/35 bg-[#22070b]/90 p-6 rounded-2xl shadow-lg hover:border-amber-300 hover:bg-[#381018] transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-amber-400 text-4xl mb-3">❦</div>
+          <h3 class="royal-title text-xs text-amber-200 mb-3">پیام سوم: آرزو</h3>
+          <p class="text-xs text-stone-400 leading-6 line-clamp-custom">بزرگ‌ترین آرزوی من خندیدن همیشگی لب‌های توئه...</p>
+        </button>
+      </div>
+
+      <div id="memoryModal"
+        class="fixed inset-0 bg-black/80 z-[90] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="modal-box parchment max-w-md w-full rounded-2xl p-7 md:p-8 relative border-2 border-amber-500 shadow-2xl transform scale-95 translate-y-4 transition-transform duration-300">
+          <button id="closeModalBtn" class="absolute top-4 left-4 text-amber-950 font-black hover:text-red-700 text-xl" aria-label="بستن">
+            ✕
+          </button>
+          <div id="modalContent" class="text-stone-900 text-right leading-relaxed mt-6"></div>
+        </div>
+      </div>
+
+      <div class="mt-20">
+        <p class="text-sm text-stone-400 animate-pulse">هنوز یه سوپرایز بزرگ‌تر مونده... ادامه بده ✨</p>
+        <div class="text-3xl text-amber-400 mt-3 scroll-cue">↓</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="heartSection" class="relative min-h-screen bg-[#050001] flex flex-col items-center justify-center py-20 px-4 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[88vw] max-w-4xl h-[46vh] bg-pink-500/10 rounded-full blur-3xl halo"></div>
+      <div class="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-t from-pink-500/10 to-transparent"></div>
+    </div>
+
+    <div class="text-center mb-4 z-20">
+      <h2 class="cursive-title text-6xl md:text-8xl text-pink-300 drop-shadow-[0_0_22px_rgba(244,114,182,0.58)]">
+        Infinity Love
+      </h2>
+      <p class="royal-title text-stone-400 text-[10px] md:text-xs uppercase mt-2">
+        تا ابد به نام نیایش
+      </p>
+    </div>
+
+    <div class="relative w-full max-w-3xl h-[460px] md:h-[600px] z-20 flex items-center justify-center">
+      <canvas id="loveHeartCanvas" class="w-full h-full"></canvas>
+
+      <div class="absolute text-center pointer-events-none select-none">
+        <p class="cursive-title text-4xl md:text-5xl text-pink-50 drop-shadow-[0_2px_18px_rgba(0,0,0,0.9)] animate-pulse">
+          Niyayesh
+        </p>
+        <p class="text-[10px] md:text-xs text-stone-300 tracking-widest font-bold uppercase mt-2">
+          My Whole World
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-xl text-center z-20 px-4 mt-6 glass rounded-3xl p-6">
+      <p class="text-stone-300 text-sm md:text-base leading-8">
+        این قلب از صدها کلمه‌ی عاشقانه ساخته شده؛ مثل فکرهای من که همیشه دور تو می‌چرخن.
+        نیایش من، تو دلیل قشنگ‌تر شدن هر روزمی.
+      </p>
+      <div class="text-pink-400/90 text-2xl mt-4">❤ ❤ ❤</div>
+    </div>
+  </section>
+
+  <footer class="bg-[#030001] py-8 text-center text-xs text-stone-600 border-t border-stone-900 relative z-20">
+    <p class="latin-serif">Created with Love for Niyayesh | 2026</p>
+  </footer>
+
+  <script>
+    "use strict";
+
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => document.querySelectorAll(selector);
+
+    const memories = {
+      1: {
+        title: "درخشش چشم‌هایت 👁️✨",
+        text: "نیایش من، چشم‌های تو برای من شبیه امن‌ترین جای دنیاست. هر بار که به نگاهت فکر می‌کنم، انگار همه‌ی شلوغی‌های دنیا آروم می‌شن و فقط یک چیز باقی می‌مونه: دوست داشتنت."
+      },
+      2: {
+        title: "آهنگ صدایت 🎵💖",
+        text: "وقتی صدام می‌کنی، قلبم یه جور خاصی می‌لرزه. خنده‌هات، حرف زدنت و حتی سکوتت برای من قشنگ‌ترین موسیقی دنیاست. هیچ آهنگی به اندازه‌ی صدای تو نمی‌تونه حالم رو خوب کنه."
+      },
+      3: {
+        title: "عهد همیشگی ما 💍❤️",
+        text: "این صفحه فقط یه هدیه‌ی دیجیتال نیست؛ یه قول قلبیه. قول اینکه همیشه برای خندیدنت تلاش کنم، همیشه کنارت باشم و هر روز بیشتر از دیروز دوستت داشته باشم."
+      }
+    };
+
+    const bgMusic = $("#bgMusic");
+    const musicToggle = $("#musicToggle");
+    const musicIcon = $("#musicIcon");
+    const musicText = $("#musicText");
+    const volumeSlider = $("#volumeSlider");
+
+    let musicStarted = false;
+    let isMusicPlaying = false;
+
+    bgMusic.volume = Number(volumeSlider.value);
+
+    async function playBackgroundMusic() {
+      try {
+        bgMusic.volume = Number(volumeSlider.value);
+        await bgMusic.play();
+        musicStarted = true;
+        isMusicPlaying = true;
+        musicIcon.textContent = "🔊";
+        musicText.textContent = "قطع آهنگ";
+      } catch (error) {
+        musicIcon.textContent = "🎵";
+        musicText.textContent = "برای پخش کلیک کن";
+      }
+    }
+
+    function pauseBackgroundMusic() {
+      bgMusic.pause();
+      isMusicPlaying = false;
+      musicIcon.textContent = "🔇";
+      musicText.textContent = "پخش آهنگ";
+    }
+
+    musicToggle.addEventListener("click", async () => {
+      if (!musicStarted || bgMusic.paused) {
+        await playBackgroundMusic();
+      } else {
+        pauseBackgroundMusic();
+      }
+    });
+
+    volumeSlider.addEventListener("input", () => {
+      bgMusic.volume = Number(volumeSlider.value);
+    });
+
+    document.addEventListener("click", () => {
+      if (!musicStarted) {
+        playBackgroundMusic();
+      }
+    }, { once: true });
+
+    const envelopeContainer = $("#envelopeContainer");
+    const waxSeal = $("#waxSeal");
+    const nextSectionBtn = $("#nextSectionBtn");
+    const openHint = $("#openHint");
+    let isEnvelopeOpen = false;
+
+    function openEnvelope() {
+      if (isEnvelopeOpen) return;
+
+      isEnvelopeOpen = true;
+      envelopeContainer.classList.add("open");
+      openHint.textContent = "نامه باز شد... حالا وارد تالار عشق شو ❤️";
+      playBackgroundMusic();
+
+      setTimeout(() => {
+        nextSectionBtn.classList.remove("pointer-events-none");
+        nextSectionBtn.classList.add("opacity-100");
+        nextSectionBtn.classList.remove("opacity-0");
+      }, 900);
+    }
+
+    envelopeContainer.addEventListener("click", openEnvelope);
+    waxSeal.addEventListener("click", (event) => {
+      event.stopPropagation();
+      openEnvelope();
+    });
+
+    nextSectionBtn.addEventListener("click", () => {
+      $("#gallerySection").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    const memoryModal = $("#memoryModal");
+    const modalContent = $("#modalContent");
+    const closeModalBtn = $("#closeModalBtn");
+
+    function openModal(id) {
+      const memory = memories[id];
+      if (!memory) return;
+
+      modalContent.innerHTML = `
+        <h3 class="text-amber-900 text-2xl font-extrabold mb-4 pb-3 border-b border-amber-800/25">${memory.title}</h3>
+        <p class="text-stone-800 text-base leading-8 text-justify font-semibold">${memory.text}</p>
+        <div class="mt-7 text-left">
+          <span class="cursive-title text-3xl text-amber-700">Forever yours...</span>
+        </div>
+      `;
+
+      memoryModal.classList.add("modal-open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      memoryModal.classList.remove("modal-open");
+      document.body.style.overflow = "";
+    }
+
+    $$(".memory-card").forEach((card) => {
+      card.addEventListener("click", () => openModal(card.dataset.memory));
+    });
+
+    closeModalBtn.addEventListener("click", closeModal);
+
+    memoryModal.addEventListener("click", (event) => {
+      if (event.target === memoryModal) closeModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeModal();
+    });
+
+    const ambientCanvas = $("#ambientCanvas");
+    const ambientCtx = ambientCanvas.getContext("2d");
+    let ambientParticles = [];
+    let ambientW = 0;
+    let ambientH = 0;
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    function resizeCanvas(canvas, ctx, width, height) {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function resizeAmbientCanvas() {
+      ambientW = window.innerWidth;
+      ambientH = window.innerHeight;
+      resizeCanvas(ambientCanvas, ambientCtx, ambientW, ambientH);
+      createAmbientParticles();
+    }
+
+    class AmbientParticle {
+      constructor(initial = false) {
+        this.reset(initial);
+      }
+
+      reset(initial = false) {
+        this.x = Math.random() * ambientW;
+        this.y = initial ? Math.random() * ambientH : -30;
+        this.size = Math.random() * 8 + 4;
+        this.speedY = Math.random() * 1.25 + 0.45;
+        this.speedX = Math.random() * 0.8 - 0.4;
+        this.opacity = Math.random() * 0.52 + 0.22;
+        this.rotation = Math.random() * 360;
+        this.rotationSpeed = Math.random() * 1.8 - 0.9;
+        this.type = Math.random() > 0.38 ? "petal" : "gold";
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX + Math.sin(this.y * 0.01) * 0.18;
+        this.rotation += this.rotationSpeed;
+
+        if (this.y > ambientH + 40 || this.x < -50 || this.x > ambientW + 50) {
+          this.reset(false);
+        }
+      }
+
+      draw() {
+        ambientCtx.save();
+        ambientCtx.translate(this.x, this.y);
+        ambientCtx.rotate(this.rotation * Math.PI / 180);
+        ambientCtx.globalAlpha = this.opacity;
+
+        if (this.type === "petal") {
+          const gradient = ambientCtx.createLinearGradient(-this.size, -this.size, this.size, this.size * 1.5);
+          gradient.addColorStop(0, "#ff7aa8");
+          gradient.addColorStop(0.55, "#b91c3b");
+          gradient.addColorStop(1, "#5c0f1b");
+          ambientCtx.fillStyle = gradient;
+          ambientCtx.beginPath();
+          ambientCtx.moveTo(0, 0);
+          ambientCtx.bezierCurveTo(-this.size, -this.size * 0.55, -this.size * 1.05, this.size, 0, this.size * 1.55);
+          ambientCtx.bezierCurveTo(this.size * 1.05, this.size, this.size, -this.size * 0.55, 0, 0);
+          ambientCtx.fill();
+        } else {
+          ambientCtx.fillStyle = "#d4af37";
+          ambientCtx.shadowBlur = 14;
+          ambientCtx.shadowColor = "#fff2a6";
+          ambientCtx.beginPath();
+          ambientCtx.arc(0, 0, this.size / 3, 0, Math.PI * 2);
+          ambientCtx.fill();
+        }
+
+        ambientCtx.restore();
+      }
+    }
+
+    function createAmbientParticles() {
+      const count = window.innerWidth < 640 ? 46 : 76;
+      ambientParticles = Array.from({ length: count }, () => new AmbientParticle(true));
+    }
+
+    function animateAmbient() {
+      ambientCtx.clearRect(0, 0, ambientW, ambientH);
+      ambientParticles.forEach((particle) => {
+        particle.update();
+        particle.draw();
+      });
+      requestAnimationFrame(animateAmbient);
+    }
+
+    window.addEventListener("resize", resizeAmbientCanvas);
+    resizeAmbientCanvas();
+    animateAmbient();
+
+    const heartCanvas = $("#loveHeartCanvas");
+    const heartCtx = heartCanvas.getContext("2d");
+
+    let heartW = 0;
+    let heartH = 0;
+    let heartParticles = [];
+    let rotationY = 0;
+    let rotationX = 0;
+    let beatTime = 0;
+
+    const loveWords = [
+      "I love you Niyayesh",
+      "عاشقتم نیایش",
+      "نیایش من",
+      "My Heart",
+      "نفسم",
+      "عشق ابدی",
+      "Niyayesh",
+      "دنیای من",
+      "Forever",
+      "قشنگ من"
+    ];
+
+    function resizeHeartCanvas() {
+      const rect = heartCanvas.parentElement.getBoundingClientRect();
+      heartW = rect.width;
+      heartH = rect.height;
+      resizeCanvas(heartCanvas, heartCtx, heartW, heartH);
+      initHeartParticles();
+    }
+
+    function heartPoint(t) {
+      const x = 16 * Math.pow(Math.sin(t), 3);
+      const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+      return { x, y: -y };
+    }
+
+    class HeartWord {
+      constructor(word, t, layer, jitter) {
+        const p = heartPoint(t);
+        const baseScale = Math.min(heartW, heartH) / 38;
+
+        this.word = word;
+        this.x = p.x * baseScale * layer + (Math.random() - 0.5) * jitter;
+        this.y = p.y * baseScale * layer + (Math.random() - 0.5) * jitter;
+        this.z = (Math.sin(t * 2.7) * 80 + (Math.random() - 0.5) * 140) * layer;
+        this.size = Math.random() * 4 + 10;
+        this.color = Math.random() > 0.5 ? "#f9a8d4" : "#fb7185";
+      }
+
+      project(angleY, angleX, pulse) {
+        const ay = angleY * Math.PI / 180;
+        const ax = angleX * Math.PI / 180;
+
+        const cosy = Math.cos(ay);
+        const siny = Math.sin(ay);
+        const cosx = Math.cos(ax);
+        const sinx = Math.sin(ax);
+
+        let x = this.x * cosy - this.z * siny;
+        let z = this.z * cosy + this.x * siny;
+        let y = this.y * cosx - z * sinx;
+        z = z * cosx + this.y * sinx;
+
+        const perspective = 620;
+        const scale = perspective / (perspective + z);
+        const screenX = heartW / 2 + x * scale * pulse;
+        const screenY = heartH / 2 + y * scale * pulse;
+
+        return { screenX, screenY, scale, z };
+      }
+
+      draw(angleY, angleX, pulse) {
+        const projected = this.project(angleY, angleX, pulse);
+
+        heartCtx.save();
+        heartCtx.globalAlpha = Math.max(0.18, Math.min(1, projected.scale * 0.92));
+        heartCtx.fillStyle = this.color;
+        heartCtx.font = `800 ${Math.max(8, this.size * projected.scale)}px "Vazirmatn", "Playfair Display", sans-serif`;
+        heartCtx.textAlign = "center";
+        heartCtx.textBaseline = "middle";
+        heartCtx.shadowBlur = 18 * projected.scale;
+        heartCtx.shadowColor = "#f472b6";
+        heartCtx.fillText(this.word, projected.screenX, projected.screenY);
+        heartCtx.restore();
+
+        return projected.z;
+      }
+    }
+
+    function initHeartParticles() {
+      heartParticles = [];
+      let index = 0;
+      const step = window.innerWidth < 640 ? 0.16 : 0.105;
+      const layers = window.innerWidth < 640 ? [0.72, 0.9, 1.08] : [0.62, 0.78, 0.94, 1.1];
+
+      layers.forEach((layer) => {
+        for (let t = -Math.PI; t <= Math.PI; t += step) {
+          const word = loveWords[index % loveWords.length];
+          heartParticles.push(new HeartWord(word, t, layer, 10));
+          index++;
+        }
+      });
+    }
+
+    function animateHeart() {
+      heartCtx.clearRect(0, 0, heartW, heartH);
+
+      rotationY += 0.42;
+      rotationX = Math.sin(rotationY * 0.018) * 8;
+      beatTime += 0.055;
+
+      const pulse = 1 + Math.pow(Math.abs(Math.sin(beatTime)), 2) * 0.11;
+
+      const projected = heartParticles.map((particle) => {
+        const p = particle.project(rotationY, rotationX, pulse);
+        return { particle, z: p.z };
+      });
+
+      projected.sort((a, b) => b.z - a.z);
+
+      for (const item of projected) {
+        item.particle.draw(rotationY, rotationX, pulse);
+      }
+
+      heartCtx.save();
+      const glow = heartCtx.createRadialGradient(heartW / 2, heartH / 2, 20, heartW / 2, heartH / 2, Math.min(heartW, heartH) / 2);
+      glow.addColorStop(0, "rgba(244,114,182,0.16)");
+      glow.addColorStop(0.45, "rgba(244,114,182,0.06)");
+      glow.addColorStop(1, "rgba(244,114,182,0)");
+      heartCtx.fillStyle = glow;
+      heartCtx.fillRect(0, 0, heartW, heartH);
+      heartCtx.restore();
+
+      requestAnimationFrame(animateHeart);
+    }
+
+    window.addEventListener("resize", resizeHeartCanvas);
+    resizeHeartCanvas();
+    animateHeart();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("fade-up");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll("section, header").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
