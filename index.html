@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Niyayesh ✦ Mobin's Eternal Love</title>
+    <title>For Niyayesh — A Universe by Mobin</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com">
     </script>
     <script>
@@ -16,1115 +13,1612 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        heading: ["'Instrument Serif'", 'serif'],
-                        body: ["'Barlow'", 'sans-serif'],
-                        inter: ["'Inter'", 'sans-serif'],
+                        'instrument': ['"Instrument Serif"', 'Georgia', 'serif'],
+                        'barlow': ['Barlow', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
                     },
-                    borderRadius: {
-                        DEFAULT: '9999px',
-                    },
-                },
-            },
+                    colors: {
+                        glass: 'rgba(255,255,255,0.04)',
+                        glassBorder: 'rgba(255,255,255,0.10)',
+                        glassHover: 'rgba(255,255,255,0.08)',
+                    }
+                }
+            }
         }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- React & ReactDOM CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js">
+    </script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js">
+    </script>
+
+    <!-- Babel Standalone -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js">
     </script>
 
     <style>
         :root {
-            --bg: #000000;
-            --fg: #ffffff;
-            --muted: rgba(255, 255, 255, 0.65);
-            --accent-soft: #f5e6d8;
-            --love-glow: rgba(255, 180, 180, 0.25);
+            --glass-bg: rgba(255, 255, 255, 0.025);
+            --glass-bg-hover: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.10);
+            --glass-border-hover: rgba(255, 255, 255, 0.18);
+            --glass-glow: rgba(255, 255, 255, 0.04);
+            --text-primary: #f5f5f5;
+            --text-secondary: #c5c5c5;
+            --text-muted: #999;
+            --shadow-glass: 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+            --shadow-glass-sm: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+            --transition-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+            --transition-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         * {
             box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-            background: #000;
-        }
-        body {
             margin: 0;
             padding: 0;
-            background: #000;
-            font-family: 'Barlow', 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-        #root {
-            min-height: 100vh;
             background: #000;
         }
 
-        .liquid-glass {
-            background: rgba(255, 255, 255, 0.01);
-            background-blend-mode: luminosity;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: none;
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        body {
+            background: #000;
+            color: var(--text-primary);
+            font-family: 'Inter', 'Barlow', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+            cursor: default;
+        }
+
+        /* Glass System */
+        .glass-base {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            transition: all 0.5s var(--transition-smooth);
+        }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--shadow-glass);
+            transition: all 0.6s var(--transition-smooth);
+        }
+        .glass-card:hover {
+            background: var(--glass-bg-hover);
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 16px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08) inset, 0 0 80px rgba(255, 255, 255, 0.02);
+            transform: translateY(-4px);
+        }
+        .glass-button {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            padding: 14px 32px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: all 0.5s var(--transition-spring);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
             position: relative;
             overflow: hidden;
         }
-        .liquid-glass::before {
+        .glass-button::before {
             content: '';
             position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 1.4px;
-            background: linear-gradient(180deg,
-                    rgba(255, 255, 255, 0.45) 0%,
-                    rgba(255, 255, 255, 0.15) 20%,
-                    rgba(255, 255, 255, 0) 40%,
-                    rgba(255, 255, 255, 0) 60%,
-                    rgba(255, 255, 255, 0.15) 80%,
-                    rgba(255, 255, 255, 0.45) 100%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease-out, height 0.6s ease-out;
+        }
+        .glass-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        .glass-button:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08) inset, 0 0 60px rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
+            letter-spacing: 0.04em;
+        }
+        .glass-button:active {
+            transform: scale(0.96);
+            transition: transform 0.15s var(--transition-smooth);
+        }
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s var(--transition-smooth);
+        }
+        .glass-frame {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--shadow-glass);
+            padding: 6px;
+            transition: all 0.6s var(--transition-smooth);
+        }
+        .glass-frame:hover {
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.07) inset, 0 0 100px rgba(255, 255, 255, 0.03);
         }
 
-        .liquid-glass-strong {
-            background: rgba(255, 255, 255, 0.01);
-            background-blend-mode: luminosity;
-            backdrop-filter: blur(50px);
-            -webkit-backdrop-filter: blur(50px);
-            border: none;
-            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-            position: relative;
-            overflow: hidden;
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
         }
-        .liquid-glass-strong::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 1.4px;
-            background: linear-gradient(180deg,
-                    rgba(255, 255, 255, 0.5) 0%,
-                    rgba(255, 255, 255, 0.2) 20%,
-                    rgba(255, 255, 255, 0) 40%,
-                    rgba(255, 255, 255, 0) 60%,
-                    rgba(255, 255, 255, 0.2) 80%,
-                    rgba(255, 255, 255, 0.5) 100%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-                filter: blur(12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-                filter: blur(0);
-            }
+        /* Word reveal animation */
+        .word-reveal {
+            display: inline-block;
+            opacity: 0;
+            filter: blur(12px);
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, filter 0.8s ease-out, transform 0.8s var(--transition-spring);
         }
-        @keyframes fadeUpSimple {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .word-reveal.visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
         }
-        @keyframes pulseGlow {
+
+        /* Floating animation */
+        @keyframes floatGentle {
             0%,
             100% {
-                box-shadow: 0 0 20px rgba(255, 180, 180, 0.3), 0 0 60px rgba(255, 180, 180, 0.1);
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-12px);
             }
             50% {
-                box-shadow: 0 0 35px rgba(255, 180, 180, 0.55), 0 0 90px rgba(255, 180, 180, 0.25);
+                transform: translateY(-6px);
             }
-        }
-        @keyframes floatAngel {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
+            75% {
                 transform: translateY(-14px);
             }
         }
-        @keyframes shimmer {
-            0% {
-                background-position: -200% center;
-            }
+        .animate-float-gentle {
+            animation: floatGentle 7s ease-in-out infinite;
+        }
+
+        @keyframes floatSlow {
+            0%,
             100% {
-                background-position: 200% center;
+                transform: translateY(0) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-18px) rotate(0.5deg);
+            }
+            66% {
+                transform: translateY(-8px) rotate(-0.5deg);
             }
         }
-        @keyframes heartbeat {
+        .animate-float-slow {
+            animation: floatSlow 12s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%,
+            100% {
+                box-shadow: 0 0 30px rgba(255, 255, 255, 0.03), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+            }
+            50% {
+                box-shadow: 0 0 60px rgba(255, 255, 255, 0.07), 0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+            }
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
             0%,
             100% {
                 transform: scale(1);
+                opacity: 0.8;
             }
             15% {
-                transform: scale(1.18);
+                transform: scale(1.15);
+                opacity: 1;
             }
             30% {
                 transform: scale(1);
+                opacity: 0.85;
             }
             45% {
-                transform: scale(1.1);
+                transform: scale(1.12);
+                opacity: 1;
             }
             60% {
                 transform: scale(1);
+                opacity: 0.8;
             }
         }
-
-        .animate-fade-up {
-            animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
-        }
-        .animate-fade-up-simple {
-            animation: fadeUpSimple 0.7s ease-out backwards;
-        }
-        .animate-pulse-glow {
-            animation: pulseGlow 3s ease-in-out infinite;
-        }
-        .animate-float {
-            animation: floatAngel 5s ease-in-out infinite;
-        }
-        .animate-heartbeat {
-            animation: heartbeat 2.2s ease-in-out infinite;
-        }
-        .delay-1 {
-            animation-delay: 0.1s;
-        }
-        .delay-2 {
-            animation-delay: 0.25s;
-        }
-        .delay-3 {
-            animation-delay: 0.4s;
-        }
-        .delay-4 {
-            animation-delay: 0.55s;
-        }
-        .delay-5 {
-            animation-delay: 0.7s;
-        }
-        .delay-6 {
-            animation-delay: 0.9s;
-        }
-        .delay-7 {
-            animation-delay: 1.1s;
+        .animate-heart-beat {
+            animation: heartBeat 2.5s ease-in-out infinite;
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .animate-fade-up,
-            .animate-fade-up-simple,
-            .animate-float,
-            .animate-heartbeat,
-            .animate-pulse-glow {
-                animation: none !important;
-            }
-        }
-
-        .shimmer-text {
-            background: linear-gradient(90deg,
-                    rgba(255, 255, 255, 0.6) 0%,
-                    rgba(255, 255, 255, 1) 25%,
-                    rgba(255, 220, 200, 0.9) 50%,
-                    rgba(255, 255, 255, 1) 75%,
-                    rgba(255, 255, 255, 0.6) 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 3.5s linear infinite;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .vampire-border {
-            position: relative;
-        }
-        .vampire-border::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: inherit;
-            padding: 2px;
-            background: linear-gradient(135deg,
-                    rgba(180, 50, 50, 0.5) 0%,
-                    rgba(255, 255, 255, 0.3) 30%,
-                    rgba(180, 50, 50, 0.4) 60%,
-                    rgba(255, 255, 255, 0.2) 100%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+        /* Canvas layers */
+        canvas {
             pointer-events: none;
-            z-index: 2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* Section base */
+        .section-container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 24px;
+        }
+
+        @media (max-width: 768px) {
+            .section-container {
+                padding: 60px 16px;
+                min-height: auto;
+            }
+            .glass-button {
+                padding: 12px 24px;
+                font-size: 0.85rem;
+            }
+            .glass-card {
+                border-radius: 14px;
+            }
+        }
+        @media (max-width: 480px) {
+            .section-container {
+                padding: 40px 12px;
+            }
+            .glass-button {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+                border-radius: 40px;
+            }
         }
     </style>
 </head>
 <body>
     <div id="root"></div>
 
-    <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous">
-    </script>
-    <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous">
-    </script>
-    <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous">
-    </script>
-    <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js">
-    </script>
-    <script>
-        window.Motion = window.FramerMotion;
-    </script>
+    <!-- Global Canvas for particle systems -->
+    <canvas id="global-canvas"></canvas>
 
-    <script type="text/babel">
-        const { useState, useEffect, useRef, useCallback, useMemo } = React;
-        const { motion, AnimatePresence } = window.Motion;
+    <script type="text/babel" data-presets="react">
+        const { useState, useEffect, useRef, useCallback, useMemo, createContext, useContext } = React;
 
-        const FADE_MS = 500;
-        const FADE_OUT_LEAD = 0.55;
+        // ─────────────────────────────────────
+        // ANIMATION SYSTEM (Framer Motion-like)
+        // ─────────────────────────────────────
+        const MotionContext = createContext({});
 
-        function FadingVideo({ src, className = '', style = {}, objectFit = 'cover', objectPosition = 'center',
-            widthScale = 1, heightScale = 1 }) {
-            const videoRef = useRef(null);
+        function useAnimationState(initialState) {
+            const [state, setState] = useState(initialState);
+            const ref = useRef(null);
             const animFrameRef = useRef(null);
-            const fadingOutRef = useRef(false);
-            const currentOpacityRef = useRef(0);
-            const isUnmountedRef = useRef(false);
+            const startTimeRef = useRef(null);
+            const fromRef = useRef(null);
+            const toRef = useRef(null);
+            const durationRef = useRef(500);
+            const easingRef = useRef('ease-out');
 
-            const fadeTo = useCallback((targetOpacity, duration = FADE_MS) => {
-                if (isUnmountedRef.current) return;
+            const animateTo = useCallback((target, config = {}) => {
+                fromRef.current = { ...state };
+                toRef.current = target;
+                durationRef.current = config.duration || 500;
+                easingRef.current = config.easing || 'ease-out';
+                startTimeRef.current = null;
                 if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-                const video = videoRef.current;
-                if (!video) return;
-                const startOpacity = parseFloat(video.style.opacity) || currentOpacityRef.current;
-                const startTime = performance.now();
 
-                function step(now) {
-                    if (isUnmountedRef.current) return;
-                    const elapsed = now - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    const newOpacity = startOpacity + (targetOpacity - startOpacity) * eased;
-                    if (videoRef.current) {
-                        videoRef.current.style.opacity = newOpacity;
-                        currentOpacityRef.current = newOpacity;
+                function step(timestamp) {
+                    if (!startTimeRef.current) startTimeRef.current = timestamp;
+                    const elapsed = timestamp - startTimeRef.current;
+                    const progress = Math.min(elapsed / durationRef.current, 1);
+                    const eased = easingRef.current === 'spring' ?
+                        1 - Math.pow(1 - progress, 3) :
+                        progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+
+                    const newState = {};
+                    for (const key in toRef.current) {
+                        const from = fromRef.current[key] || 0;
+                        const to = toRef.current[key];
+                        newState[key] = from + (to - from) * eased;
                     }
+                    setState(newState);
                     if (progress < 1) {
                         animFrameRef.current = requestAnimationFrame(step);
-                    } else {
-                        if (videoRef.current) {
-                            videoRef.current.style.opacity = targetOpacity;
-                            currentOpacityRef.current = targetOpacity;
-                        }
-                        animFrameRef.current = null;
                     }
                 }
                 animFrameRef.current = requestAnimationFrame(step);
-            }, []);
+            }, [state]);
 
             useEffect(() => {
-                isUnmountedRef.current = false;
-                const video = videoRef.current;
-                if (!video) return;
-                video.style.opacity = '0';
-                currentOpacityRef.current = 0;
-                fadingOutRef.current = false;
+                return () => {
+                    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+                };
+            }, []);
 
-                function onLoadedData() {
-                    if (isUnmountedRef.current) return;
-                    video.style.opacity = '0';
-                    currentOpacityRef.current = 0;
-                    fadingOutRef.current = false;
-                    video.play().catch(() => {});
-                    fadeTo(1, FADE_MS);
+            return [state, animateTo, ref];
+        }
+
+        function useInView(ref, options = {}) {
+            const [inView, setInView] = useState(false);
+            const [hasAnimated, setHasAnimated] = useState(false);
+
+            useEffect(() => {
+                const el = ref?.current;
+                if (!el) return;
+                const observer = new IntersectionObserver(([entry]) => {
+                    if (entry.isIntersecting) {
+                        setInView(true);
+                        if (!hasAnimated) setHasAnimated(true);
+                        if (options.once) observer.unobserve(el);
+                    } else if (!options.once) {
+                        setInView(false);
+                    }
+                }, { threshold: options.threshold || 0.15, rootMargin: options.rootMargin || '0px' });
+                observer.observe(el);
+                return () => observer.disconnect();
+            }, [ref, options.once, options.threshold, options.rootMargin, hasAnimated]);
+
+            return [inView, hasAnimated];
+        }
+
+        // Motion component factory
+        function createMotionComponent(tag) {
+            return React.forwardRef((props, forwardedRef) => {
+                const {
+                    initial,
+                    animate,
+                    transition,
+                    whileHover,
+                    whileInView,
+                    variants,
+                    style,
+                    className,
+                    children,
+                    onMouseEnter,
+                    onMouseLeave,
+                    ...rest
+                } = props;
+
+                const innerRef = useRef(null);
+                const ref = forwardedRef || innerRef;
+                const [animState, animateTo] = useAnimationState(initial || {});
+                const [inView] = useInView(ref, { once: true, threshold: 0.1 });
+                const [hovered, setHovered] = useState(false);
+
+                useEffect(() => {
+                    if (animate && !whileInView) {
+                        animateTo(animate, transition || { duration: 600, easing: 'spring' });
+                    }
+                }, []);
+
+                useEffect(() => {
+                    if (whileInView && inView) {
+                        const target = typeof whileInView === 'object' ? whileInView : animate || { opacity: 1,
+                            y: 0, filter: 'blur(0px)' };
+                        animateTo(target, transition || { duration: 700, easing: 'spring' });
+                    }
+                }, [inView, whileInView]);
+
+                useEffect(() => {
+                    if (hovered && whileHover) {
+                        const target = typeof whileHover === 'object' ? whileHover : { scale: 1.03 };
+                        animateTo(target, { duration: 300, easing: 'spring' });
+                    } else if (!hovered && whileHover && animState.scale) {
+                        animateTo({ scale: 1 }, { duration: 400, easing: 'spring' });
+                    }
+                }, [hovered, whileHover]);
+
+                const currentStyle = {
+                    ...style,
+                    ...animState,
+                    transition: transition ? `all ${transition.duration || 0.5}s ${transition.easing || 'ease-out'}` :
+                        'all 0.5s ease-out',
+                };
+
+                const Tag = tag;
+                return (
+                    <Tag
+                        ref={ref}
+                        className={className}
+                        style={currentStyle}
+                        onMouseEnter={(e) => { setHovered(true); if (onMouseEnter) onMouseEnter(e); }}
+                        onMouseLeave={(e) => { setHovered(false); if (onMouseLeave) onMouseLeave(e); }}
+                        {...rest}
+                    >
+                        {children}
+                    </Tag>
+                );
+            });
+        }
+
+        const motion = {
+            div: createMotionComponent('div'),
+            p: createMotionComponent('p'),
+            span: createMotionComponent('span'),
+            h1: createMotionComponent('h1'),
+            h2: createMotionComponent('h2'),
+            h3: createMotionComponent('h3'),
+            button: createMotionComponent('button'),
+            img: createMotionComponent('img'),
+            section: createMotionComponent('section'),
+            a: createMotionComponent('a'),
+        };
+
+        function AnimatePresence({ children, mode = 'wait' }) {
+            return React.Children.only(children);
+        }
+
+        // ─────────────────────────────────────
+        // CANVAS PARTICLE SYSTEM
+        // ─────────────────────────────────────
+        function useParticleCanvas(config = {}) {
+            const canvasRef = useRef(null);
+            const particlesRef = useRef([]);
+            const animFrameRef = useRef(null);
+            const mouseRef = useRef({ x: -1000, y: -1000 });
+
+            const {
+                particleCount = 80,
+                    particleColor = 'rgba(255,255,255,',
+                    maxOpacity = 0.5,
+                    minOpacity = 0.05,
+                    sizeRange = [0.5, 2.5],
+                    speedRange = [0.1, 0.6],
+                    connectionDistance = 120,
+                    glowSize = 30,
+                    driftSpeed = 0.3,
+            } = config;
+
+            useEffect(() => {
+                const canvas = canvasRef.current;
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                let w, h;
+
+                function resize() {
+                    w = canvas.width = window.innerWidth;
+                    h = canvas.height = window.innerHeight;
                 }
+                resize();
+                window.addEventListener('resize', resize);
 
-                function onTimeUpdate() {
-                    if (isUnmountedRef.current) return;
-                    if (!fadingOutRef.current && video.duration && video.currentTime > 0) {
-                        const remaining = video.duration - video.currentTime;
-                        if (remaining <= FADE_OUT_LEAD && remaining > 0) {
-                            fadingOutRef.current = true;
-                            fadeTo(0, FADE_MS);
+                // Initialize particles
+                const particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push({
+                        x: Math.random() * w,
+                        y: Math.random() * h,
+                        vx: (Math.random() - 0.5) * speedRange[1] * 2,
+                        vy: (Math.random() - 0.5) * speedRange[1] * 2,
+                        size: sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]),
+                        opacity: minOpacity + Math.random() * (maxOpacity - minOpacity),
+                        pulseSpeed: 0.005 + Math.random() * 0.02,
+                        pulseOffset: Math.random() * Math.PI * 2,
+                        driftX: (Math.random() - 0.5) * driftSpeed,
+                        driftY: (Math.random() - 0.5) * driftSpeed,
+                    });
+                }
+                particlesRef.current = particles;
+
+                function animate(timestamp) {
+                    ctx.clearRect(0, 0, w, h);
+
+                    for (let i = 0; i < particles.length; i++) {
+                        const p = particles[i];
+                        p.x += p.vx + p.driftX;
+                        p.y += p.vy + p.driftY;
+
+                        // Gentle mouse attraction
+                        const dx = mouseRef.current.x - p.x;
+                        const dy = mouseRef.current.y - p.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 200 && dist > 0) {
+                            const force = 0.003;
+                            p.vx += (dx / dist) * force;
+                            p.vy += (dy / dist) * force;
+                        }
+
+                        // Damping
+                        p.vx *= 0.999;
+                        p.vy *= 0.999;
+
+                        // Wrap around
+                        if (p.x < -20) p.x = w + 20;
+                        if (p.x > w + 20) p.x = -20;
+                        if (p.y < -20) p.y = h + 20;
+                        if (p.y > h + 20) p.y = -20;
+
+                        const pulse = Math.sin(timestamp * p.pulseSpeed + p.pulseOffset) * 0.3 + 0.7;
+                        const alpha = p.opacity * pulse;
+
+                        // Draw glow
+                        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * glowSize);
+                        gradient.addColorStop(0, particleColor + (alpha) + ')');
+                        gradient.addColorStop(0.3, particleColor + (alpha * 0.6) + ')');
+                        gradient.addColorStop(1, particleColor + '0)');
+                        ctx.fillStyle = gradient;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size * glowSize, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Draw core
+                        ctx.fillStyle = particleColor + (alpha * 1.4) + ')';
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    // Draw connections
+                    for (let i = 0; i < particles.length; i++) {
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const dx = particles[i].x - particles[j].x;
+                            const dy = particles[i].y - particles[j].y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+                            if (dist < connectionDistance) {
+                                const alpha = (1 - dist / connectionDistance) * 0.12;
+                                ctx.strokeStyle = 'rgba(255,255,255,' + alpha + ')';
+                                ctx.lineWidth = 0.4;
+                                ctx.beginPath();
+                                ctx.moveTo(particles[i].x, particles[i].y);
+                                ctx.lineTo(particles[j].x, particles[j].y);
+                                ctx.stroke();
+                            }
                         }
                     }
-                }
 
-                function onEnded() {
-                    if (isUnmountedRef.current) return;
-                    video.style.opacity = '0';
-                    currentOpacityRef.current = 0;
-                    fadingOutRef.current = false;
-                    setTimeout(() => {
-                        if (isUnmountedRef.current) return;
-                        video.currentTime = 0;
-                        video.play().catch(() => {});
-                        fadingOutRef.current = false;
-                        fadeTo(1, FADE_MS);
-                    }, 100);
+                    animFrameRef.current = requestAnimationFrame(animate);
                 }
+                animFrameRef.current = requestAnimationFrame(animate);
 
-                video.addEventListener('loadeddata', onLoadedData);
-                video.addEventListener('timeupdate', onTimeUpdate);
-                video.addEventListener('ended', onEnded);
-
-                if (video.readyState >= 2) {
-                    onLoadedData();
-                }
+                const handleMouse = (e) => {
+                    mouseRef.current.x = e.clientX;
+                    mouseRef.current.y = e.clientY;
+                };
+                window.addEventListener('mousemove', handleMouse);
 
                 return () => {
-                    isUnmountedRef.current = true;
+                    window.removeEventListener('resize', resize);
+                    window.removeEventListener('mousemove', handleMouse);
                     if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-                    video.removeEventListener('loadeddata', onLoadedData);
-                    video.removeEventListener('timeupdate', onTimeUpdate);
-                    video.removeEventListener('ended', onEnded);
                 };
-            }, [src, fadeTo]);
+            }, [particleCount, particleColor, maxOpacity, minOpacity, sizeRange[0], sizeRange[1], speedRange[0],
+                speedRange[1], connectionDistance, glowSize, driftSpeed
+            ]);
 
-            const baseStyle = {
-                opacity: 0,
-                ...style,
-            };
-            const scaleStyle = (widthScale !== 1 || heightScale !== 1) ? {
-                width: `${widthScale * 100}%`,
-                height: `${heightScale * 100}%`,
-            } : {};
+            return canvasRef;
+        }
 
-            return ( <
-                video ref = { videoRef }
-                src = { src }
-                className = { className }
-                style = {
-                    { ...baseStyle, ...scaleStyle } }
-                autoPlay muted playsInline preload = "auto"
-                loop = { false }
-                crossOrigin = "anonymous"
-                onContextMenu = {
-                    (e) => e.preventDefault() }
-                />
+        // ─────────────────────────────────────
+        // PORTAL CANVAS (3D rotating ring)
+        // ─────────────────────────────────────
+        function usePortalCanvas(scrollProgress = 0) {
+            const canvasRef = useRef(null);
+            const particlesRef = useRef([]);
+            const animFrameRef = useRef(null);
+
+            useEffect(() => {
+                const canvas = canvasRef.current;
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                let w, h;
+
+                function resize() {
+                    w = canvas.width = window.innerWidth;
+                    h = canvas.height = window.innerHeight;
+                }
+                resize();
+                window.addEventListener('resize', resize);
+
+                const ringParticles = [];
+                const ringCount = 3;
+                const particlesPerRing = 60;
+                for (let r = 0; r < ringCount; r++) {
+                    const radius = 120 + r * 80;
+                    for (let i = 0; i < particlesPerRing; i++) {
+                        const angle = (i / particlesPerRing) * Math.PI * 2;
+                        ringParticles.push({
+                            radius,
+                            angle,
+                            y: (Math.random() - 0.5) * 60,
+                            size: 0.6 + Math.random() * 1.8,
+                            opacity: 0.15 + Math.random() * 0.5,
+                            speed: 0.0008 + Math.random() * 0.002,
+                            ringIndex: r,
+                        });
+                    }
+                }
+                particlesRef.current = ringParticles;
+
+                function animate(timestamp) {
+                    ctx.clearRect(0, 0, w, h);
+                    const cx = w / 2;
+                    const cy = h / 2;
+                    const rotation = scrollProgress * Math.PI * 2;
+
+                    for (const p of ringParticles) {
+                        const currentAngle = p.angle + rotation * (1 + p.ringIndex * 0.5) + timestamp * p.speed;
+                        const cosA = Math.cos(currentAngle);
+                        const sinA = Math.sin(currentAngle);
+                        // Simulate 3D: tilt the ring
+                        const tiltX = cosA;
+                        const tiltY = sinA * 0.55;
+                        const depth = sinA * 0.45;
+                        const scale = 1 + depth * 0.4;
+                        const px = cx + tiltX * p.radius * scale;
+                        const py = cy + tiltY * p.radius * scale + p.y;
+                        const alpha = p.opacity * (0.6 + depth * 0.5);
+                        const size = p.size * scale;
+
+                        const gradient = ctx.createRadialGradient(px, py, 0, px, py, size * 20);
+                        gradient.addColorStop(0, 'rgba(255,255,255,' + alpha + ')');
+                        gradient.addColorStop(0.5, 'rgba(255,255,255,' + (alpha * 0.5) + ')');
+                        gradient.addColorStop(1, 'rgba(255,255,255,0)');
+                        ctx.fillStyle = gradient;
+                        ctx.beginPath();
+                        ctx.arc(px, py, size * 20, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        ctx.fillStyle = 'rgba(255,255,255,' + (alpha * 1.2) + ')';
+                        ctx.beginPath();
+                        ctx.arc(px, py, size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    animFrameRef.current = requestAnimationFrame(animate);
+                }
+                animFrameRef.current = requestAnimationFrame(animate);
+
+                return () => {
+                    window.removeEventListener('resize', resize);
+                    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+                };
+            }, [scrollProgress]);
+
+            return canvasRef;
+        }
+
+        // ─────────────────────────────────────
+        // GLOBAL BACKGROUND CANVAS
+        // ─────────────────────────────────────
+        function GlobalCanvas() {
+            const canvasRef = useParticleCanvas({
+                particleCount: 50,
+                maxOpacity: 0.3,
+                minOpacity: 0.03,
+                sizeRange: [0.4, 2],
+                speedRange: [0.05, 0.3],
+                connectionDistance: 100,
+                glowSize: 25,
+                driftSpeed: 0.15,
+            });
+
+            useEffect(() => {
+                const canvas = document.getElementById('global-canvas');
+                if (canvas && canvasRef.current) {
+                    canvasRef.current = canvas;
+                }
+            }, []);
+
+            return null;
+        }
+
+        // ─────────────────────────────────────
+        // WORD REVEAL COMPONENT
+        // ─────────────────────────────────────
+        function WordReveal({ text, className = '', delay = 0, wordDelay = 0.12 }) {
+            const [visibleWords, setVisibleWords] = useState(new Set());
+            const words = text.split(' ');
+
+            useEffect(() => {
+                const timeouts = [];
+                words.forEach((_, i) => {
+                    const t = setTimeout(() => {
+                        setVisibleWords(prev => new Set([...prev, i]));
+                    }, delay + i * wordDelay * 1000);
+                    timeouts.push(t);
+                });
+                return () => timeouts.forEach(clearTimeout);
+            }, [text, delay, wordDelay]);
+
+            return (
+                <span className={className}>
+                    {words.map((word, i) => (
+                        <span key={i} className={`word-reveal ${visibleWords.has(i) ? 'visible' : ''}`} style={{ transitionDelay: '0s' }}>
+                            {word}{i < words.length - 1 ? ' ' : ''}
+                        </span>
+                    ))}
+                </span>
             );
         }
 
-        function BlurText({ text, className = '', staggerMs = 100, threshold = 0.1 }) {
-            const containerRef = useRef(null);
-            const [isVisible, setIsVisible] = useState(false);
+        // ─────────────────────────────────────
+        // GLASS BADGE
+        // ─────────────────────────────────────
+        function GlassBadge({ text }) {
+            return (
+                <motion.div
+                    className="inline-block px-5 py-2 rounded-full glass-base text-sm font-inter tracking-wider text-gray-300"
+                    initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    transition={{ duration: 0.7, easing: 'spring' }}
+                    style={{ letterSpacing: '0.08em', fontSize: '0.8rem' }}
+                >
+                    {text}
+                </motion.div>
+            );
+        }
+
+        // ─────────────────────────────────────
+        // NAVIGATION
+        // ─────────────────────────────────────
+        function Navigation() {
+            const [scrolled, setScrolled] = useState(false);
 
             useEffect(() => {
-                const el = containerRef.current;
-                if (!el) return;
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            setIsVisible(true);
-                            observer.unobserve(el);
-                        }
+                const handleScroll = () => setScrolled(window.scrollY > 60);
+                window.addEventListener('scroll', handleScroll, { passive: true });
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const scrollTo = (id) => {
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            };
+
+            return (
+                <motion.nav
+                    className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass-nav py-3' : 'py-5'}`}
+                    initial={{ y: -80, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8, easing: 'spring', delay: 0.3 }}
+                >
+                    <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+                        <span className="font-instrument text-xl text-white/80 tracking-wider italic">M & N</span>
+                        <div className="hidden md:flex items-center gap-8">
+                            {[
+                                { label: 'Story', id: 'timeline' },
+                                { label: 'Memories', id: 'gallery' },
+                                { label: 'Letter', id: 'letter' },
+                                { label: 'Eternity', id: 'forever' },
+                            ].map(item => (
+                                <button
+                                    key={item.id}
+                                    onClick={() => scrollTo(item.id)}
+                                    className="text-sm font-inter text-gray-400 hover:text-white transition-colors duration-300 tracking-wider"
+                                >
+                                    {item.label}
+                                </button>
+                            ))}
+                        </div>
+                        <button
+                            onClick={() => scrollTo('hero')}
+                            className="glass-button !py-2 !px-5 !text-xs md:!text-sm"
+                        >
+                            Begin
+                        </button>
+                    </div>
+                </motion.nav>
+            );
+        }
+
+        // ─────────────────────────────────────
+        // HERO SECTION
+        // ─────────────────────────────────────
+        function HeroSection() {
+            return (
+                <section id="hero" className="section-container relative" style={{ minHeight: '100vh', paddingTop: '120px' }}>
+                    <div className="max-w-4xl mx-auto text-center relative z-10">
+                        <div className="mb-8">
+                            <GlassBadge text="For Niyayesh" />
+                        </div>
+
+                        <h1 className="font-instrument text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight mb-8 text-white font-normal">
+                            <WordReveal
+                                text="Niyayesh, you became the most beautiful chapter of my life."
+                                delay={0.5}
+                                wordDelay={0.1}
+                            />
+                        </h1>
+
+                        <motion.p
+                            className="font-barlow text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
+                            initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+                            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                            transition={{ duration: 0.9, delay: 2.5, easing: 'spring' }}
+                        >
+                            A universe built from memories, dreams, laughter, and every heartbeat we shared.
+                        </motion.p>
+
+                        <motion.div
+                            className="flex flex-col sm:flex-row gap-4 justify-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 3, easing: 'spring' }}
+                        >
+                            <button
+                                onClick={() => document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="glass-button text-base"
+                            >
+                                Begin Our Journey
+                            </button>
+                            <button
+                                onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="glass-button text-base"
+                            >
+                                Our Memories
+                            </button>
+                        </motion.div>
+                    </div>
+
+                    {/* Subtle bottom gradient */}
+                    <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-10"></div>
+                </section>
+            );
+        }
+
+        // ─────────────────────────────────────
+        // ANGEL IMAGE SECTION
+        // ─────────────────────────────────────
+        function AngelSection() {
+            const ref = useRef(null);
+            const [inView] = useInView(ref, { once: true, threshold: 0.2 });
+
+            return (
+                <section ref={ref} className="section-container" style={{ minHeight: '100vh' }}>
+                    <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                        {/* Image Frame */}
+                        <motion.div
+                            className="glass-frame animate-float-slow flex-shrink-0"
+                            initial={{ opacity: 0, scale: 0.85, filter: 'blur(10px)' }}
+                            animate={inView ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : {}}
+                            transition={{ duration: 1, easing: 'spring' }}
+                            style={{ width: '280px', height: '380px', maxWidth: '90vw' }}
+                        >
+                            <div className="w-full h-full rounded-2xl overflow-hidden bg-black/40 flex items-center justify-center relative">
+                                <img
+                                    src="ED9E654F-95B3-48C3-822E-F5920F9AC8B6.jpeg"
+                                    alt="Niyayesh"
+                                    className="w-full h-full object-cover rounded-2xl"
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.parentElement.innerHTML =
+                                            '<div class="flex items-center justify-center w-full h-full"><div class="text-center"><div class="text-7xl mb-4 opacity-40">✨</div><p class="font-instrument text-2xl text-white/50 italic">My Angel</p><p class="text-sm text-white/30 mt-2">Niyayesh</p></div></div>';
+                                    }}
+                                />
+                                {/* Glow overlay */}
+                                <div className="absolute inset-0 rounded-2xl pointer-events-none"
+                                    style={{ boxShadow: 'inset 0 0 60px rgba(255,255,255,0.04), 0 0 80px rgba(255,255,255,0.02)' }}>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Quote */}
+                        <motion.div
+                            className="flex-1 text-center lg:text-left"
+                            initial={{ opacity: 0, x: 40 }}
+                            animate={inView ? { opacity: 1, x: 0 } : {}}
+                            transition={{ duration: 0.9, delay: 0.3, easing: 'spring' }}
+                        >
+                            <p className="font-instrument text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-snug italic">
+                                If heaven ever had a face,
+                                <br />
+                                <span className="text-white/70">I think it would look</span>
+                                <br />
+                                <span className="text-white/90">a little like yours.</span>
+                            </p>
+                            <div className="mt-8 w-20 h-px bg-white/20 mx-auto lg:mx-0"></div>
+                            <p className="mt-6 font-barlow text-gray-400 text-lg">— My celestial guardian, my angel</p>
+                        </motion.div>
+                    </div>
+                </section>
+            );
+        }
+
+        // ─────────────────────────────────────
+        // LOVE STORY TIMELINE
+        // ─────────────────────────────────────
+        function TimelineSection() {
+            const timelineItems = [
+                { title: 'First Conversation', subtitle: 'Where it all began', desc: 'A single message that rippled through time, carrying the weight of a thousand unspoken futures. The universe paused — it knew something eternal had just begun.',
+                    icon: '✦' },
+                { title: 'The Beginning', subtitle: 'When souls recognized each other', desc: 'Like stars that have orbited each other for eons, our souls recognized a familiar light. The beginning was not a start, but a reunion across time.',
+                    icon: '◈' },
+                { title: 'The Moments That Stayed', subtitle: 'Echoes of laughter & silence', desc: 'In the quiet spaces between words, in the laughter that filled rooms, in the glances that spoke volumes — these are the moments that wove themselves into forever.',
+                    icon: '◇' },
+                { title: 'The Dreams We Built', subtitle: 'Architecture of tomorrow', desc: 'We sketched futures on the canvas of night skies, building castles from whispered promises and painting horizons with the colors of our shared hope.',
+                    icon: '⬡' },
+                { title: 'Today', subtitle: 'The present is a gift', desc: 'Right now, in this breath, in this heartbeat — the entire universe conspired across billions of years to bring us to this exact moment together.',
+                    icon: '●' },
+                { title: 'Forever', subtitle: 'Beyond the edges of time', desc: 'Forever is not a measurement of time. It is the depth of a love that refuses to be contained by beginnings or endings. This is our forever.',
+                    icon: '∞' },
+            ];
+
+            const ref = useRef(null);
+            const [inView] = useInView(ref, { once: true, threshold: 0.05 });
+
+            return (
+                <section id="timeline" ref={ref} className="section-container" style={{ minHeight: '100vh' }}>
+                    <div className="max-w-4xl mx-auto w-full">
+                        <motion.h2
+                            className="font-instrument text-4xl sm:text-5xl md:text-6xl text-center mb-16 text-white"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={inView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.7, easing: 'spring' }}
+                        >
+                            Our Love Story
+                        </motion.h2>
+
+                        <div className="relative">
+                            {/* Central line */}
+                            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/8 hidden md:block"></div>
+
+                            <div className="space-y-8 md:space-y-16">
+                                {timelineItems.map((item, i) => (
+                                    <motion.div
+                                        key={i}
+                                        className={`glass-card p-6 md:p-8 relative ${i % 2 === 0 ? 'md:mr-[52%]' : 'md:ml-[52%]'} md:w-[48%]`}
+                                        initial={{ opacity: 0, y: 40, filter: 'blur(6px)' }}
+                                        animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+                                        transition={{ duration: 0.7, delay: i * 0.15, easing: 'spring' }}
+                                        whileHover={{ scale: 1.02, y: -4 }}
+                                    >
+                                        {/* Timeline dot on desktop */}
+                                        <div className="hidden md:flex absolute top-8 w-3 h-3 rounded-full bg-white/30 border border-white/20"
+                                            style={{ [i % 2 === 0 ? 'right' : 'left']: '-26px', transform: 'translateX(50%)' }}>
+                                        </div>
+                                        <span className="text-2xl mb-3 block opacity-60">{item.icon}</span>
+                                        <h3 className="font-instrument text-2xl md:text-3xl text-white mb-1">{item.title}</h3>
+                                        <p className="font-barlow text-sm text-gray-400 mb-3 tracking-wider uppercase">{item.subtitle}</p>
+                                        <p className="font-inter text-gray-300 leading-relaxed text-sm md:text-base">{item.desc}</p>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // ─────────────────────────────────────
+        // VAMPIRE DIARIES INSPIRED SECTION
+        // ─────────────────────────────────────
+        function VampireDiariesSection() {
+            const canvasRef = useParticleCanvas({
+                particleCount: 100,
+                maxOpacity: 0.45,
+                minOpacity: 0.04,
+                sizeRange: [0.5, 3],
+                speedRange: [0.04, 0.35],
+                connectionDistance: 140,
+                glowSize: 35,
+                driftSpeed: 0.2,
+            });
+            const ref = useRef(null);
+            const [inView] = useInView(ref, { once: true, threshold: 0.2 });
+
+            return (
+                <section ref={ref} className="section-container relative" style={{ minHeight: '100vh' }}>
+                    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}></canvas>
+                    <div className="relative z-10 max-w-4xl mx-auto text-center">
+                        <motion.div
+                            className="glass-card p-10 md:p-16 animate-pulse-glow"
+                            initial={{ opacity: 0, scale: 0.9, filter: 'blur(12px)' }}
+                            animate={inView ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : {}}
+                            transition={{ duration: 1.2, easing: 'spring' }}
+                        >
+                            <p className="font-instrument text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-relaxed italic">
+                                Some souls
+                                <br />
+                                <span className="text-white/60">find each other</span>
+                                <br />
+                                <span className="text-white/85">in every lifetime.</span>
+                            </p>
+                            <div className="mt-10 w-16 h-px bg-white/15 mx-auto"></div>
+                            <p className="mt-6 font-barlow text-gray-400 text-base md:text-lg max-w-lg mx-auto leading-relaxed">
+                                Across oceans of time, through centuries of silence, our souls have always known the way back to one another.
+                            </p>
+                            <p className="mt-4 font-inter text-sm text-gray-500 tracking-widest uppercase">Destiny • Fate • Eternal</p>
+                        </motion.div>
+                    </div>
+                </section>
+            );
+        }
+
+        // ─────────────────────────────────────
+        // AUDIO SHOWCASE
+        // ─────────────────────────────────────
+        function AudioShowcase() {
+            const audioRef = useRef(null);
+            const [playing, setPlaying] = useState(false);
+            const [currentTime, setCurrentTime] = useState(0);
+            const [duration, setDuration] = useState(0);
+            const [progress, setProgress] = useState(0);
+            const animFrameRef = useRef(null);
+            const waveformRef = useRef(null);
+
+            useEffect(() => {
+                const audio = audioRef.current;
+                if (!audio) return;
+
+                const handleLoaded = () => setDuration(audio.duration || 0);
+                const handleTimeUpdate = () => {
+                    setCurrentTime(audio.currentTime);
+                    if (audio.duration) setProgress((audio.currentTime / audio.duration) * 100);
+                };
+                const handleEnded = () => { setPlaying(false);
+                    setProgress(0); };
+
+                audio.addEventListener('loadedmetadata', handleLoaded);
+                audio.addEventListener('timeupdate', handleTimeUpdate);
+                audio.addEventListener('ended', handleEnded);
+
+                return () => {
+                    audio.removeEventListener('loadedmetadata', handleLoaded);
+                    audio.removeEventListener('timeupdate', handleTimeUpdate);
+                    audio.removeEventListener('ended', handleEnded);
+                };
+            }, []);
+
+            // Waveform animation
+            useEffect(() => {
+                if (!waveformRef.current) return;
+                const bars = waveformRef.current.querySelectorAll('.wave-bar');
+                function animateWave() {
+                    bars.forEach((bar, i) => {
+                        const h = playing ?
+                            8 + Math.sin(Date.now() * 0.005 + i * 0.7) * 20 + Math.random() * (playing ? 25 : 6) :
+                            4 + Math.sin(Date.now() * 0.002 + i) * 8;
+                        bar.style.height = h + 'px';
                     });
-                }, { threshold });
-                observer.observe(el);
-                return () => observer.disconnect();
-            }, [threshold]);
-
-                const words = useMemo(() => text.split(' '), [text]);
-
-                return ( <
-                    p ref = { containerRef }
-                    className = { className }
-                    style = {
-                        { display: 'flex', flexWrap: 'wrap', justifyContent: 'center', rowGap: '0.1em' } } > {
-                        words.map((word, i) => ( <
-                            motion.span key = { i }
-                            initial = {
-                                { filter: 'blur(10px)', opacity: 0, y: 50 } }
-                            animate = {
-                                isVisible ? {
-                                    filter: ['blur(10px)', 'blur(5px)', 'blur(0px)'],
-                                    opacity: [0, 0.5, 1],
-                                    y: [50, -5, 0],
-                                } : { filter: 'blur(10px)', opacity: 0, y: 50 }
-                            }
-                            transition = {
-                                {
-                                    duration: 0.7,
-                                    times: [0, 0.5, 1],
-                                    ease: 'easeOut',
-                                    delay: (i * staggerMs) / 1000,
-                                }
-                            }
-                            style = {
-                                { display: 'inline-block', marginRight: '0.28em' } } >
-                                { word } <
-                                /motion.span>
-                            ))
-                        } <
-                        /p>
-                    );
+                    animFrameRef.current = requestAnimationFrame(animateWave);
                 }
+                animFrameRef.current = requestAnimationFrame(animateWave);
+                return () => { if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current); };
+            }, [playing]);
 
-                function AudioPlayer({ src, title, artist, onPlay, onPause }) {
-                    const audioRef = useRef(null);
-                    const [isPlaying, setIsPlaying] = useState(false);
-                    const [currentTime, setCurrentTime] = useState(0);
-                    const [duration, setDuration] = useState(0);
-                    const [volume, setVolume] = useState(0.7);
-                    const [isLiked, setIsLiked] = useState(true);
-                    const animRef = useRef(null);
+            const togglePlay = () => {
+                const audio = audioRef.current;
+                if (!audio) return;
+                if (playing) {
+                    audio.pause();
+                } else {
+                    audio.play().catch(() => {
+                        // If audio file not available, simulate for visual experience
+                        setPlaying(true);
+                        setTimeout(() => setPlaying(false), 3000);
+                    });
+                }
+                setPlaying(!playing);
+            };
 
-                    useEffect(() => {
-                        const audio = audioRef.current;
-                        if (!audio) return;
+            const formatTime = (s) => {
+                if (!s || isNaN(s)) return '0:00';
+                const m = Math.floor(s / 60);
+                const sec = Math.floor(s % 60);
+                return `${m}:${sec.toString().padStart(2, '0')}`;
+            };
 
-                        function onLoaded() { setDuration(audio.duration || 0); }
+            const seek = (e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const pct = x / rect.width;
+                const audio = audioRef.current;
+                if (audio && audio.duration) {
+                    audio.currentTime = pct * audio.duration;
+                    setProgress(pct * 100);
+                }
+            };
 
-                        function onTime() { setCurrentTime(audio.currentTime || 0); }
+            const ref = useRef(null);
+            const [inView] = useInView(ref, { once: true, threshold: 0.2 });
 
-                        function onEnd() { setIsPlaying(false);
-                            setCurrentTime(0);
-                            audio.currentTime = 0; if (onPause) onPause(); }
-                        audio.addEventListener('loadedmetadata', onLoaded);
-                        audio.addEventListener('timeupdate', onTime);
-                        audio.addEventListener('ended', onEnd);
-                        return () => {
-                            audio.removeEventListener('loadedmetadata', onLoaded);
-                            audio.removeEventListener('timeupdate', onTime);
-                            audio.removeEventListener('ended', onEnd);
-                        };
-                    }, [src, onPause]);
+            return (
+                <section ref={ref} className="section-container" style={{ minHeight: '70vh' }}>
+                    <motion.div
+                        className="glass-card p-8 md:p-12 max-w-lg mx-auto w-full"
+                        initial={{ opacity: 0, y: 50, filter: 'blur(8px)' }}
+                        animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+                        transition={{ duration: 0.9, easing: 'spring' }}
+                    >
+                        {/* Album art style area */}
+                        <div className="w-full aspect-square max-w-[240px] mx-auto mb-8 glass-base rounded-2xl flex items-center justify-center relative overflow-hidden">
+                            <div className="text-center">
+                                <div className="text-6xl mb-3 opacity-30">♫</div>
+                                <div ref={waveformRef} className="flex items-end justify-center gap-1 h-16">
+                                    {Array.from({ length: 24 }).map((_, i) => (
+                                        <div key={i} className="wave-bar w-1 bg-white/40 rounded-full transition-all duration-150"
+                                            style={{ height: '6px', minHeight: '3px' }}>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="absolute inset-0 rounded-2xl pointer-events-none"
+                                style={{ boxShadow: playing ? 'inset 0 0 80px rgba(255,255,255,0.06)' : 'inset 0 0 30px rgba(255,255,255,0.02)' }}>
+                            </div>
+                        </div>
 
-                    useEffect(() => {
-                        if (isPlaying) {
-                            function tick() {
-                                if (audioRef.current) setCurrentTime(audioRef.current.currentTime);
-                                animRef.current = requestAnimationFrame(tick);
-                            }
-                            animRef.current = requestAnimationFrame(tick);
-                        } else {
-                            if (animRef.current) cancelAnimationFrame(animRef.current);
-                        }
-                        return () => { if (animRef.current) cancelAnimationFrame(animRef.current); };
-                    }, [isPlaying]);
+                        {/* Track info */}
+                        <h3 className="font-instrument text-2xl text-center text-white mb-1">Sweater Weather</h3>
+                        <p className="font-barlow text-sm text-center text-gray-400 mb-6">The Neighbourhood</p>
 
-                    const togglePlay = useCallback(() => {
-                        const audio = audioRef.current;
-                        if (!audio) return;
-                        if (isPlaying) {
-                            audio.pause();
-                            setIsPlaying(false);
-                            if (onPause) onPause();
-                        } else {
-                            audio.play().then(() => {
-                                setIsPlaying(true);
-                                if (onPlay) onPlay();
-                            }).catch(() => {});
-                        }
-                    }, [isPlaying, onPlay, onPause]);
+                        {/* Progress bar */}
+                        <div className="w-full h-1 bg-white/10 rounded-full mb-3 cursor-pointer relative group" onClick={seek}>
+                            <div className="h-full bg-white/50 rounded-full transition-all duration-200 relative"
+                                style={{ width: `${progress}%` }}>
+                                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"></div>
+                            </div>
+                        </div>
 
-                    const seek = useCallback((e) => {
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const ratio = x / rect.width;
-                        if (audioRef.current && duration) {
-                            audioRef.current.currentTime = ratio * duration;
-                            setCurrentTime(ratio * duration);
-                        }
-                    }, [duration]);
+                        {/* Time */}
+                        <div className="flex justify-between text-xs font-inter text-gray-500 mb-6">
+                            <span>{formatTime(currentTime)}</span>
+                            <span>{formatTime(duration)}</span>
+                        </div>
 
-                    const formatTime = (t) => {
-                        if (!t || isNaN(t)) return '0:00';
-                        const m = Math.floor(t / 60);
-                        const s = Math.floor(t % 60);
-                        return `${m}:${s.toString().padStart(2, '0')}`;
-                    };
+                        {/* Play button */}
+                        <div className="flex justify-center">
+                            <button
+                                onClick={togglePlay}
+                                className="w-16 h-16 rounded-full glass-button !p-0 flex items-center justify-center text-2xl transition-all duration-300"
+                                style={{ fontSize: '1.5rem' }}
+                            >
+                                {playing ? '⏸' : '▶'}
+                            </button>
+                        </div>
+                    </motion.div>
 
-                    const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
+                    {/* Hidden audio element */}
+                    <audio ref={audioRef} preload="metadata" style={{ display: 'none' }}>
+                        <source src="sweater-weather.mp3" type="audio/mpeg" />
+                    </audio>
+                </section>
+            );
+        }
 
-                    return ( <
-                        div className = "liquid-glass-strong rounded-[1.5rem] p-5 sm:p-6 w-full max-w-[340px] sm:max-w-[380px] shadow-2xl" >
-                        <
-                        audio ref = { audioRef }
-                        src = { src }
-                        preload = "auto"
-                        crossOrigin = "anonymous" / >
-                        <
-                        div className = "flex items-center gap-4 mb-4" >
-                        <
-                        div className = "w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-red-900/60 to-rose-700/40 flex items-center justify-center shadow-lg flex-shrink-0" >
-                        <
-                        svg width = "22"
-                        height = "22"
-                        viewBox = "0 0 24 24"
-                        fill = "white"
-                        className = "sm:w-6 sm:h-6" >
-                        <
-                        path d = "M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" / >
-                        <
-                        /svg> <
-                        /div> <
-                        div className = "flex-1 min-w-0" >
-                        <
-                        p className = "text-white font-body font-medium text-sm sm:text-base truncate" > { title } < /p> <
-                        p className = "text-white/60 font-body text-xs sm:text-sm truncate" > { artist } < /p> <
-                        /div> <
-                        button onClick = {
-                            () => setIsLiked(!isLiked) }
-                        className = "flex-shrink-0 transition-transform hover:scale-110 active:scale-95" >
-                        <
-                        svg width = "18"
-                        height = "18"
-                        viewBox = "0 0 24 24"
-                        fill = { isLiked ? '#f87171' : 'none' }
-                        stroke = { isLiked ? '#f87171' : 'rgba(255,255,255,0.7)' }
-                        strokeWidth = "2"
-                        className = "sm:w-5 sm:h-5" >
-                        <
-                        path d = "M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /
+        // ─────────────────────────────────────
+        // PORTAL SECTION
+        // ─────────────────────────────────────
+        function PortalSection() {
+            const [scrollProgress, setScrollProgress] = useState(0);
+            const sectionRef = useRef(null);
+            const canvasRef = usePortalCanvas(scrollProgress);
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    if (!sectionRef.current) return;
+                    const rect = sectionRef.current.getBoundingClientRect();
+                    const windowH = window.innerHeight;
+                    const progress = Math.max(0, Math.min(1, (windowH - rect.top) / (windowH + rect.height)));
+                    setScrollProgress(progress);
+                };
+                window.addEventListener('scroll', handleScroll, { passive: true });
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const ref = useRef(null);
+            const [inView] = useInView(ref, { once: true, threshold: 0.2 });
+
+            return (
+                <section ref={sectionRef} className="section-container relative overflow-hidden" style={{ minHeight: '100vh' }}>
+                    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}></canvas>
+                    <div ref={ref} className="relative z-10 text-center max-w-3xl mx-auto">
+                        <motion.h2
+                            className="font-instrument text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight"
+                            initial={{ opacity: 0, scale: 0.8, filter: 'blur(16px)' }}
+                            animate={inView ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : {}}
+                            transition={{ duration: 1.3, easing: 'spring' }}
                         >
-                        <
-                        /svg> <
-                        /button> <
-                        /div>
-
-                        <
-                        div onClick = { seek }
-                        className = "w-full h-2 bg-white/15 rounded-full cursor-pointer mb-3 relative group" >
-                        <
-                        div className = "h-full rounded-full bg-gradient-to-r from-red-400/80 to-rose-300/60 transition-all duration-100"
-                        style = {
-                            { width: `${progress}%` } }
-                        /> <
-                        div className = "absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
-                        style = {
-                            { left: `calc(${progress}% - 8px)` } }
-                        /> <
-                        /div>
-
-                        <
-                        div className = "flex items-center justify-between text-[10px] sm:text-xs text-white/50 font-body" >
-                        <
-                        span > { formatTime(currentTime) } < /span> <
-                        span > -{ formatTime(duration - currentTime) } < /span> <
-                        /div>
-
-                        <
-                        div className = "flex items-center gap-3 mt-4" >
-                        <
-                        button className = "flex-1 liquid-glass rounded-full py-2.5 text-sm font-medium text-white hover:scale-[1.03] active:scale-95 transition-transform font-body" >
-                        Prev <
-                        /button> <
-                        button onClick = { togglePlay }
-                        className = "w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-black flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-transform flex-shrink-0" >
-                        {
-                            isPlaying ? (
-                                <
-                                svg width = "20"
-                                height = "20"
-                                viewBox = "0 0 24 24"
-                                fill = "currentColor"
-                                className = "sm:w-6 sm:h-6" >
-                                <
-                                rect x = "6"
-                                y = "4"
-                                width = "4"
-                                height = "16"
-                                rx = "1" / >
-                                <
-                                rect x = "14"
-                                y = "4"
-                                width = "4"
-                                height = "16"
-                                rx = "1" / >
-                                <
-                                /svg>
-                            ) : (
-                                <
-                                svg width = "20"
-                                height = "20"
-                                viewBox = "0 0 24 24"
-                                fill = "currentColor"
-                                className = "sm:w-6 sm:h-6 ml-0.5" >
-                                <
-                                polygon points = "6,4 20,12 6,20" / >
-                                <
-                                /svg>
-                            )
-                        } <
-                        /button> <
-                        button className = "flex-1 liquid-glass rounded-full py-2.5 text-sm font-medium text-white hover:scale-[1.03] active:scale-95 transition-transform font-body" >
-                        Next <
-                        /button> <
-                        /div> <
-                        /div>
-                    );
-                }
-
-                function AngelPhoto({ src, className = '' }) {
-                    return ( <
-                        div className = { `relative inline-block ${className}` } >
-                        <
-                        div className = "liquid-glass-strong rounded-[2rem] p-2 sm:p-3 shadow-2xl animate-pulse-glow" >
-                        <
-                        div className = "rounded-[1.5rem] overflow-hidden relative vampire-border" >
-                        <
-                        img src = { src }
-                        alt = "Niyayesh"
-                        className = "w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover object-center rounded-[1.5rem] block"
-                        loading = "eager"
-                        crossOrigin = "anonymous"
-                        onError = {
-                            (e) => {
-                                e.target.style.display = 'none';
-                                e.target.parentElement.innerHTML =
-                                    '<div class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-[1.5rem] bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"><span class="text-white/40 font-heading italic text-2xl">Niyayesh</span></div>';
-                            }
-                        }
-                        /> <
-                        /div> <
-                        /div> <
-                        div className = "absolute -inset-3 sm:-inset-4 rounded-[2.5rem] bg-gradient-to-br from-red-400/8 via-transparent to-rose-300/8 blur-xl pointer-events-none" /
+                            Every path
+                            <br />
+                            <span className="text-white/60">leads back</span>
+                            <br />
+                            <span className="text-white/85">to you.</span>
+                        </motion.h2>
+                        <motion.p
+                            className="mt-8 font-barlow text-gray-400 text-lg max-w-md mx-auto"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={inView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.8, delay: 0.6 }}
                         >
-                        <
-                        /div> <
-                        /div>
-                    );
+                            No matter where I wander, the compass of my heart always points toward you.
+                        </motion.p>
+                    </div>
+                </section>
+            );
+        }
+
+        // ─────────────────────────────────────
+        // MEMORY GALLERY
+        // ─────────────────────────────────────
+        function MemoryGallery() {
+            const memorySlots = Array.from({ length: 9 }, (_, i) => ({
+                id: i,
+                title: `Memory ${i + 1}`,
+                desc: 'A moment frozen in the amber of forever.',
+            }));
+
+            const ref = useRef(null);
+            const [inView] = useInView(ref, { once: true, threshold: 0.05 });
+
+            return (
+                <section id="gallery" ref={ref} className="section-container" style={{ minHeight: '100vh' }}>
+                    <div className="max-w-6xl mx-auto w-full">
+                        <motion.h2
+                            className="font-instrument text-4xl sm:text-5xl md:text-6xl text-center mb-16 text-white"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={inView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.7, easing: 'spring' }}
+                        >
+                            Our Memory Gallery
+                        </motion.h2>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                            {memorySlots.map((slot, i) => (
+                                <motion.div
+                                    key={slot.id}
+                                    className="glass-card p-4 aspect-[4/5] flex flex-col items-center justify-center cursor-pointer group relative overflow-hidden"
+                                    initial={{ opacity: 0, y: 50, filter: 'blur(6px)' }}
+                                    animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+                                    transition={{ duration: 0.6, delay: i * 0.08, easing: 'spring' }}
+                                    whileHover={{ scale: 1.03, y: -6 }}
+                                >
+                                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none"></div>
+                                    <div className="text-5xl mb-4 opacity-20 transition-opacity group-hover:opacity-35">✦</div>
+                                    <p className="font-instrument text-xl text-white/60 text-center group-hover:text-white/80 transition-colors">{slot.title}</p>
+                                    <p className="font-inter text-xs text-gray-500 mt-2 text-center">{slot.desc}</p>
+                                    {/* Glass reflection line */}
+                                    <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        // ─────────────────────────────────────
+        // LETTER SECTION
+        // ─────────────────────────────────────
+        function LetterSection() {
+            const ref = useRef(null);
+            const [inView] = useInView(ref, { once: true, threshold: 0.1 });
+
+            return (
+                <section id="letter" ref={ref} className="section-container" style={{ minHeight: '100vh' }}>
+                    <motion.div
+                        className="glass-card p-8 sm:p-12 md:p-16 max-w-3xl mx-auto w-full"
+                        initial={{ opacity: 0, y: 60, filter: 'blur(10px)' }}
+                        animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+                        transition={{ duration: 1, easing: 'spring' }}
+                    >
+                        <p className="font-instrument text-3xl sm:text-4xl text-white mb-8 italic">My Dearest Niyayesh,</p>
+
+                        <div className="space-y-6 font-inter text-gray-300 leading-relaxed text-sm sm:text-base">
+                            <p>
+                                There are moments in life that divide time into before and after. Meeting you was that moment for me. Before you, the world was in grayscale — beautiful, perhaps, but lacking the vibrant warmth that only your presence brings.
+                            </p>
+                            <p>
+                                I have spent countless nights trying to find the words that could possibly hold the weight of what I feel for you. But language, for all its beauty, falls short. How do you describe the way someone's laughter can feel like sunlight breaking through storm clouds? How do you capture the peace that settles into your soul when you realize you've found your home in another person?
+                            </p>
+                            <p>
+                                You are the quiet in my chaos, the steady rhythm in my hurried days. When I look at you, I see not just the person I love, but the entire universe reflected in your eyes — every star, every galaxy, every infinite possibility condensed into one beautiful soul.
+                            </p>
+                            <p>
+                                Niyayesh, you taught me that love isn't just a feeling. It's a choice made every morning, a promise renewed with every breath, a journey without a final destination. And I choose you — not because you're perfect, but because with you, I discover new reasons to fall in love every single day.
+                            </p>
+                            <p>
+                                This website is a small attempt to show you what my heart holds. It's a universe I built for you, from memories and dreams and every heartbeat we've shared. It's my way of saying: you are not just a chapter in my story — you are the entire book, the library, the very language in which my life is written.
+                            </p>
+                            <p>
+                                Forever is not long enough with you. But it's a beautiful place to start.
+                            </p>
+                        </div>
+
+                        <div className="mt-10 pt-8 border-t border-white/10">
+                            <p className="font-instrument text-2xl text-white italic">With all my love,</p>
+                            <p className="font-instrument text-3xl text-white mt-2">Mobin</p>
+                        </div>
+                    </motion.div>
+                </section>
+            );
+        }
+
+        // ─────────────────────────────────────
+        // FOREVER COUNTER
+        // ─────────────────────────────────────
+        function ForeverCounter() {
+            const startDate = useMemo(() => new Date('2024-01-01T00:00:00'), []);
+            const [elapsed, setElapsed] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+            useEffect(() => {
+                function update() {
+                    const now = new Date();
+                    const diff = now - startDate;
+                    const totalSeconds = Math.floor(diff / 1000);
+                    const days = Math.floor(totalSeconds / 86400);
+                    const hours = Math.floor((totalSeconds % 86400) / 3600);
+                    const minutes = Math.floor((totalSeconds % 3600) / 60);
+                    const seconds = totalSeconds % 60;
+                    setElapsed({ days, hours, minutes, seconds });
                 }
+                update();
+                const interval = setInterval(update, 1000);
+                return () => clearInterval(interval);
+            }, [startDate]);
 
-                function Section({ children, className = '', id = '', style = {} }) {
-                    return ( <
-                        section id = { id }
-                        className = { `relative min-h-screen w-full overflow-hidden ${className}` }
-                        style = { style } > { children } <
-                        /section>
-                    );
+            const ref = useRef(null);
+            const [inView] = useInView(ref, { once: true, threshold: 0.2 });
+
+            const counterData = [
+                { label: 'Days', value: elapsed.days },
+                { label: 'Hours', value: elapsed.hours },
+                { label: 'Minutes', value: elapsed.minutes },
+                { label: 'Seconds', value: elapsed.seconds },
+            ];
+
+            return (
+                <section id="forever" ref={ref} className="section-container" style={{ minHeight: '70vh' }}>
+                    <motion.h2
+                        className="font-instrument text-3xl sm:text-4xl md:text-5xl text-center mb-12 text-white"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.7, easing: 'spring' }}
+                    >
+                        Together Since
+                    </motion.h2>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto w-full">
+                        {counterData.map((item, i) => (
+                            <motion.div
+                                key={item.label}
+                                className="glass-card p-6 md:p-8 text-center"
+                                initial={{ opacity: 0, scale: 0.8, filter: 'blur(6px)' }}
+                                animate={inView ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : {}}
+                                transition={{ duration: 0.6, delay: i * 0.12, easing: 'spring' }}
+                            >
+                                <span className="font-instrument text-4xl sm:text-5xl md:text-6xl text-white block tabular-nums">
+                                    {String(item.value).padStart(2, '0')}
+                                </span>
+                                <span className="font-barlow text-xs md:text-sm text-gray-400 mt-2 block uppercase tracking-widest">
+                                    {item.label}
+                                </span>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    <motion.p
+                        className="mt-10 font-instrument text-xl text-gray-400 italic text-center"
+                        initial={{ opacity: 0 }}
+                        animate={inView ? { opacity: 1 } : {}}
+                        transition={{ duration: 0.8, delay: 0.8 }}
+                    >
+                        And counting, endlessly...
+                    </motion.p>
+                </section>
+            );
+        }
+
+        // ─────────────────────────────────────
+        // HEAVEN SECTION
+        // ─────────────────────────────────────
+        function HeavenSection() {
+            const canvasRef = useParticleCanvas({
+                particleCount: 140,
+                maxOpacity: 0.5,
+                minOpacity: 0.06,
+                sizeRange: [0.6, 3.5],
+                speedRange: [0.03, 0.25],
+                connectionDistance: 160,
+                glowSize: 40,
+                driftSpeed: 0.12,
+            });
+            const ref = useRef(null);
+            const [inView] = useInView(ref, { once: true, threshold: 0.15 });
+
+            return (
+                <section ref={ref} className="section-container relative" style={{ minHeight: '100vh' }}>
+                    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}></canvas>
+                    <div className="relative z-10 max-w-4xl mx-auto text-center">
+                        <motion.div
+                            className="glass-card p-10 md:p-20"
+                            initial={{ opacity: 0, scale: 0.85, filter: 'blur(20px)' }}
+                            animate={inView ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : {}}
+                            transition={{ duration: 1.5, easing: 'spring' }}
+                            style={{
+                                background: 'rgba(255,255,255,0.015)',
+                                border: '1px solid rgba(255,255,255,0.08)',
+                            }}
+                        >
+                            <p className="font-instrument text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight">
+                                You are
+                                <br />
+                                <span className="text-white/55">my favorite place</span>
+                                <br />
+                                <span className="text-white/80">in the universe.</span>
+                            </p>
+                            <div className="mt-12 flex justify-center">
+                                <div className="w-24 h-24 rounded-full glass-base flex items-center justify-center animate-pulse-glow">
+                                    <span className="text-3xl">✧</span>
+                                </div>
+                            </div>
+                            <p className="mt-8 font-barlow text-gray-400 text-base max-w-md mx-auto leading-relaxed">
+                                In a cosmos of infinite wonders, you remain the most breathtaking discovery my soul has ever made.
+                            </p>
+                        </motion.div>
+                    </div>
+                </section>
+            );
+        }
+
+        // ─────────────────────────────────────
+        // FINAL SECTION
+        // ─────────────────────────────────────
+        function FinalSection() {
+            const canvasRef = useParticleCanvas({
+                particleCount: 60,
+                maxOpacity: 0.35,
+                minOpacity: 0.03,
+                sizeRange: [0.4, 2.2],
+                speedRange: [0.02, 0.2],
+                connectionDistance: 90,
+                glowSize: 30,
+                driftSpeed: 0.08,
+            });
+            const [heartVisible, setHeartVisible] = useState(false);
+            const ref = useRef(null);
+            const [inView] = useInView(ref, { once: true, threshold: 0.3 });
+
+            useEffect(() => {
+                if (inView) {
+                    const t = setTimeout(() => setHeartVisible(true), 1500);
+                    return () => clearTimeout(t);
                 }
+            }, [inView]);
 
-                function App() {
-                    const [audioPlaying, setAudioPlaying] = useState(false);
-                    const [showScrollHint, setShowScrollHint] = useState(true);
+            return (
+                <section ref={ref} className="section-container relative" style={{ minHeight: '100vh' }}>
+                    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}></canvas>
+                    <div className="relative z-10 text-center max-w-3xl mx-auto">
+                        <motion.p
+                            className="font-instrument text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-relaxed"
+                            initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
+                            animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+                            transition={{ duration: 1.2, easing: 'spring' }}
+                        >
+                            Out of billions of people,
+                            <br />
+                            <span className="text-white/70">I would still</span>
+                            <br />
+                            <span className="text-white/90">choose you.</span>
+                        </motion.p>
 
-                    const heroVideo =
-                        "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_080021_d598092b-c4c2-4e53-8e46-94cf9064cd50.mp4";
-                    const secondVideo =
-                        "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_094631_d30ab262-45ee-4b7d-99f3-5d5848c8ef13.mp4";
-                    const thirdVideo =
-                        "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_083109_283f3553-e28f-428b-a723-d639c617eb2b.mp4";
-                    const angelImage =
-                        "https://raw.githubusercontent.com/wir1per/forniya/main/img/ED9E654F-95B3-48C3-822E-F5920F9AC8B6.jpeg";
-                    const songUrl =
-                        "https://raw.githubusercontent.com/wir1per/forniya/main/songs/The%20Neighbourhood%20-%20Sweater%20Weather%20(320).mp3";
+                        <motion.p
+                            className="mt-10 font-instrument text-2xl md:text-3xl text-white/60 italic"
+                            initial={{ opacity: 0 }}
+                            animate={inView ? { opacity: 1 } : {}}
+                            transition={{ duration: 0.8, delay: 0.8 }}
+                        >
+                            — Mobin
+                        </motion.p>
 
-                    useEffect(() => {
-                        const timer = setTimeout(() => setShowScrollHint(false), 8000);
-                        return () => clearTimeout(timer);
-                    }, []);
+                        {/* Glowing heart */}
+                        <motion.div
+                            className="mt-12 flex justify-center"
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={heartVisible ? { opacity: 1, scale: 1 } : {}}
+                            transition={{ duration: 1, easing: 'spring', delay: 0.3 }}
+                        >
+                            <div className="animate-heart-beat text-6xl md:text-7xl select-none"
+                                style={{
+                                    filter: 'drop-shadow(0 0 30px rgba(255,255,255,0.3))',
+                                }}
+                            >
+                                ♥
+                            </div>
+                        </motion.div>
 
-                    useEffect(() => {
-                        const origError = console.error;
-                        console.error = function(...args) {
-                            const msg = args.join(' ');
-                            if (msg.includes('key') && msg.includes('list')) return;
-                            if (msg.includes('Framer')) return;
-                            origError.apply(console, args);
-                        };
-                        return () => { console.error = origError; };
-                    }, []);
+                        <motion.p
+                            className="mt-16 font-inter text-xs text-gray-500 tracking-widest uppercase"
+                            initial={{ opacity: 0 }}
+                            animate={heartVisible ? { opacity: 0.6 } : {}}
+                            transition={{ duration: 0.6, delay: 2 }}
+                        >
+                            A universe crafted with love • For Niyayesh • Forever
+                        </motion.p>
+                    </div>
+                </section>
+            );
+        }
 
-                    return ( <
-                        div className = "relative bg-black text-white font-body" >
-                        { /* ──────── HERO SECTION ──────── */ } <
-                        Section id = "hero"
-                        className = "flex flex-col items-center justify-center" >
-                        <
-                        FadingVideo src = { heroVideo }
-                        className = "absolute left-1/2 top-0 -translate-x-1/2 z-0"
-                        style = {
-                            { width: '120%', height: '120%', objectFit: 'cover', objectPosition: 'top' } }
-                        widthScale = { 1.2 }
-                        heightScale = { 1.2 }
-                        /> <
-                        div className = "relative z-10 flex flex-col items-center justify-center flex-1 w-full px-4 sm:px-6 pt-20 sm:pt-24 pb-12" >
-                        <
-                        motion.div initial = {
-                            { filter: 'blur(10px)', opacity: 0, y: 20 } }
-                        animate = {
-                            { filter: 'blur(0px)', opacity: 1, y: 0 } }
-                        transition = {
-                            { duration: 0.9, ease: 'easeOut', delay: 0.2 } }
-                        className = "mb-6 sm:mb-8" >
-                        <
-                        AngelPhoto src = { angelImage }
-                        className = "animate-float" / >
-                        <
-                        /motion.div>
+        // ─────────────────────────────────────
+        // MAIN APP
+        // ─────────────────────────────────────
+        function App() {
+            return (
+                <div className="relative bg-black text-white min-h-screen">
+                    <GlobalCanvas />
+                    <Navigation />
+                    <HeroSection />
+                    <AngelSection />
+                    <TimelineSection />
+                    <VampireDiariesSection />
+                    <AudioShowcase />
+                    <PortalSection />
+                    <MemoryGallery />
+                    <LetterSection />
+                    <ForeverCounter />
+                    <HeavenSection />
+                    <FinalSection />
 
-                        <
-                        motion.div initial = {
-                            { filter: 'blur(10px)', opacity: 0, y: 20 } }
-                        animate = {
-                            { filter: 'blur(0px)', opacity: 1, y: 0 } }
-                        transition = {
-                            { duration: 0.9, ease: 'easeOut', delay: 0.5 } }
-                        className = "liquid-glass rounded-full px-4 py-1.5 mb-5 sm:mb-6 inline-flex items-center gap-2" >
-                        <
-                        span className = "bg-white text-black rounded-full px-3 py-0.5 text-[10px] sm:text-xs font-semibold font-body" >
-                        ✦
-                        <
-                        /span> <
-                        span className = "text-white/85 text-xs sm:text-sm font-body pr-2" > For My Eternal Love < /span> <
-                        /motion.div>
+                    {/* Footer */}
+                    <footer className="py-12 text-center relative z-10">
+                        <div className="max-w-4xl mx-auto px-6">
+                            <div className="w-full h-px bg-white/5 mb-8"></div>
+                            <p className="font-instrument text-lg text-white/40 italic">Mobin & Niyayesh</p>
+                            <p className="font-inter text-xs text-gray-600 mt-2">A love story written across the stars</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        }
 
-                        <
-                        BlurText text = "Niyayesh You Are My Angel"
-                        className = "text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-heading italic text-white leading-[0.9] max-w-3xl tracking-[-3px] mb-4 sm:mb-6"
-                        staggerMs = { 90 }
-                        threshold = { 0.05 }
-                        />
+        // ─────────────────────────────────────
+        // RENDER
+        // ─────────────────────────────────────
+        const rootElement = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
 
-                        <
-                        motion.p initial = {
-                            { filter: 'blur(8px)', opacity: 0, y: 15 } }
-                        animate = {
-                            { filter: 'blur(0px)', opacity: 1, y: 0 } }
-                        transition = {
-                            { duration: 0.8, ease: 'easeOut', delay: 1.0 } }
-                        className = "text-sm sm:text-base md:text-lg text-white/70 max-w-xl text-center font-body font-light leading-relaxed px-2" >
-                        Every star in the universe led me to you.From this life into eternity, my heart beats only for you. <
-                        /motion.p>
-
-                        <
-                        motion.div initial = {
-                            { filter: 'blur(8px)', opacity: 0, y: 15 } }
-                        animate = {
-                            { filter: 'blur(0px)', opacity: 1, y: 0 } }
-                        transition = {
-                            { duration: 0.8, ease: 'easeOut', delay: 1.3 } }
-                        className = "flex flex-wrap items-center justify-center gap-4 mt-6 sm:mt-8" >
-                        <
-                        a href = "#music"
-                        className = "liquid-glass-strong rounded-full px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-medium text-white hover:scale-[1.04] active:scale-95 transition-transform flex items-center gap-2 font-body" >
-                        <
-                        svg width = "18"
-                        height = "18"
-                        viewBox = "0 0 24 24"
-                        fill = "none"
-                        stroke = "currentColor"
-                        strokeWidth = "2"
-                        className = "sm:w-5 sm:h-5" >
-                        <
-                        polygon points = "6,4 20,12 6,20" / >
-                        <
-                        /svg>
-                        Play Our Song <
-                        /a> <
-                        a href = "#eternal"
-                        className = "liquid-glass rounded-full px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base font-medium text-white/90 hover:scale-[1.04] active:scale-95 transition-transform font-body" >
-                        Always & amp; Forever
-                        <
-                        /a> <
-                        /motion.div>
-
-                        <
-                        motion.div initial = {
-                            { opacity: 0 } }
-                        animate = {
-                            { opacity: 1 } }
-                        transition = {
-                            { delay: 1.8, duration: 0.7 } }
-                        className = "flex items-stretch gap-4 mt-8 sm:mt-10 flex-wrap justify-center" >
-                        <
-                        div className = "liquid-glass rounded-[1.25rem] p-4 sm:p-5 w-[160px] sm:w-[200px] text-center" >
-                        <
-                        p className = "font-heading italic text-white text-3xl sm:text-4xl tracking-[-1px] leading-none" > ∞ <
-                        /p> <
-                        p className = "text-xs text-white/60 font-body font-light mt-2" > Eternal Love < /p> <
-                        /div> <
-                        div className = "liquid-glass rounded-[1.25rem] p-4 sm:p-5 w-[160px] sm:w-[200px] text-center" >
-                        <
-                        p className = "font-heading italic text-white text-3xl sm:text-4xl tracking-[-1px] leading-none" > 1 & amp;Only < /p> <
-                            p className = "text-xs text-white/60 font-body font-light mt-2" > My Soulmate < /p> <
-                            /div> <
-                            /motion.div> <
-                            /div>
-
-                            { /* Scroll indicator */ } {
-                                showScrollHint && ( <
-                                    motion.div initial = {
-                                        { opacity: 0 } }
-                                    animate = {
-                                        { opacity: 1 } }
-                                    transition = {
-                                        { delay: 2.2 } }
-                                    className = "absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none" >
-                                    <
-                                    span className = "text-white/50 text-[10px] sm:text-xs font-body tracking-widest uppercase" > Scroll < /span> <
-                                    svg width = "16"
-                                    height = "16"
-                                    viewBox = "0 0 24 24"
-                                    fill = "none"
-                                    stroke = "white"
-                                    strokeWidth = "1.5"
-                                    className = "animate-bounce opacity-50" >
-                                    <
-                                    path d = "M12 5v14M5 12l7 7 7-7" / >
-                                    <
-                                    /svg> <
-                                    /motion.div>
-                                )
-                            } <
-                            /Section>
-
-                            { /* ──────── LOVE LETTER SECTION ──────── */ } <
-                            Section id = "love-letter"
-                            className = "flex flex-col items-center justify-center" >
-                            <
-                            FadingVideo src = { secondVideo }
-                            className = "absolute inset-0 w-full h-full object-cover z-0" / >
-                            <
-                            div className = "relative z-10 flex flex-col items-center justify-center flex-1 w-full px-4 sm:px-6 py-20" >
-                            <
-                            motion.div initial = {
-                                { filter: 'blur(10px)', opacity: 0, y: 30 } }
-                            whileInView = {
-                                { filter: 'blur(0px)', opacity: 1, y: 0 } }
-                            viewport = {
-                                { once: true, margin: '-100px' } }
-                            transition = {
-                                { duration: 0.8, ease: 'easeOut' } }
-                            className = "liquid-glass rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-10 md:p-14 max-w-2xl w-full text-center shadow-2xl" >
-                            <
-                            p className = "text-white/70 text-xs sm:text-sm font-body tracking-widest uppercase mb-4" > A Letter from Mobin < /p> <
-                            h2 className = "font-heading italic text-white text-3xl sm:text-4xl md:text-5xl leading-[0.95] tracking-[-2px] mb-6" >
-                            My Dearest Niyayesh <
-                            /h2> <
-                            p className = "text-white/75 text-sm sm:text-base md:text-lg font-body font-light leading-relaxed max-w-lg mx-auto" >
-                            From the moment you walked into my life, everything changed.The world became brighter, the stars shone clearer, and my heart found its home.You are the most beautiful soul I & apos;ve ever known — gentle like moonlight, fierce like the ocean, and infinitely precious to me. <
-                            br / > < br / >
-                            Like the vampires who wait centuries for their one true love, I would wait a thousand lifetimes just to find you again.You are my eternal, my always, my forever. <
-                            br / > < br / >
-                            This is just a small token — a digital universe built for you, because you deserve the entire cosmos. <
-                            /p> <
-                            p className = "font-heading italic text-white/90 text-2xl sm:text-3xl mt-8 tracking-[-1px]" >
-                            — Yours, Mobin <
-                            /p> <
-                            /motion.div> <
-                            /div> <
-                            /Section>
-
-                            { /* ──────── MUSIC SECTION ──────── */ } <
-                            Section id = "music"
-                            className = "flex flex-col items-center justify-center" >
-                            <
-                            FadingVideo src = { thirdVideo }
-                            className = "absolute inset-0 w-full h-full object-cover z-0" / >
-                            <
-                            div className = "relative z-10 flex flex-col items-center justify-center flex-1 w-full px-4 sm:px-6 py-20 gap-6 sm:gap-8" >
-                            <
-                            motion.div initial = {
-                                { filter: 'blur(10px)', opacity: 0, y: 30 } }
-                            whileInView = {
-                                { filter: 'blur(0px)', opacity: 1, y: 0 } }
-                            viewport = {
-                                { once: true, margin: '-100px' } }
-                            transition = {
-                                { duration: 0.8, ease: 'easeOut' } }
-                            className = "text-center" >
-                            <
-                            p className = "text-white/60 text-xs sm:text-sm font-body tracking-widest uppercase mb-3" > Our Song <
-                            /p> <
-                            h2 className = "font-heading italic text-white text-3xl sm:text-4xl md:text-5xl leading-[0.95] tracking-[-2px]" >
-                            The Soundtrack of Us <
-                            /h2> <
-                            p className = "text-white/55 text-sm sm:text-base font-body font-light mt-3 max-w-md" >
-                            This song reminds me of you every single time.Press play and close your eyes, my love. <
-                            /p> <
-                            /motion.div>
-
-                            <
-                            motion.div initial = {
-                                { filter: 'blur(10px)', opacity: 0, y: 30 } }
-                            whileInView = {
-                                { filter: 'blur(0px)', opacity: 1, y: 0 } }
-                            viewport = {
-                                { once: true, margin: '-100px' } }
-                            transition = {
-                                { duration: 0.8, ease: 'easeOut', delay: 0.2 } } >
-                            <
-                            AudioPlayer src = { songUrl }
-                            title = "Sweater Weather"
-                            artist = "The Neighbourhood"
-                            onPlay = {
-                                () => setAudioPlaying(true) }
-                            onPause = {
-                                () => setAudioPlaying(false) }
-                            /> <
-                            /motion.div>
-
-                            {
-                                audioPlaying && ( <
-                                    motion.p initial = {
-                                        { opacity: 0, scale: 0.9 } }
-                                    animate = {
-                                        { opacity: 1, scale: 1 } }
-                                    className = "text-white/50 text-xs font-body italic mt-2 text-center px-4" >
-                                    ♫ & quot;
-                                    One love, one house, no shirt, no blouse... & quot; — playing just
-                                    for you, Niyayesh ♫ <
-                                    /motion.p>
-                                )
-                            } <
-                            /div> <
-                            /Section>
-
-                            { /* ──────── ETERNAL LOVE (TVD Inspired) ──────── */ } <
-                            Section id = "eternal"
-                            className = "flex flex-col items-center justify-center bg-black" >
-                            <
-                            div className = "absolute inset-0 z-0 opacity-30"
-                            style = {
-                                {
-                                    background: 'radial-gradient(ellipse at center, rgba(120,30,30,0.25) 0%, transparent 70%)',
-                                }
-                            }
-                            /> <
-                            div className = "relative z-10 flex flex-col items-center justify-center flex-1 w-full px-4 sm:px-6 py-20 text-center" >
-                            <
-                            motion.div initial = {
-                                { filter: 'blur(10px)', opacity: 0, y: 30 } }
-                            whileInView = {
-                                { filter: 'blur(0px)', opacity: 1, y: 0 } }
-                            viewport = {
-                                { once: true, margin: '-100px' } }
-                            transition = {
-                                { duration: 0.9, ease: 'easeOut' } }
-                            className = "max-w-3xl" >
-                            <
-                            p className = "text-red-300/70 text-xs sm:text-sm font-body tracking-[4px] uppercase mb-6" >
-                            Inspired by The Vampire Diaries <
-                            /p> <
-                            h2 className = "font-heading italic text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.9] tracking-[-3px] mb-6 shimmer-text" >
-                            Always & amp;
-                            Forever <
-                            /h2> <
-                            p className = "text-white/65 text-sm sm:text-base md:text-lg font-body font-light leading-relaxed max-w-xl mx-auto mb-8" >
-                            Like Damon waited for Elena, like Stefan loved with every fiber of his being — my love for you transcends time.You are my epic love story, the kind poets write about and immortals envy. <
-                            /p> <
-                            div className = "flex flex-wrap items-center justify-center gap-3 text-white/50 text-sm font-body" >
-                            <
-                            span className = "liquid-glass rounded-full px-4 py-1.5 text-xs" > Eternal < /span> <
-                            span className = "text-white/30" > • < /span> <
-                            span className = "liquid-glass rounded-full px-4 py-1.5 text-xs" > Unbreakable < /span> <
-                            span className = "text-white/30" > • < /span> <
-                            span className = "liquid-glass rounded-full px-4 py-1.5 text-xs" > Infinite < /span> <
-                            /div> <
-                            /motion.div>
-
-                            <
-                            motion.div initial = {
-                                { opacity: 0, y: 20 } }
-                            whileInView = {
-                                { opacity: 1, y: 0 } }
-                            viewport = {
-                                { once: true, margin: '-100px' } }
-                            transition = {
-                                { duration: 0.7, delay: 0.5 } }
-                            className = "mt-10 sm:mt-14" >
-                            <
-                            AngelPhoto src = { angelImage }
-                            className = "animate-heartbeat" / >
-                            <
-                            /motion.div>
-
-                            <
-                            motion.p initial = {
-                                { opacity: 0 } }
-                            whileInView = {
-                                { opacity: 1 } }
-                            viewport = {
-                                { once: true } }
-                            transition = {
-                                { delay: 0.9 } }
-                            className = "text-white/40 text-xs font-body italic mt-6 max-w-sm px-4" >
-                            & quot;
-                            For over a century I have lived in secret; hiding in the shadows, alone in the world.Until now.I am a vampire.And this is my story. & quot;
-                            < br / >
-                            < span className = "text-white/25" > — The Vampire Diaries < /span> <
-                            /motion.p> <
-                            /div> <
-                            /Section>
-
-                            { /* ──────── FINAL PROMISE ──────── */ } <
-                            Section id = "promise"
-                            className = "flex flex-col items-center justify-center bg-black" >
-                            <
-                            div className = "absolute inset-0 z-0"
-                            style = {
-                                {
-                                    background: 'radial-gradient(ellipse at top center, rgba(255,200,180,0.12) 0%, transparent 60%)',
-                                }
-                            }
-                            /> <
-                            div className = "relative z-10 flex flex-col items-center justify-center flex-1 w-full px-4 sm:px-6 py-20 text-center" >
-                            <
-                            motion.div initial = {
-                                { filter: 'blur(12px)', opacity: 0, y: 40 } }
-                            whileInView = {
-                                { filter: 'blur(0px)', opacity: 1, y: 0 } }
-                            viewport = {
-                                { once: true, margin: '-100px' } }
-                            transition = {
-                                { duration: 1, ease: 'easeOut' } }
-                            className = "max-w-2xl" >
-                            <
-                            h2 className = "font-heading italic text-white text-4xl sm:text-5xl md:text-6xl leading-[0.9] tracking-[-2px] mb-8" >
-                            My Promise to You <
-                            /h2> <
-                            p className = "text-white/70 text-sm sm:text-base md:text-lg font-body font-light leading-relaxed max-w-lg mx-auto mb-10" >
-                            Niyayesh, I promise to love you through every season.Through the cold winters and warm summers, through every challenge and every victory.You are my sweater weather — the comfort I never knew I needed, the warmth I will always seek. <
-                            br / > < br / >
-                            From this moment until the stars burn out, I am yours. <
-                            /p>
-
-                            <
-                            div className = "liquid-glass-strong rounded-full px-8 sm:px-12 py-4 sm:py-5 inline-block" >
-                            <
-                            p className = "font-heading italic text-white text-xl sm:text-2xl md:text-3xl tracking-[-1px]" >
-                            Mobin ❤ ️ Niyayesh <
-                            /p> <
-                            /div> <
-                            /motion.div>
-
-                            <
-                            motion.p initial = {
-                                { opacity: 0 } }
-                            whileInView = {
-                                { opacity: 1 } }
-                            viewport = {
-                                { once: true } }
-                            transition = {
-                                { delay: 0.8 } }
-                            className = "text-white/30 text-[10px] sm:text-xs font-body mt-8 tracking-widest uppercase" >
-                            Made with infinite love • { new Date().getFullYear() } <
-                            /motion.p> <
-                            /div> <
-                            /Section> <
-                            /div>
-                        );
-                    }
-
-                    const rootEl = document.getElementById('root');
-                    const root = ReactDOM.createRoot(rootEl);
-                    root.render( < App / > );
+        console.log('%c✨ A Universe for Niyayesh %c— Crafted with infinite love by Mobin %c✨',
+            'font-size:18px;color:#fff;', 'font-size:14px;color:#ccc;', 'font-size:18px;color:#fff;');
+        console.log('%cEvery line of code written with you in mind. Forever. ♥', 'font-size:12px;color:#999;');
     </script>
 </body>
 </html>
